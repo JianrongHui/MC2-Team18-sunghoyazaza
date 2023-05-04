@@ -16,28 +16,48 @@
 <img src="https://shields.io/badge/GitHub-181717?logo=GitHub&logoColor=FFF&style=flat-square"/> <img src="https://shields.io/badge/Sketch-F7B500?logo=Sketch&logoColor=FFF&style=flat-square"/> <img src="https://shields.io/badge/Miro-050038?logo=Miro&logoColor=FFF&style=flat-square"/> <img src="https://shields.io/badge/microsoftteams-6264A7?logo=microsoftteams&logoColor=FFF&style=flat-square"/> <img src="https://shields.io/badge/Notion-000000?logo=Notion&logoColor=FFF&style=flat-square"/> 
 
 ### 개발스택
-
-<img width="141" alt="스크린샷 2023-05-04 오후 4 01 17" src="https://user-images.githubusercontent.com/108044639/236133570-82917d4a-17ca-4375-b659-b18c0788778d.png">
-<img width="78" alt="스크린샷 2023-05-04 오후 4 01 12" src="https://user-images.githubusercontent.com/108044639/236133624-5b418819-d4aa-4a9e-9791-b91cb2cc78e8.png">
-<img width="109" alt="스크린샷 2023-05-04 오후 4 01 05" src="https://user-images.githubusercontent.com/108044639/236133634-7a8154d4-50b4-488d-bbe3-5c4ed1080179.png">
-<img width="202" alt="스크린샷 2023-05-04 오후 4 08 38" src="https://user-images.githubusercontent.com/108044639/236134419-025c15d1-7f70-48cf-9016-d22e6d28bcd4.png">
+<img src="https://shields.io/badge/iOS-000000?logo=iOS&logoColor=FFF&style=flat-square"/> <img src="https://shields.io/badge/Xcode-147EFB?logo=Xcode&logoColor=FFF&style=flat-square"/> <img src="https://shields.io/badge/Swift-F05138?logo=Swift&logoColor=FFF&style=flat-square"/> 
 
 
 # 팀원 소개
 | iOS | iOS | iOS  | iOS | iOS | iOS |
 | :-----: | :-----: | :-----:  | :-----: | :-----: | :-----: |
-| <img src="https://user-images.githubusercontent.com/108044639/236133570-82917d4a-17ca-4375-b659-b18c0788778d.png" width=400px alt="Peter Jung"/>  | <img src="https://user-images.githubusercontent.com/108044639/236133406-3b57fc7e-4282-43e1-8c97-34941f862198.png" width=400px alt="Chad"/>  | <img src="https://user-images.githubusercontent.com/108044639/236134419-025c15d1-7f70-48cf-9016-d22e6d28bcd4.png" width=400px alt="Coffee"/>   | <img src="https://user-images.githubusercontent.com/108044639/236133624-5b418819-d4aa-4a9e-9791-b91cb2cc78e8.png" width=400px alt="Jay"/>  | <img src="https://user-images.githubusercontent.com/108044639/236133234-7bb38735-9409-409e-94f2-4e4123891e60.png" width=400px alt="Peter Pyeon"/>  | <img src="https://user-images.githubusercontent.com/108044639/236133634-7a8154d4-50b4-488d-bbe3-5c4ed1080179.png" width=400px alt="Rei"/> | 
+| <img src="https://user-images.githubusercontent.com/108044639/236133570-82917d4a-17ca-4375-b659-b18c0788778d.png" width=400px alt="Peter Jung"/>  | <img src="https://user-images.githubusercontent.com/108044639/236135311-e81d1d0a-042f-4431-b54d-891138503cad.png" width=400px alt="Chad"/>  | <img src="https://user-images.githubusercontent.com/108044639/236134419-025c15d1-7f70-48cf-9016-d22e6d28bcd4.png" width=400px alt="Coffee"/>   | <img src="https://user-images.githubusercontent.com/108044639/236133624-5b418819-d4aa-4a9e-9791-b91cb2cc78e8.png" width=400px alt="Jay"/>  | <img src="https://user-images.githubusercontent.com/108044639/236133234-7bb38735-9409-409e-94f2-4e4123891e60.png" width=400px alt="Peter Pyeon"/>  | <img src="https://user-images.githubusercontent.com/108044639/236133634-7a8154d4-50b4-488d-bbe3-5c4ed1080179.png" width=400px alt="Rei"/> | 
 [Peter Jung-CTO](https://github.com/shine-jung) | [Chad](https://github.com/chad0909)  | [Coffee](https://github.com/yuncoffee) | [Jay](https://github.com/jay-appledeveloperacademy) | [Peter Pyeon](https://github.com/pyeonjaesik) | [Rei](https://github.com/chad0909) |
 
 # 화면구성
+### Onboarding
+<img width="503" alt="스크린샷 2023-05-04 오후 4 29 26" src="https://user-images.githubusercontent.com/108044639/236138329-76736879-73c0-4085-91fc-57c49ea3d6e2.png">
+
+
+### Main
+<img width="235" alt="스크린샷 2023-05-04 오후 4 29 47" src="https://user-images.githubusercontent.com/108044639/236138416-29e63417-b539-4bdc-b8d4-80c92b3ecb9e.png"> <img width="504" alt="스크린샷 2023-05-04 오후 4 29 58" src="https://user-images.githubusercontent.com/108044639/236138462-93f1b1ad-ba7d-4dbf-9ee5-a494ca7f31fa.png">
+
+
+
+### Etc
+<img width="694" alt="스크린샷 2023-05-04 오후 4 30 39" src="https://user-images.githubusercontent.com/108044639/236138605-3e12c7c3-076d-49de-a109-6a486be4fe50.png">
+
 
 # 주요기능
-### ⭐️ 
+### ⭐️ 스크린타임API를 활용한 앱 차단
+- 추후 작성 -
 
-### ⭐️ 
-
-### ⭐️ 
-
+### ⭐️ 스크린타임API를 활용한 수면 습관 형성(자발적 선택 기능)
+- 추후 작성 -
 
 
+
+# 유저 플로우
+<img width="3657" alt="image" src="https://user-images.githubusercontent.com/108044639/236138072-c1575780-968e-4dbe-a7c6-39dba8013642.png">
+
+# 리서치 결과
+### 인터뷰
+![image](https://user-images.githubusercontent.com/108044639/236139102-3111b282-dc2c-459c-bb76-81c2700cb854.png)
+
+### 페르소나
+<img width="449" alt="스크린샷 2023-05-04 오후 4 35 00" src="https://user-images.githubusercontent.com/108044639/236139445-b26622e1-6622-42d3-9630-b830f59387c3.png">
+
+### 유저 저니맵
+<img width="488" alt="스크린샷 2023-05-04 오후 4 35 47" src="https://user-images.githubusercontent.com/108044639/236139639-cec4e629-dbe1-428c-b030-a8579487ef95.png">
 
