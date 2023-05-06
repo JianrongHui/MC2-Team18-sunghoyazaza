@@ -8,6 +8,7 @@
 //MARK: Date를 위한 백 자료들
 import SwiftUI
 
+
 //MARK: Date Struct
 struct DateMetaData: Identifiable{
     var id = UUID().uuidString
@@ -36,6 +37,7 @@ var datesHavingDots : [DateMetaData] = datesForTasks.map { offset in
 
 //MARK: 메인 문구를 위해 연속적인 날이 있는지 확인하는 함수
 func findConsecutiveDays()->Int{
+    
     datesForTasks.sort(by: >)
     var index = 0
     var consecutiveDays : Int
@@ -49,6 +51,17 @@ func findConsecutiveDays()->Int{
         consecutiveDays = 0
     }
     
-    print(consecutiveDays)
     return consecutiveDays
+}
+
+//MARK: 메인 문구 바꿔주기
+func changeMainText()->Int{
+    var indexNumber : Int
+    
+    if findConsecutiveDays() == 0{
+        indexNumber = 0
+    } else{
+        indexNumber = 1
+    }
+    return indexNumber
 }

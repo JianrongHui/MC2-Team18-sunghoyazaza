@@ -4,16 +4,16 @@
 //
 //  Created by Seokmin on 2023/05/02.
 //
-
+//MARK: 앱의 메인 화면
 
 import SwiftUI
 
 struct MainView: View {
-    @State var textIndex = 1
+    @State var textIndex = changeMainText()
     @State var currentDate : Date = Date()
     
     var body: some View {
-//        ScrollView{
+//        ScrollView{  //꽉찬 뷰 해결방법?
             VStack(spacing: 0){
                 HStack{
                     VStack{
