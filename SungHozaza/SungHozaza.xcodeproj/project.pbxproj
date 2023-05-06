@@ -20,6 +20,7 @@
 		E500486B2A068BCD005AD015 /* StartPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E500486A2A068BCD005AD015 /* StartPermissionView.swift */; };
 		E500486D2A068E6F005AD015 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E500486C2A068E6F005AD015 /* AlertView.swift */; };
 		E5CE961D2A069F280040BDA5 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE961C2A069F280040BDA5 /* DateValue.swift */; };
+		E5CE96212A06ABB50040BDA5 /* DateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96202A06ABB50040BDA5 /* DateData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		E500486A2A068BCD005AD015 /* StartPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPermissionView.swift; sourceTree = "<group>"; };
 		E500486C2A068E6F005AD015 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		E5CE961C2A069F280040BDA5 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateValue.swift; path = SungHozaza/Model/DateValue.swift; sourceTree = SOURCE_ROOT; };
+		E5CE96202A06ABB50040BDA5 /* DateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E5CE961C2A069F280040BDA5 /* DateValue.swift */,
+				E5CE96202A06ABB50040BDA5 /* DateData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			files = (
 				E500486B2A068BCD005AD015 /* StartPermissionView.swift in Sources */,
 				E50048672A068600005AD015 /* Fonts.swift in Sources */,
+				E5CE96212A06ABB50040BDA5 /* DateData.swift in Sources */,
 				E500486D2A068E6F005AD015 /* AlertView.swift in Sources */,
 				7F0003D22A0020D2000F3B5B /* MainView.swift in Sources */,
 				E50048652A0685F1005AD015 /* Colors.swift in Sources */,
