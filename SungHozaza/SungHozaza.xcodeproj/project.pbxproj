@@ -55,7 +55,7 @@
 		E50048682A06868C005AD015 /* MiddlePermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlePermissionView.swift; sourceTree = "<group>"; };
 		E500486A2A068BCD005AD015 /* StartPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPermissionView.swift; sourceTree = "<group>"; };
 		E500486C2A068E6F005AD015 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		E5CE961C2A069F280040BDA5 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateValue.swift; path = SungHozaza/View/DateValue.swift; sourceTree = SOURCE_ROOT; };
+		E5CE961C2A069F280040BDA5 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateValue.swift; path = SungHozaza/Model/DateValue.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
