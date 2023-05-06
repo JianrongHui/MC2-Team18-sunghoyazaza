@@ -12,8 +12,10 @@ import SwiftUI
 //MARK: MAIN
 struct MiddlePermissionView: View {
     var body: some View {
+        //전체 Stack
         VStack{
             Spacer()
+            
             //위에 Bold 텍스트
             Text("Screen Time \n권한을 허용해주세요.")
                 .multilineTextAlignment(.center)
@@ -25,6 +27,7 @@ struct MiddlePermissionView: View {
             Text("앱을 사용하려면 \nScreen Time 권한이 필요합니다.")
                 .multilineTextAlignment(.center)
                 .font(.system(size: 17))
+            
             Spacer()
             
             //권한 설정하기 버튼

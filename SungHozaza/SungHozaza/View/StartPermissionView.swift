@@ -22,6 +22,7 @@ struct StartPermissionView: View {
                 
 
                 Spacer()
+                
                 // 권한 설정 하기 버튼
                 Button {
                     print("권한 설정하기 clicked")

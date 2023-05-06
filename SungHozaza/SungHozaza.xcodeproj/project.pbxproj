@@ -25,6 +25,7 @@
 		E5CE96252A06ACB40040BDA5 /* SleepPlanTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96242A06ACB40040BDA5 /* SleepPlanTopView.swift */; };
 		E5CE96272A06AD360040BDA5 /* SleepPlanBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96262A06AD360040BDA5 /* SleepPlanBottomView.swift */; };
 		E5CE96292A06AD770040BDA5 /* MainTextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96282A06AD770040BDA5 /* MainTextData.swift */; };
+		E5CE962B2A06BB730040BDA5 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE962A2A06BB730040BDA5 /* DateVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		E5CE96242A06ACB40040BDA5 /* SleepPlanTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepPlanTopView.swift; sourceTree = "<group>"; };
 		E5CE96262A06AD360040BDA5 /* SleepPlanBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepPlanBottomView.swift; sourceTree = "<group>"; };
 		E5CE96282A06AD770040BDA5 /* MainTextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextData.swift; sourceTree = "<group>"; };
+		E5CE962A2A06BB730040BDA5 /* DateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 		E50048602A068325005AD015 /* View-Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5CE962A2A06BB730040BDA5 /* DateVM.swift */,
 			);
 			path = "View-Model";
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				E5CE96232A06ABFE0040BDA5 /* CalendarView.swift in Sources */,
 				E500486B2A068BCD005AD015 /* StartPermissionView.swift in Sources */,
 				E5CE96252A06ACB40040BDA5 /* SleepPlanTopView.swift in Sources */,
+				E5CE962B2A06BB730040BDA5 /* DateVM.swift in Sources */,
 				E50048672A068600005AD015 /* Fonts.swift in Sources */,
 				E5CE96212A06ABB50040BDA5 /* DateData.swift in Sources */,
 				E500486D2A068E6F005AD015 /* AlertView.swift in Sources */,
