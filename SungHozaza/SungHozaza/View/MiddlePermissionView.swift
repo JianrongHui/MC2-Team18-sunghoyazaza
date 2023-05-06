@@ -1,5 +1,5 @@
-//
-//  MiddlePermissionView.swift
+
+//  MiddelPermissionView.swift
 //  SungHozaza
 //
 //  Created by 077tech on 2023/05/06.
