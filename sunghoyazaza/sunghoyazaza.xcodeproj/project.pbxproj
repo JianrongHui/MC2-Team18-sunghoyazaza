@@ -16,6 +16,8 @@
 		7F37854B2A07AD660055EAB2 /* sunghoyazazaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37854A2A07AD660055EAB2 /* sunghoyazazaUITestsLaunchTests.swift */; };
 		7F8E12CE2A07B43100DE6866 /* SampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8E12CD2A07B43100DE6866 /* SampleViewModel.swift */; };
 		7F8E12D02A07B43A00DE6866 /* SampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8E12CF2A07B43A00DE6866 /* SampleModel.swift */; };
+		7F9E37062A07D2EE00E0735F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E37052A07D2EE00E0735F /* OnboardingView.swift */; };
+		7F9E37082A07F6FA00E0735F /* Onboarding2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E37072A07F6FA00E0735F /* Onboarding2View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		7F37854A2A07AD660055EAB2 /* sunghoyazazaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sunghoyazazaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7F8E12CD2A07B43100DE6866 /* SampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewModel.swift; sourceTree = "<group>"; };
 		7F8E12CF2A07B43A00DE6866 /* SampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleModel.swift; sourceTree = "<group>"; };
+		7F9E37052A07D2EE00E0735F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		7F9E37072A07F6FA00E0735F /* Onboarding2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				7F37852F2A07AD650055EAB2 /* MainView.swift */,
+				7F9E37052A07D2EE00E0735F /* OnboardingView.swift */,
+				7F9E37072A07F6FA00E0735F /* Onboarding2View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -287,9 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F9E37082A07F6FA00E0735F /* Onboarding2View.swift in Sources */,
 				7F8E12CE2A07B43100DE6866 /* SampleViewModel.swift in Sources */,
 				7F3785302A07AD650055EAB2 /* MainView.swift in Sources */,
 				7F37852E2A07AD650055EAB2 /* sunghoyazazaApp.swift in Sources */,
+				7F9E37062A07D2EE00E0735F /* OnboardingView.swift in Sources */,
 				7F8E12D02A07B43A00DE6866 /* SampleModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
