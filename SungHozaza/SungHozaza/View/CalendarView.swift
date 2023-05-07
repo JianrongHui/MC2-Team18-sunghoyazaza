@@ -9,12 +9,13 @@
 import SwiftUI
 
 struct CalendarView: View {
-    
-    //MARK: Database
     @Binding var currentDate : Date //현재 날짜
     @State var currentMonth : Int = 0 // 화살표 클릭으로 인한 월 세는 변수
-    let days: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"] //달력 상단 요일
+    
+    //MARK: Database
+    let days: [String] = DateModel().upperDays //달력 상단 요일
     let columns = Array(repeating: GridItem(.flexible()), count: 7) //달력 틀
+    
     
     //MARK: MAIN
     var body: some View {
@@ -25,20 +26,20 @@ struct CalendarView: View {
                 // 월, 년도 Stack
                 HStack(spacing: 5){
                     // 월 Text (ex. May)
-                        Text(extraDate()[1])
-                            .font(.system(size: 17))
-                            .bold()
+                    Text(extraDate()[1])
+                        .font(.system(size: 17))
+                        .bold()
                     
                     // 년도 Text (ex. 2023)
-                        Text(extraDate()[0])
-                            .font(.system(size: 17))
-                            .bold()
+                    Text(extraDate()[0])
+                        .font(.system(size: 17))
+                        .bold()
                 }
                 Spacer(minLength: 0)
                 
                 // 좌화살표 버튼
                 Button {
-                        currentMonth -= 1
+                    currentMonth -= 1
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title2)
@@ -47,7 +48,7 @@ struct CalendarView: View {
                 
                 // 우화살표 버튼
                 Button {
-                        currentMonth += 1
+                    currentMonth += 1
                 } label: {
                     Image(systemName: "chevron.right")
                         .font(.title2)
@@ -72,11 +73,13 @@ struct CalendarView: View {
                 ForEach(extractDate()){ value in
                     CardView(value: value)
                         .background(
-                        Capsule()
-                            .fill(Color(hex: 0x0F0094))
-                            .padding(.horizontal, 10)
-                            .opacity(isSameDay(date1: value.date, date2: currentDate) ? 0.3 : 0)
+                            //선택 시 생기는 파란색 원
+                            Capsule()
+                                .fill(Color(hex: 0x0F0094))
+                                .padding(.horizontal, 10)
+                                .opacity(isSameDay(date1: value.date, date2: currentDate) ? 0.3 : 0)
                         )
+                    // 누르면 0.3 opacity의 파란색 원이 생김
                         .onTapGesture {
                             currentDate = value.date
                         }
@@ -86,18 +89,20 @@ struct CalendarView: View {
             Spacer()
             
         }
+        // 월 변경시 새로운 월 업데이트
         .onChange(of: currentMonth){newValue in
-            //updating Month
             currentDate = getCurrentMonth()
         }
     }
     
+    // 달력 각각 날짜 뷰
     @ViewBuilder
     func CardView(value: DateValue)->some View{
+        // 날짜 하루 + 수면 계획 성공 여부 Stack
         VStack{
+            // 수면 계획 성공한 날짜 코드
             if value.day != -1{
-                
-                if let task = datesHavingDots.first(where: {task in
+                if let task = DateVM().datesHavingDots().first(where: {task in
                     return isSameDay(date1: task.date, date2: value.date)
                 }){
                     Text("\(value.day)")
@@ -111,8 +116,8 @@ struct CalendarView: View {
                         .frame(width: 8, height: 8)
                     
                 }
+                // 수면 계획 실패 + 미래 날짜 코드
                 else{
-                    
                     Text("\(value.day)")
                         .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
                         .frame(maxWidth: .infinity)
@@ -126,7 +131,24 @@ struct CalendarView: View {
         .frame(height: 35,alignment: .top)
     }
     
-    //checking dates
+    
+    
+    //MARK: PREVIEW
+    struct CalendarView_Previews: PreviewProvider {
+        static var previews: some View {
+            MainView()
+        }
+    }
+    
+    
+    
+    
+//MARK: VM, M 정리 필요
+//MARK: VM, M 정리 필요
+//MARK: VM, M 정리 필요
+    
+    
+    //MARK: 날짜 확인 코드
     func isSameDay(date1: Date, date2: Date) -> Bool{
         let calendar = Calendar.current
         
@@ -134,7 +156,7 @@ struct CalendarView: View {
     }
     
     
-    // extracting year and month for display
+    //MARK: YYYY MMMM 형태로 날짜 형식 바꾸는 함수
     func extraDate()->[String]{
         
         let formatter = DateFormatter()
@@ -146,6 +168,7 @@ struct CalendarView: View {
     }
     
     
+    //MARK: 현재 월 반환해주는 함수
     func getCurrentMonth()->Date{
         
         let calendar = Calendar.current
@@ -158,18 +181,18 @@ struct CalendarView: View {
         return currentMonth
     }
     
-    
+    //MARK: 날짜 추출해주는 함수
     func extractDate()->[DateValue]{
         
         let calendar = Calendar.current
         
-        //Getting Current Month Date
+        //현재 월 반환
         let currentMonth = getCurrentMonth()
         
         var days =  currentMonth.getAllDates().compactMap{
             date -> DateValue in
             
-            //getting day
+            //날짜 반환
             let day = calendar.component(.day, from: date)
             
             return DateValue(day: day, date: date)
@@ -185,15 +208,7 @@ struct CalendarView: View {
     }
 }
 
-struct CalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
-
-
-//Extending Dates to get Current Month Dates
-
+//MARK: 현재 월, 일을 알기위한 위한 Extension
 extension Date{
     func getAllDates()->[Date]{
         

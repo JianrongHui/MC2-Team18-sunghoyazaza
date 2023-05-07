@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-//MARK: Color Extension for hexcode
+//MARK: HexCode 적용을 위한 Extension
 
 extension Color {
     init(hex: UInt) {

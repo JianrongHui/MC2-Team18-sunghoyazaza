@@ -44,6 +44,7 @@ struct StartPermissionView: View {
                     .bold()
                     .font(.system(size: 34))
                     .padding(.bottom, 1)
+                
                 // 중간 Regular 텍스트 (UI 변경시 삭제될 것)
                 Text("앱을 사용하려면 \nScreen Time 권한이 필요합니다.")
                     .multilineTextAlignment(.center)

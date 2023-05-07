@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var textIndex = changeMainText() //
+    @State var textIndex = MainVM().changeMainText() //
     @State var currentDate : Date = Date()
     
     var body: some View {
         //        ScrollView{  //꽉찬 뷰 해결방법?
         //전체 뷰 Stack
         VStack(spacing: 0){
-            // 제일 상단 Text
-            Text("\(mainLabel[textIndex])")
+            // 메인 Text
+            Text("\(MainModel().mainLabel[textIndex])")
                 .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -25,8 +25,8 @@ struct MainView: View {
                 .padding(.horizontal)
                 .bold()
             
-            // 응원 Text
-            Text("\(subLabel[textIndex])")
+            // 서브 Text (문구 랜덤 생성)
+            Text("\(MainModel().subLabel[MainVM().makeRandomNumber()])")
                 .font(.system(size: 17))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
@@ -62,7 +62,7 @@ struct MainView: View {
             Spacer()
             
             //취침 및 기상시간 알려주는 View
-            SleepPlanTopView()
+            SleepPlanTopView(weekDay: MainModel().$weekDay, sleepTime: MainModel().$sleepTime, wakeupTime: MainModel().$wakeupTime)
                 .padding(.horizontal)
                 .padding(.bottom, 8)
             

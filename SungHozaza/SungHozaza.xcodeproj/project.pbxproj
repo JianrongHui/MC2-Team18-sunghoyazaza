@@ -19,13 +19,13 @@
 		E50048692A06868C005AD015 /* MiddlePermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50048682A06868C005AD015 /* MiddlePermissionView.swift */; };
 		E500486B2A068BCD005AD015 /* StartPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E500486A2A068BCD005AD015 /* StartPermissionView.swift */; };
 		E500486D2A068E6F005AD015 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E500486C2A068E6F005AD015 /* AlertView.swift */; };
-		E5CE961D2A069F280040BDA5 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE961C2A069F280040BDA5 /* DateValue.swift */; };
-		E5CE96212A06ABB50040BDA5 /* DateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96202A06ABB50040BDA5 /* DateData.swift */; };
+		E5CE96212A06ABB50040BDA5 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96202A06ABB50040BDA5 /* DateModel.swift */; };
 		E5CE96232A06ABFE0040BDA5 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96222A06ABFE0040BDA5 /* CalendarView.swift */; };
 		E5CE96252A06ACB40040BDA5 /* SleepPlanTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96242A06ACB40040BDA5 /* SleepPlanTopView.swift */; };
 		E5CE96272A06AD360040BDA5 /* SleepPlanBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96262A06AD360040BDA5 /* SleepPlanBottomView.swift */; };
-		E5CE96292A06AD770040BDA5 /* MainTextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96282A06AD770040BDA5 /* MainTextData.swift */; };
+		E5CE96292A06AD770040BDA5 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE96282A06AD770040BDA5 /* MainModel.swift */; };
 		E5CE962B2A06BB730040BDA5 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE962A2A06BB730040BDA5 /* DateVM.swift */; };
+		E5CE962F2A07719D0040BDA5 /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE962E2A07719D0040BDA5 /* MainVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,13 +61,13 @@
 		E50048682A06868C005AD015 /* MiddlePermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlePermissionView.swift; sourceTree = "<group>"; };
 		E500486A2A068BCD005AD015 /* StartPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPermissionView.swift; sourceTree = "<group>"; };
 		E500486C2A068E6F005AD015 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		E5CE961C2A069F280040BDA5 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateValue.swift; path = SungHozaza/Model/DateValue.swift; sourceTree = SOURCE_ROOT; };
-		E5CE96202A06ABB50040BDA5 /* DateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateData.swift; sourceTree = "<group>"; };
+		E5CE96202A06ABB50040BDA5 /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		E5CE96222A06ABFE0040BDA5 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		E5CE96242A06ACB40040BDA5 /* SleepPlanTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepPlanTopView.swift; sourceTree = "<group>"; };
 		E5CE96262A06AD360040BDA5 /* SleepPlanBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepPlanBottomView.swift; sourceTree = "<group>"; };
-		E5CE96282A06AD770040BDA5 /* MainTextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextData.swift; sourceTree = "<group>"; };
+		E5CE96282A06AD770040BDA5 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		E5CE962A2A06BB730040BDA5 /* DateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVM.swift; sourceTree = "<group>"; };
+		E5CE962E2A07719D0040BDA5 /* MainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,9 +156,8 @@
 		E500485E2A068318005AD015 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E5CE961C2A069F280040BDA5 /* DateValue.swift */,
-				E5CE96202A06ABB50040BDA5 /* DateData.swift */,
-				E5CE96282A06AD770040BDA5 /* MainTextData.swift */,
+				E5CE96202A06ABB50040BDA5 /* DateModel.swift */,
+				E5CE96282A06AD770040BDA5 /* MainModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				E5CE962A2A06BB730040BDA5 /* DateVM.swift */,
+				E5CE962E2A07719D0040BDA5 /* MainVM.swift */,
 			);
 			path = "View-Model";
 			sourceTree = "<group>";
@@ -331,12 +331,12 @@
 				E5CE96252A06ACB40040BDA5 /* SleepPlanTopView.swift in Sources */,
 				E5CE962B2A06BB730040BDA5 /* DateVM.swift in Sources */,
 				E50048672A068600005AD015 /* Fonts.swift in Sources */,
-				E5CE96212A06ABB50040BDA5 /* DateData.swift in Sources */,
+				E5CE96212A06ABB50040BDA5 /* DateModel.swift in Sources */,
+				E5CE962F2A07719D0040BDA5 /* MainVM.swift in Sources */,
 				E500486D2A068E6F005AD015 /* AlertView.swift in Sources */,
 				7F0003D22A0020D2000F3B5B /* MainView.swift in Sources */,
 				E50048652A0685F1005AD015 /* Colors.swift in Sources */,
-				E5CE961D2A069F280040BDA5 /* DateValue.swift in Sources */,
-				E5CE96292A06AD770040BDA5 /* MainTextData.swift in Sources */,
+				E5CE96292A06AD770040BDA5 /* MainModel.swift in Sources */,
 				7F0003D02A0020D2000F3B5B /* SungHozazaApp.swift in Sources */,
 				E50048692A06868C005AD015 /* MiddlePermissionView.swift in Sources */,
 			);
