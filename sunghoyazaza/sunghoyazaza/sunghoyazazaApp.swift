@@ -1,14 +1,14 @@
 //
-//  SungHozazaApp.swift
-//  SungHozaza
+//  sunghoyazazaApp.swift
+//  sunghoyazaza
 //
-//  Created by Seokmin on 2023/05/02.
+//  Created by Seokmin on 2023/05/07.
 //
 
 import SwiftUI
 
 @main
-struct SungHozazaApp: App {
+struct sunghoyazazaApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

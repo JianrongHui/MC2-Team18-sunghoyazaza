@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  SungHozaza
+//  sunghoyazaza
 //
-//  Created by Seokmin on 2023/05/02.
+//  Created by Seokmin on 2023/05/07.
 //
 
 import SwiftUI

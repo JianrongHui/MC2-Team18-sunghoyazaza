@@ -1,13 +1,13 @@
 //
-//  SungHozazaUITests.swift
-//  SungHozazaUITests
+//  sunghoyazazaUITests.swift
+//  sunghoyazazaUITests
 //
-//  Created by Seokmin on 2023/05/02.
+//  Created by Seokmin on 2023/05/07.
 //
 
 import XCTest
 
-final class SungHozazaUITests: XCTestCase {
+final class sunghoyazazaUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
