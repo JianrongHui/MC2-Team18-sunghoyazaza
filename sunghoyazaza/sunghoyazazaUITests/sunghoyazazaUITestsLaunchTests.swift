@@ -1,13 +1,13 @@
 //
-//  SungHozazaUITestsLaunchTests.swift
-//  SungHozazaUITests
+//  sunghoyazazaUITestsLaunchTests.swift
+//  sunghoyazazaUITests
 //
-//  Created by Seokmin on 2023/05/02.
+//  Created by Seokmin on 2023/05/07.
 //
 
 import XCTest
 
-final class SungHozazaUITestsLaunchTests: XCTestCase {
+final class sunghoyazazaUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
