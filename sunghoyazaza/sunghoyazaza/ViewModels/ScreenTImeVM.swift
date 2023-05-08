@@ -15,9 +15,21 @@ class ScreenTimeVM: ObservableObject {
     static let shared = ScreenTimeVM()
     private init() {}
     
-    @AppStorage(AppStorageKey.selectionToDiscourage.rawValue, store: UserDefaults(suiteName: "group.com.shield.dreamon"))
+    @AppStorage(AppStorageKey.selectionToDiscourage.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var selectionToDiscourage = FamilyActivitySelection()
 
+    // MARK: 스케쥴 시작 시간을 담기 위한 변수
+    @AppStorage(AppStorageKey.sleepStartDateComponent.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var sleepStartDateComponent = DateComponents()
+    
+    // MARK: 스케쥴 종료 시간을 담기 위한 변수
+    @AppStorage(AppStorageKey.sleepEndDateComponent.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var sleepEndDateComponent = DateComponents()
+    
+    // MARK: 사용자 알림 설정 여부
+    @AppStorage(AppStorageKey.isUserNotificationOn.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var isUserNotificationOn: Bool = true
+    
     let managedSettingStore = ManagedSettingsStore()
     let deviceActivityCenter = DeviceActivityCenter()
     
@@ -67,6 +79,26 @@ extension FamilyActivitySelection: RawRepresentable {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
             let result = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
+        else {
+            return nil
+        }
+        self = result
+    }
+
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+            let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
+}
+
+extension DateComponents: RawRepresentable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+            let result = try? JSONDecoder().decode(DateComponents.self, from: data)
         else {
             return nil
         }
