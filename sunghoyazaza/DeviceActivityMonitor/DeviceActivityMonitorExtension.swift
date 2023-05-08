@@ -7,7 +7,9 @@
 
 import DeviceActivity
 import FamilyControls
+import ManagedSettings
 import SwiftUI
+
 
 // Optionally override any of the functions below.
 // Make sure that your class name matches the NSExtensionPrincipalClass in your Info.plist.
@@ -17,12 +19,24 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
-        
+        if activity == .dailySleep {
+            // TODO: 샘플로직 수정하기 - 모니터링 시작 시 실드시작
+            let managedSettingsStore = ManagedSettingsStore(named: .default)
+            managedSettingsStore.shield.applications = selectionToDiscourage.applicationTokens.isEmpty ? nil : selectionToDiscourage.applicationTokens
+            managedSettingsStore.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(selectionToDiscourage.categoryTokens)
+            
+        }
         // Handle the start of the interval.
     }
     
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
+        // TODO: 샘플로직 수정하기 - 모니터링 끝날 시 스케쥴 초기화
+        if activity == .dailySleep {
+            // Clear shields
+            let managedSettingsStore = ManagedSettingsStore(named: .default)
+            managedSettingsStore.clearAllSettings()
+        }
         
         // Handle the end of the interval.
     }
@@ -35,7 +49,6 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     
     override func intervalWillStartWarning(for activity: DeviceActivityName) {
         super.intervalWillStartWarning(for: activity)
-        
         // Handle the warning before the interval starts.
     }
     
@@ -71,4 +84,15 @@ extension FamilyActivitySelection: RawRepresentable {
         }
         return result
     }
+}
+
+//MARK: Schedule Name List
+extension DeviceActivityName {
+    static let dailySleep = Self("dailySleep")
+    static let additionalTime = Self("additionalTime")
+}
+
+//MARK: Schedule Event Name List
+extension DeviceActivityEvent.Name {
+    static let `default` = Self("threshold.default")
 }

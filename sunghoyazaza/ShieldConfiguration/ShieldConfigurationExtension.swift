@@ -23,7 +23,7 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
             backgroundBlurStyle: UIBlurEffect.Style.systemThickMaterial,
             backgroundColor: UIColor.white,
             icon: UIImage(systemName: imageName),
-            title: ShieldConfiguration.Label(text: "No app for you???: \(testInt)", color: .yellow),
+            title: ShieldConfiguration.Label(text: "No app for you", color: .yellow),
             subtitle: ShieldConfiguration.Label(text: "Sorry, no apps for you", color: .black),
             primaryButtonLabel: ShieldConfiguration.Label(text: "Ask for a break?", color: .black),
             secondaryButtonLabel: ShieldConfiguration.Label(text: "Quick Quick", color: .black)
@@ -35,21 +35,22 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
         return ShieldConfiguration(
             backgroundBlurStyle: UIBlurEffect.Style.systemThickMaterial,
             backgroundColor: UIColor.white,
-            icon: UIImage(systemName: "stopwatch"),
-            title: ShieldConfiguration.Label(text: "No app for you???: \(testInt)", color: .yellow),
+            icon: UIImage(systemName: imageName),
+            title: ShieldConfiguration.Label(text: "No app for you", color: .yellow),
             subtitle: ShieldConfiguration.Label(text: "Sorry, no apps for you", color: .black),
             primaryButtonLabel: ShieldConfiguration.Label(text: "Ask for a break?", color: .black),
             secondaryButtonLabel: ShieldConfiguration.Label(text: "Quick Quick", color: .black)
         )
     }
     
-    override func configuration(shielding webDomain: WebDomain) -> ShieldConfiguration {
-        // Customize the shield as needed for web domains.
-        ShieldConfiguration()
-    }
-    
-    override func configuration(shielding webDomain: WebDomain, in category: ActivityCategory) -> ShieldConfiguration {
-        // Customize the shield as needed for web domains shielded because of their category.
-        ShieldConfiguration()
-    }
+    // TODO: 미사용 시 제거할지 말지 논의하기
+//    override func configuration(shielding webDomain: WebDomain) -> ShieldConfiguration {
+//        // Customize the shield as needed for web domains.
+//        ShieldConfiguration()
+//    }
+//    
+//    override func configuration(shielding webDomain: WebDomain, in category: ActivityCategory) -> ShieldConfiguration {
+//        // Customize the shield as needed for web domains shielded because of their category.
+//        ShieldConfiguration()
+//    }
 }
