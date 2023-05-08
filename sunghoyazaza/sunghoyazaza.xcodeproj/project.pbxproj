@@ -40,6 +40,9 @@
 		A9F0ED892A08C49E006E02B6 /* ManagedSettings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F0ED752A08C48E006E02B6 /* ManagedSettings.framework */; };
 		A9F0ED8C2A08C49E006E02B6 /* ShieldActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED8B2A08C49E006E02B6 /* ShieldActionExtension.swift */; };
 		A9F0ED912A08C49E006E02B6 /* ShieldAction.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A9F0ED882A08C49E006E02B6 /* ShieldAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A9F0ED962A08C9E6006E02B6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */; };
+		A9F0ED982A08CABD006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
+		A9F0ED992A08CB9B006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +144,7 @@
 		A9F0ED8D2A08C49E006E02B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9F0ED8E2A08C49E006E02B6 /* ShieldAction.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShieldAction.entitlements; sourceTree = "<group>"; };
 		A9F0ED952A08C4F3006E02B6 /* sunghoyazaza.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sunghoyazaza.entitlements; sourceTree = "<group>"; };
+		A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */,
+				A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -576,6 +581,7 @@
 				7F37852E2A07AD650055EAB2 /* sunghoyazazaApp.swift in Sources */,
 				7FBFF4542A07C5B90069656E /* SleepPlanBottomView.swift in Sources */,
 				7FBFF4522A07C5B90069656E /* StartPermissionView.swift in Sources */,
+				A9F0ED982A08CABD006E02B6 /* AppStorageKeyManager.swift in Sources */,
 				7FBFF4502A07C5B90069656E /* Fonts.swift in Sources */,
 				7FBFF4552A07C5B90069656E /* MiddlePermissionView.swift in Sources */,
 				7FBFF4512A07C5B90069656E /* Colors.swift in Sources */,
@@ -616,6 +622,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F0ED992A08CB9B006E02B6 /* AppStorageKeyManager.swift in Sources */,
+				A9F0ED962A08C9E6006E02B6 /* NotificationManager.swift in Sources */,
 				A9F0ED662A08C2CD006E02B6 /* DeviceActivityMonitorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
