@@ -42,21 +42,37 @@ struct StartPermissionView: View {
 
         }
             VStack{
-                if alarmOnOff == false {
-                    Text("alarmOff")
-                        .padding()
-                }else{
-                    Text("alarmOn")
-                        .padding()
+                HStack{
+                    if alarmOnOff == false {
+                        Text("alarmOff")
+                            .padding()
+                    }else{
+                        Text("alarmOn")
+                            .padding()
+                    }
+                    Button {
+                        print("alarm Notification Click")
+                    } label: {
+                        Text("alarm Notification")
+                    }
                 }
-                
-                if screenTimeAPIOnOff == false {
-                    Text("screenTimeAPIOff")
-                        .padding()
-                }else{
-                    Text("screenTimeAPIOn")
-                        .padding()
+
+                HStack{
+                    if screenTimeAPIOnOff == false {
+                        Text("screenTimeAPIOff")
+                            .padding()
+                    }else{
+                        Text("screenTimeAPIOn")
+                            .padding()
+                    }
+                    Button {
+                        print("screenNotificationAPI Notification Click")
+                    } label: {
+                        Text("screenNotificationAPI Notification")
+                    }
+
                 }
+
                 
                 
 //                // 중간 Bold 텍스트 (UI 변경시 삭제될 것)
