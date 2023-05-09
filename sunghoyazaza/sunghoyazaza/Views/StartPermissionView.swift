@@ -10,7 +10,7 @@ import SwiftUI
 
 //MARK: MAIN
 struct StartPermissionView: View {
-    
+    @EnvironmentObject var screenTimeVM: ScreenTimeVM
     @State var alarmOnOff : Bool = false
     @State var screenTimeAPIOnOff : Bool = false
     

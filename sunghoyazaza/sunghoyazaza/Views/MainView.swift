@@ -24,7 +24,6 @@ struct MainView: View {
                 .font(.system(size: 34))
                 .padding(.horizontal)
                 .bold()
-            
             // 서브 Text (문구 랜덤 생성)
             Text("\(MainModel().subLabel[MainVM().makeRandomNumber()])")
                 .font(.system(size: 17))

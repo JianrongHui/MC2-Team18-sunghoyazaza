@@ -15,6 +15,9 @@ class ScreenTimeVM: ObservableObject {
     static let shared = ScreenTimeVM()
     private init() {}
     
+    @Published
+    var testInt = 0
+    
     @AppStorage(AppStorageKey.selectionToDiscourage.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var selectionToDiscourage = FamilyActivitySelection()
 
@@ -32,6 +35,32 @@ class ScreenTimeVM: ObservableObject {
     
     let managedSettingStore = ManagedSettingsStore()
     let deviceActivityCenter = DeviceActivityCenter()
+    
+    // MARK: 스크린타임 권한 요청
+    func requestAuthorization() {
+        let center = AuthorizationCenter.shared
+        
+        if center.authorizationStatus == .approved {
+            print("ScreenTime Permission approved")
+        } else {
+            Task {
+                do {
+                     try await center.requestAuthorization(for: .individual)
+                    // 동의함
+                 } catch {
+                     //동의 X
+                     print("Failed to enroll Aniyah with error: \(error)")
+                     // 사용자가 허용안함.
+                     // Error Domain=FamilyControls.FamilyControlsError Code=5 "(null)
+                 }
+            }
+        }
+    }
+    
+    // MARK: 스크린타임 권한 조회
+    func requestAuthorizationStatus() -> AuthorizationStatus {
+        AuthorizationCenter.shared.authorizationStatus
+    }
     
     // MARK: 선택했던 토큰 정보 초기화
     func handleResetSelection() {
