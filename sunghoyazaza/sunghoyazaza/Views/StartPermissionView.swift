@@ -10,6 +10,10 @@ import SwiftUI
 
 //MARK: MAIN
 struct StartPermissionView: View {
+    
+    @State var alarmOnOff : Bool = false
+    @State var screenTimeAPIOnOff : Bool = false
+    
     var body: some View {
         ZStack{
             VStack{
@@ -25,9 +29,9 @@ struct StartPermissionView: View {
                 
                 // 권한 설정 하기 버튼
                 Button {
-                    print("권한 설정하기 clicked")
+                    print("시작하기 clicked")
                 } label: {
-                    Text("권한 설정하기")
+                    Text("시작하기")
                         .padding(.horizontal, 80)
                         .padding(.vertical)
                         .foregroundColor(Color.white)
@@ -38,17 +42,34 @@ struct StartPermissionView: View {
 
         }
             VStack{
-                // 중간 Bold 텍스트 (UI 변경시 삭제될 것)
-                Text("Screen Time \n권한을 허용해주세요.")
-                    .multilineTextAlignment(.center)
-                    .bold()
-                    .font(.system(size: 34))
-                    .padding(.bottom, 1)
+                if alarmOnOff == false {
+                    Text("alarmOff")
+                        .padding()
+                }else{
+                    Text("alarmOn")
+                        .padding()
+                }
                 
-                // 중간 Regular 텍스트 (UI 변경시 삭제될 것)
-                Text("앱을 사용하려면 \nScreen Time 권한이 필요합니다.")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 17))
+                if screenTimeAPIOnOff == false {
+                    Text("screenTimeAPIOff")
+                        .padding()
+                }else{
+                    Text("screenTimeAPIOn")
+                        .padding()
+                }
+                
+                
+//                // 중간 Bold 텍스트 (UI 변경시 삭제될 것)
+//                Text("Screen Time \n권한을 허용해주세요.")
+//                    .multilineTextAlignment(.center)
+//                    .bold()
+//                    .font(.system(size: 34))
+//                    .padding(.bottom, 1)
+//
+//                // 중간 Regular 텍스트 (UI 변경시 삭제될 것)
+//                Text("앱을 사용하려면 \nScreen Time 권한이 필요합니다.")
+//                    .multilineTextAlignment(.center)
+//                    .font(.system(size: 17))
             }
         }
 
