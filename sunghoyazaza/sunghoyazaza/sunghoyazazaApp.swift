@@ -9,10 +9,19 @@ import SwiftUI
 
 @main
 struct sunghoyazazaApp: App {
+    // TODO::앱 시작 시 Permission State 확인하기
+    let hasPermission = false
     
     var body: some Scene {
         WindowGroup {
-            MainView(screenTimeVM: ScreenTimeVM.shared)
+            NavigationView {
+                if hasPermission {
+                    MainView()
+                }
+                else {
+                    StartPermissionView()
+                }
+            }
         }
     }
 }
