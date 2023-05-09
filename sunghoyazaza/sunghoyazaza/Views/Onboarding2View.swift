@@ -41,7 +41,7 @@ struct Onboarding2View: View {
              */
             
             NavigationLink(destination: {
-                MainView(screenTimeVM: ScreenTimeVM.shared)
+                MainView()
             }) {
                 Text("설정 완료").foregroundColor(.white)
             }.padding()

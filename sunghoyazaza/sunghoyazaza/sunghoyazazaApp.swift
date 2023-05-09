@@ -9,18 +9,17 @@ import SwiftUI
 
 @main
 struct sunghoyazazaApp: App {
-    
-    @StateObject
-    var screenTimeVM = ScreenTimeVM.shared
-    
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                if screenTimeVM.requestAuthorizationStatus() == .approved {
-                    MainView(screenTimeVM: screenTimeVM)
+                if ScreenTimeVM.shared.requestAuthorizationStatus() == .approved {
+                    MainView()
+                        .environmentObject(ScreenTimeVM.shared)
                 }
                 else {
-                    StartPermissionView(screenTimeVM: screenTimeVM)
+                    StartPermissionView()
+                        .environmentObject(ScreenTimeVM.shared)
                 }
             }
         }

@@ -15,6 +15,9 @@ class ScreenTimeVM: ObservableObject {
     static let shared = ScreenTimeVM()
     private init() {}
     
+    @Published
+    var testInt = 0
+    
     @AppStorage(AppStorageKey.selectionToDiscourage.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var selectionToDiscourage = FamilyActivitySelection()
 
