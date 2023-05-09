@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AppStorageKey: String {
+public enum AppStorageKey: String {
     case selectionToDiscourage // FamilyActivitySelection
     case sleepStartDateComponent
     case sleepEndDateComponent
