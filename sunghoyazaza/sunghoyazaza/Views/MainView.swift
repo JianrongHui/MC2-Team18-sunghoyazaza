@@ -31,7 +31,7 @@ struct MainView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 .foregroundColor(Color(hex: 0x8E8E93))
-
+            
             //캘린더
             CalendarView(currentDate: $currentDate)
                 .padding(.vertical)
@@ -50,13 +50,7 @@ struct MainView: View {
                 Spacer()
                 
                 // 편집 버튼
-                Button {
-                    print("Edit Pressed")
-                } label: {
-                    Text("편집")
-                }
-                .padding(.horizontal)
-                
+                NavigationLink(destination: DetailView(), label: {Text("편집").foregroundColor(Color(hex: 0x0F0094))}).padding(.horizontal)
             }
             
             Spacer()
