@@ -10,7 +10,7 @@ import SwiftUI
 
 //MARK: MAIN
 struct StartPermissionView: View {
-    
+    @ObservedObject var screenTimeVM: ScreenTimeVM
     @State var alarmOnOff : Bool = false
     @State var screenTimeAPIOnOff : Bool = false
     
@@ -89,6 +89,6 @@ struct StartPermissionView: View {
 //MARK: PREVIEW
 struct StartPermissionView_Previews: PreviewProvider {
     static var previews: some View {
-        StartPermissionView()
+        StartPermissionView(screenTimeVM: ScreenTimeVM.shared)
     }
 }

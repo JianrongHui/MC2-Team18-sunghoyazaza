@@ -9,6 +9,7 @@ import SwiftUI
 import FamilyControls
 
 struct Onboarding2View: View {
+    
     @State var selection = FamilyActivitySelection()
     @State var isPresented = false
     
@@ -22,11 +23,9 @@ struct Onboarding2View: View {
             // TODO::Pick interface
             
             // VERSION 1
-            FamilyActivityPicker(headerText: "사용이 제한되는 앱", selection: $selection)
-                .onChange(of: selection) { newSelection in
-                    _ = selection.applications
-                    _ = selection.categories
-                    _ = selection.webDomains
+            FamilyActivityPicker(headerText: "사용이 제한되는 앱", selection: ScreenTimeVM.shared.$selectionToDiscourage)
+                .onChange(of: ScreenTimeVM.shared.selectionToDiscourage) { newSelection in
+
                 }
             
             // VERSION 2
@@ -42,7 +41,7 @@ struct Onboarding2View: View {
              */
             
             NavigationLink(destination: {
-                MainView()
+                MainView(screenTimeVM: ScreenTimeVM.shared)
             }) {
                 Text("설정 완료").foregroundColor(.white)
             }.padding()
