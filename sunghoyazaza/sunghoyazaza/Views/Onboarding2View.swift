@@ -42,7 +42,7 @@ struct Onboarding2View: View {
              */
             
             NavigationLink(destination: {
-                
+                MainView()
             }) {
                 Text("설정 완료").foregroundColor(.white)
             }.padding()

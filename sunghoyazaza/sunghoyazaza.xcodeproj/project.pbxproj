@@ -28,6 +28,8 @@
 		7FBFF4562A07C5B90069656E /* SleepPlanTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4472A07C5B90069656E /* SleepPlanTopView.swift */; };
 		7FBFF4572A07C5B90069656E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4482A07C5B90069656E /* CalendarView.swift */; };
 		7FBFF4592A07C5EA0069656E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4582A07C5EA0069656E /* MainView.swift */; };
+		7FEA9E572A09D55B0050AA4B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA9E562A09D55B0050AA4B /* OnboardingView.swift */; };
+		7FEA9E5B2A09D5C80050AA4B /* Onboarding2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA9E5A2A09D5C80050AA4B /* Onboarding2View.swift */; };
 		A9F0ED582A08C0D4006E02B6 /* ScreenTImeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */; };
 		A9F0ED5B2A08C209006E02B6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */; };
 		A9F0ED632A08C2CD006E02B6 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F0ED622A08C2CD006E02B6 /* DeviceActivity.framework */; };
@@ -110,8 +112,6 @@
 		7F3785442A07AD660055EAB2 /* sunghoyazazaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sunghoyazazaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3785482A07AD660055EAB2 /* sunghoyazazaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sunghoyazazaUITests.swift; sourceTree = "<group>"; };
 		7F37854A2A07AD660055EAB2 /* sunghoyazazaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sunghoyazazaUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7F9E37052A07D2EE00E0735F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		7F9E37072A07F6FA00E0735F /* Onboarding2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2View.swift; sourceTree = "<group>"; };
 		7FBFF4372A07C5B90069656E /* DateValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		7FBFF4382A07C5B90069656E /* BlockApplicationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockApplicationModel.swift; sourceTree = "<group>"; };
 		7FBFF4392A07C5B90069656E /* DateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
@@ -128,6 +128,8 @@
 		7FBFF4472A07C5B90069656E /* SleepPlanTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepPlanTopView.swift; sourceTree = "<group>"; };
 		7FBFF4482A07C5B90069656E /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		7FBFF4582A07C5EA0069656E /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7FEA9E562A09D55B0050AA4B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		7FEA9E5A2A09D5C80050AA4B /* Onboarding2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2View.swift; sourceTree = "<group>"; };
 		A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTImeVM.swift; sourceTree = "<group>"; };
 		A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		A9F0ED602A08C2CD006E02B6 /* DeviceActivityMonitor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DeviceActivityMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,8 +302,6 @@
 		7FBFF4422A07C5B90069656E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7F9E37052A07D2EE00E0735F /* OnboardingView.swift */,
-				7F9E37072A07F6FA00E0735F /* Onboarding2View.swift */,
 				7FBFF4582A07C5EA0069656E /* MainView.swift */,
 				7FBFF4432A07C5B90069656E /* StartPermissionView.swift */,
 				7FBFF4442A07C5B90069656E /* AlertView.swift */,
@@ -309,6 +309,8 @@
 				7FBFF4462A07C5B90069656E /* MiddlePermissionView.swift */,
 				7FBFF4472A07C5B90069656E /* SleepPlanTopView.swift */,
 				7FBFF4482A07C5B90069656E /* CalendarView.swift */,
+				7FEA9E562A09D55B0050AA4B /* OnboardingView.swift */,
+				7FEA9E5A2A09D5C80050AA4B /* Onboarding2View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -585,7 +587,9 @@
 				7FBFF4522A07C5B90069656E /* StartPermissionView.swift in Sources */,
 				A9F0ED982A08CABD006E02B6 /* AppStorageKeyManager.swift in Sources */,
 				7FBFF4502A07C5B90069656E /* Fonts.swift in Sources */,
+				7FEA9E5B2A09D5C80050AA4B /* Onboarding2View.swift in Sources */,
 				7FBFF4552A07C5B90069656E /* MiddlePermissionView.swift in Sources */,
+				7FEA9E572A09D55B0050AA4B /* OnboardingView.swift in Sources */,
 				7FBFF4512A07C5B90069656E /* Colors.swift in Sources */,
 				7FBFF4572A07C5B90069656E /* CalendarView.swift in Sources */,
 				7FBFF4532A07C5B90069656E /* AlertView.swift in Sources */,
