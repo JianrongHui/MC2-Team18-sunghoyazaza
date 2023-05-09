@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var screenTimeVM: ScreenTimeVM
     @State var textIndex = MainVM().changeMainText() //
     @State var currentDate : Date = Date()
     
@@ -24,6 +25,9 @@ struct MainView: View {
                 .font(.system(size: 34))
                 .padding(.horizontal)
                 .bold()
+                .onTapGesture {
+                    print(screenTimeVM.requestAuthorizationStatus())
+                }
             
             // 서브 Text (문구 랜덤 생성)
             Text("\(MainModel().subLabel[MainVM().makeRandomNumber()])")
@@ -82,7 +86,7 @@ struct MainView: View {
 //MARK: PREVIEW
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(screenTimeVM: ScreenTimeVM.shared)
     }
 }
 

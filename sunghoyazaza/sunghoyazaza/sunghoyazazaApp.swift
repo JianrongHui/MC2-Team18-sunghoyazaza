@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct sunghoyazazaApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(screenTimeVM: ScreenTimeVM.shared)
         }
     }
 }

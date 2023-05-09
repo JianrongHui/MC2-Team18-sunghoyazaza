@@ -136,7 +136,7 @@ struct CalendarView: View {
     //MARK: PREVIEW
     struct CalendarView_Previews: PreviewProvider {
         static var previews: some View {
-            MainView()
+            MainView(screenTimeVM: ScreenTimeVM.shared)
         }
     }
     
