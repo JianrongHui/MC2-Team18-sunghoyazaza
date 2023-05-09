@@ -73,6 +73,7 @@ struct MainView: View {
         }
         .padding(.top, 30)
         .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
+        .navigationBarBackButtonHidden(true)
         
         //        }
         //        .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
