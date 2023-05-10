@@ -70,9 +70,9 @@ class ScreenTimeVM: ObservableObject {
     // MARK: 모니터링 스케쥴 등록
     func handleStartDeviceActivityMonitoring(
         startTime: DateComponents,
-        endTime: DateComponents = DateComponents(hour: 23, minute: 59),
+        endTime: DateComponents,
         deviceActivityName: DeviceActivityName = .dailySleep,
-        warningTime: DateComponents = DateComponents(minute: 1)
+        warningTime: DateComponents = DateComponents(minute: 5) // 5분 전 알림
     ) {
         
         let schedule = DeviceActivitySchedule(
@@ -81,6 +81,9 @@ class ScreenTimeVM: ObservableObject {
             repeats: true,
             warningTime: warningTime
         )
+        if deviceActivityName == .dailySleep {
+            print("Daily Sleep Schedule: \(startTime.hour!):\(startTime.minute!) ~ \(endTime.hour!):\(endTime.minute!)")
+        }
         
         let event = DeviceActivityEvent(
             applications: selectionToDiscourage.applicationTokens,
