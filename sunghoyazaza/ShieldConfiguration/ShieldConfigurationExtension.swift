@@ -20,31 +20,35 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     let title = "😴 잠에 들 시간이에요"
     let subtitle = "\n(N)시간 이상의 숙면은\n내일의 계획을 지키는 데 필수적이에요\n\n내일의 계획을 지키려면\n지금 반드시 잠에 들어야 해요\n\n내일의 계획을 지키기 위해\n이제 그만 앱을 종료해볼까요?"
     let primaryButtonnText = "내일의 계획 지키기"
-    let secondaryButtonText = "내일의 계획 안 지키기"
+    let secondaryButtonText = "내일의 계획 안지키기"
+    
+    let uiColorValue = UIColor(red: 15/255, green: 0/255, blue: 148/255, alpha: 1.0) // Hex 0x0F0094의 UIColor값
     
     override func configuration(shielding application: Application) -> ShieldConfiguration {
         // Customize the shield as needed for applications.
         return ShieldConfiguration(
-            backgroundBlurStyle: UIBlurEffect.Style.systemThickMaterial,
-            backgroundColor: UIColor.white,
+            backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+            backgroundColor: UIColor.white.withAlphaComponent(0.1),
             icon: UIImage(systemName: imageName),
             title: ShieldConfiguration.Label(text: title, color: .black),
             subtitle: ShieldConfiguration.Label(text: subtitle, color: .black),
             primaryButtonLabel: ShieldConfiguration.Label(text: primaryButtonnText, color: .white),
-            secondaryButtonLabel: ShieldConfiguration.Label(text: secondaryButtonText, color: .black)
+            primaryButtonBackgroundColor: uiColorValue,
+            secondaryButtonLabel: ShieldConfiguration.Label(text: secondaryButtonText, color: uiColorValue)
         )
     }
     
     override func configuration(shielding application: Application, in category: ActivityCategory) -> ShieldConfiguration {
         // Customize the shield as needed for applications shielded because of their category.
         return ShieldConfiguration(
-            backgroundBlurStyle: UIBlurEffect.Style.systemThickMaterial,
-            backgroundColor: UIColor.white,
+            backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+            backgroundColor: UIColor.white.withAlphaComponent(0.1),
             icon: UIImage(systemName: imageName),
             title: ShieldConfiguration.Label(text: title, color: .black),
             subtitle: ShieldConfiguration.Label(text: subtitle, color: .black),
             primaryButtonLabel: ShieldConfiguration.Label(text: primaryButtonnText, color: .white),
-            secondaryButtonLabel: ShieldConfiguration.Label(text: secondaryButtonText, color: .black)
+            primaryButtonBackgroundColor: uiColorValue,
+            secondaryButtonLabel: ShieldConfiguration.Label(text: secondaryButtonText, color: uiColorValue)
         )
     }
     
