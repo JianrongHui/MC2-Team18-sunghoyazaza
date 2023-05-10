@@ -67,23 +67,25 @@ class ScreenTimeVM: ObservableObject {
         selectionToDiscourage = FamilyActivitySelection()
     }
     
-    // MARK: 수면 시간 모니터링 스케쥴 등록
-    func handleStartDailySleepMonitoring(
-        startTime: DateComponents = DateComponents(hour: 23, minute: 00), //TODO: 사용자가 설정한 시간에 맞게 startTime과 endTime 바꿔주기
-        endTime: DateComponents = DateComponents(hour: 07, minute: 00),
+    // MARK: 모니터링 스케쥴 등록
+    func handleStartDeviceActivityMonitoring(
+        startTime: DateComponents,
+        endTime: DateComponents,
         deviceActivityName: DeviceActivityName = .dailySleep,
         warningTime: DateComponents = DateComponents(minute: 5) // 5분 전 알림
     ) {
         
-        let dailySleepSchedule = DeviceActivitySchedule(
+        let schedule = DeviceActivitySchedule(
             intervalStart: startTime,
             intervalEnd: endTime,
             repeats: true,
             warningTime: warningTime
         )
-        print("Daily Sleep Schedule: \(startTime.hour!):\(startTime.minute!) ~ \(endTime.hour!):\(endTime.minute!)")
+        if deviceActivityName == .dailySleep {
+            print("Daily Sleep Schedule: \(startTime.hour!):\(startTime.minute!) ~ \(endTime.hour!):\(endTime.minute!)")
+        }
         
-        let dailySleepEvent = DeviceActivityEvent(
+        let event = DeviceActivityEvent(
             applications: selectionToDiscourage.applicationTokens,
             categories: selectionToDiscourage.categoryTokens,
             webDomains: selectionToDiscourage.webDomainTokens,
@@ -94,8 +96,8 @@ class ScreenTimeVM: ObservableObject {
             ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring()
             try ScreenTimeVM.shared.deviceActivityCenter.startMonitoring(
                 deviceActivityName,
-                during: dailySleepSchedule,
-                events: [.default: dailySleepEvent]
+                during: schedule,
+                events: [.default: event]
             )
             print("Monitoring started")
         } catch {
