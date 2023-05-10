@@ -14,7 +14,7 @@ struct MainModel{
     // 메인 화면 최상단 텍스트 DB
     var mainLabel : [String] = [
         "😿 연속 누적일이\n초기화 되었어요..",
-        "🚀 \(DateVM().findConsecutiveDays())일 연속 6시간 숙면\n진행중!"
+//        "🚀 \(DateVM().findConsecutiveDays())일 연속 6시간 숙면\n진행중!"
     //    "📅 \(findConsecutiveDays())일 연속 8시간 숙면\n루틴을 완성했어요"
     ]
 

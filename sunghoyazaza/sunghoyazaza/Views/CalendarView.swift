@@ -9,11 +9,14 @@
 import SwiftUI
 
 struct CalendarView: View {
+    let dateFormatter = DateFormatter()
+    let dateModel = DateModel.shared
+    
     @Binding var currentDate : Date //현재 날짜
     @State var currentMonth : Int = 0 // 화살표 클릭으로 인한 월 세는 변수
     
     //MARK: Database
-    let days: [String] = DateModel().upperDays //달력 상단 요일
+    let days: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     let columns = Array(repeating: GridItem(.flexible()), count: 7) //달력 틀
     
     
@@ -96,30 +99,29 @@ struct CalendarView: View {
     }
     
     // 달력 각각 날짜 뷰
+    
     @ViewBuilder
     func CardView(value: DateValue)->some View{
         // 날짜 하루 + 수면 계획 성공 여부 Stack
         VStack{
             // 수면 계획 성공한 날짜 코드
             if value.day != -1{
-                if let task = DateVM().datesHavingDots().first(where: {task in
-                    return isSameDay(date1: task.date, date2: value.date)
-                }){
+                if let record = dateModel.records[value.key], record.type == .success{
                     Text("\(value.day)")
-                        .foregroundColor(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
+                        .foregroundColor(.primary)
                         .frame(maxWidth: .infinity)
                     
                     Spacer()
                     
                     Circle()
-                        .fill(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : Color(hex: 0x0F0094))
+                        .fill(Color(hex: 0x0F0094))
                         .frame(width: 8, height: 8)
                     
                 }
                 // 수면 계획 실패 + 미래 날짜 코드
                 else{
                     Text("\(value.day)")
-                        .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
+                        .foregroundColor(.primary)
                         .frame(maxWidth: .infinity)
                     
                     Spacer()
@@ -130,6 +132,42 @@ struct CalendarView: View {
         .padding(.vertical, 9)
         .frame(height: 35,alignment: .top)
     }
+//    @ViewBuilder
+//    func CardView(value: DateValue)->some View{
+//        // 날짜 하루 + 수면 계획 성공 여부 Stack
+//        VStack{
+//            // 수면 계획 성공한 날짜 코드
+//            if value.day != -1{
+//                if let task = DateVM().datesHavingDots().first(where: {task in
+//                    print(value.key)
+//                    print("@")
+//                    return isSameDay(date1: task.date, date2: value.date)
+//                }){
+//                    Text("\(value.day)")
+//                        .foregroundColor(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
+//                        .frame(maxWidth: .infinity)
+//
+//                    Spacer()
+//
+//                    Circle()
+//                        .fill(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : Color(hex: 0x0F0094))
+//                        .frame(width: 8, height: 8)
+//
+//                }
+//                // 수면 계획 실패 + 미래 날짜 코드
+//                else{
+//                    Text("\(value.day)")
+//                        .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
+//                        .frame(maxWidth: .infinity)
+//
+//                    Spacer()
+//
+//                }
+//            }
+//        }
+//        .padding(.vertical, 9)
+//        .frame(height: 35,alignment: .top)
+//    }
     
     
     
