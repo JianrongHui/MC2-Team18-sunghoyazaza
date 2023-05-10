@@ -53,6 +53,12 @@ struct DetailView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("저장") {
                         print("저장")
+                        //TODO: 수면 계획 모니터링 시작 -> 사용자 설정시간으로 넘겨주도록 수정 필요
+                        ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                            startTime: DateComponents(hour: 23, minute: 00),
+                            endTime: DateComponents(hour: 07, minute: 00),
+                            deviceActivityName: .dailySleep
+                        )
                     }
                 }
             }
