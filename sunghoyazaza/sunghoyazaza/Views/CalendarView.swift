@@ -80,13 +80,8 @@ struct CalendarView: View {
                             Capsule()
                                 .fill(Color(hex: 0x0F0094))
                                 .padding(.horizontal, 10)
-                                .opacity(isSameDay(date1: value.date, date2: currentDate) ? 0.3 : 0)
+                                .opacity(isSameDay(date1: value.date, date2: Date()) ? 0.3 : 0)
                         )
-                    // 누르면 0.3 opacity의 파란색 원이 생김
-                        .onTapGesture {
-                            currentDate = value.date
-                        }
-                    
                 }
             }
             Spacer()
