@@ -17,28 +17,36 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     @AppStorage(AppStorageKey.selectionToDiscourage.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var selectionToDiscourage = FamilyActivitySelection()
     
+    //MARK: 스케줄 시작 시점에 호출
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
-        if activity == .dailySleep {
-            // TODO: 샘플로직 수정하기 - 모니터링 시작 시 실드시작
-            let managedSettingsStore = ManagedSettingsStore(named: .default)
+        // Handle the start of the interval.
+        if activity == .dailySleep { // 수면 계획 스케줄 시작
+            let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
+            managedSettingsStore.shield.applications = selectionToDiscourage.applicationTokens.isEmpty ? nil : selectionToDiscourage.applicationTokens
+            managedSettingsStore.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(selectionToDiscourage.categoryTokens)
+            
+        } else if activity == .additionalTime { // 추가 15분 스케줄 시작
+            let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
             managedSettingsStore.shield.applications = selectionToDiscourage.applicationTokens.isEmpty ? nil : selectionToDiscourage.applicationTokens
             managedSettingsStore.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(selectionToDiscourage.categoryTokens)
             
         }
-        // Handle the start of the interval.
     }
     
+    //MARK: 스케줄 종료 시점 or 모니터링 중단 시 호출
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
-        // TODO: 샘플로직 수정하기 - 모니터링 끝날 시 스케쥴 초기화
-        if activity == .dailySleep {
-            // Clear shields
-            let managedSettingsStore = ManagedSettingsStore(named: .default)
-            managedSettingsStore.clearAllSettings()
-        }
-        
         // Handle the end of the interval.
+        if activity == .dailySleep { // 수면 계획 스케줄 종료
+            let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
+            managedSettingsStore.clearAllSettings()
+            
+        } else if activity == .additionalTime { // 추가 15분 스케줄 종료
+            let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
+            managedSettingsStore.clearAllSettings()
+            
+        }
     }
     
     override func eventDidReachThreshold(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
@@ -63,36 +71,4 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         
         // Handle the warning before the event reaches its threshold.
     }
-}
-
-//MARK: FamilyActivitySelection Parser
-extension FamilyActivitySelection: RawRepresentable {
-    public init?(rawValue: String) {
-        guard let data = rawValue.data(using: .utf8),
-            let result = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
-        else {
-            return nil
-        }
-        self = result
-    }
-
-    public var rawValue: String {
-        guard let data = try? JSONEncoder().encode(self),
-            let result = String(data: data, encoding: .utf8)
-        else {
-            return "[]"
-        }
-        return result
-    }
-}
-
-//MARK: Schedule Name List
-extension DeviceActivityName {
-    static let dailySleep = Self("dailySleep")
-    static let additionalTime = Self("additionalTime")
-}
-
-//MARK: Schedule Event Name List
-extension DeviceActivityEvent.Name {
-    static let `default` = Self("threshold.default")
 }

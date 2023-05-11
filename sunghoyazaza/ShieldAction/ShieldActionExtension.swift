@@ -15,6 +15,7 @@ import ManagedSettings
 class ShieldActionExtension: ShieldActionDelegate {
     let managedSettingsStore = ManagedSettingsStore(named: .default)
     
+    //MARK: application으로 선택된 앱에서의 동작
     override func handle(action: ShieldAction, for application: ApplicationToken, completionHandler: @escaping (ShieldActionResponse) -> Void) {
         // Handle the action as needed.
         switch action {
@@ -40,6 +41,7 @@ class ShieldActionExtension: ShieldActionDelegate {
 //        completionHandler(.close)
 //    }
     
+    //MARK: category로 선택된 앱에서의 동작
     override func handle(action: ShieldAction, for category: ActivityCategoryToken, completionHandler: @escaping (ShieldActionResponse) -> Void) {
         // Handle the action as needed.
         completionHandler(.close)

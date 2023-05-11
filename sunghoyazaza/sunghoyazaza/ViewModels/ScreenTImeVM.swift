@@ -189,3 +189,10 @@ extension DeviceActivityName {
 //extension DeviceActivityEvent.Name {
 //    static let `default` = Self("threshold.default")
 //}
+
+//MARK: ManagedSettingStore Name List
+extension ManagedSettingsStore.Name {
+    static let tenSeconds = Self("threshold.seconds.ten")
+    static let dailySleep = Self("dailySleep")
+    static let additionalFifteen = Self("additionalFifteen")
+}
