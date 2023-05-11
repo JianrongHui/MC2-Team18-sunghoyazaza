@@ -53,17 +53,19 @@ class ShieldActionExtension: ShieldActionDelegate {
             ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring([.dailySleep])
             // 15분 연장 스케줄 모니터링 시작
             ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-                startTime: DateComponents(hour: 23, minute: 00), //TODO: 어떤 값을 넣어줘도 상관 X (적절하게 코드 수정)
-                endTime: DateComponents(hour: 07, minute: 00) //TODO: 사용자 설정 종료 시간으로 수정 필요
+                startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
+                endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
+                deviceActivityName: .additionalTime
             )
             completionHandler(.none)
+            
         @unknown default:
             fatalError()
         }
     }
 }
 
-//MARK: Schedule Event Name List
-extension DeviceActivityEvent.Name {
-    static let `default` = Self("threshold.default")
-}
+//TODO: 이벤트 미사용 - 논의 후 코드 삭제
+//extension DeviceActivityEvent.Name {
+//    static let `default` = Self("threshold.default")
+//}

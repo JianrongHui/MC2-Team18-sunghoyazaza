@@ -23,11 +23,13 @@ class ScreenTimeVM: ObservableObject {
 
     // MARK: 스케쥴 시작 시간을 담기 위한 변수
     @AppStorage(AppStorageKey.sleepStartDateComponent.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var sleepStartDateComponent = DateComponents()
+    var sleepStartDateComponent = DateComponents(hour: 23, minute: 00) //TODO: 테스트용 더미 값
+    //var sleepStartDateComponent = DateComponents()
     
     // MARK: 스케쥴 종료 시간을 담기 위한 변수
     @AppStorage(AppStorageKey.sleepEndDateComponent.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var sleepEndDateComponent = DateComponents()
+    var sleepEndDateComponent = DateComponents(hour: 07, minute: 00) //TODO: 테스트용 더미 값
+    //var sleepEndDateComponent = DateComponents()
     
     // MARK: 사용자 알림 설정 여부
     @AppStorage(AppStorageKey.isUserNotificationOn.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
