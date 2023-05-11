@@ -56,7 +56,7 @@ struct MainView: View {
             Spacer()
             
             //취침 및 기상시간 알려주는 View
-            SleepPlanTopView(weekDay: MainModel().$weekDay, sleepTime: MainModel().$sleepTime, wakeupTime: MainModel().$wakeupTime)
+            SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
                 .padding(.horizontal)
                 .padding(.bottom, 8)
             
