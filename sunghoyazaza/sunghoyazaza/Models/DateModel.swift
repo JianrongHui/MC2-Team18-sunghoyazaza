@@ -14,6 +14,7 @@ let startDate = "20230501"
 struct Record{
     var type:RecordType
     
+    
     enum RecordType{
         case success
         case fail
@@ -28,10 +29,11 @@ struct Record{
 // 20230511 10시에 fail -> 20230510 fail,
 
 
-var dummyData:[String:Bool] = [
-    "20230508":false,
-    "20230509":false,
-    "20230510":false,
+var dummyData:[String] = [
+    "20230508",
+    "20230509",
+    "20230510",
+    "20230502"
 //    "20230511":false
 ]
 
@@ -39,7 +41,11 @@ var dummyData:[String:Bool] = [
 
 class DateModel{
     
-    private init(failList:[String:Bool]){
+    private init(failList:[String]){
+        var failDic:[String:Bool] = [:]
+        failList.forEach{
+            failDic[$0] = true
+        }
         var current = startDate.toDate()!
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: startDate.toDate()!, to: Date.now.toDate()!)
@@ -50,7 +56,7 @@ class DateModel{
 
         for _ in 0..<days{
             let dateString = current.toString()
-            if failList[dateString] == nil {
+            if failDic[dateString] == nil {
                 tempRecords[dateString] = Record(type: .success)
             }else{
                 tempRecords[dateString] = Record(type: .fail)
