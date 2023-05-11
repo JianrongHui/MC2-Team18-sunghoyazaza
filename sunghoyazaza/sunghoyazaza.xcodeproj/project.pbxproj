@@ -50,6 +50,8 @@
 		A9F0ED992A08CB9B006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
 		A9F0ED9A2A08DE0D006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
 		A9F0ED9B2A08DE0E006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
+		B813F33F2A0D36D7003E7590 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
+		B813F3402A0D36E0003E7590 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +157,7 @@
 		A9F0ED8E2A08C49E006E02B6 /* ShieldAction.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShieldAction.entitlements; sourceTree = "<group>"; };
 		A9F0ED952A08C4F3006E02B6 /* sunghoyazaza.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sunghoyazaza.entitlements; sourceTree = "<group>"; };
 		A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeyManager.swift; sourceTree = "<group>"; };
+		B813F33E2A0D36D7003E7590 /* ShieldContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +332,7 @@
 			children = (
 				A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */,
 				A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */,
+				B813F33E2A0D36D7003E7590 /* ShieldContent.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -595,6 +599,7 @@
 				7FBFF4542A07C5B90069656E /* SleepPlanBottomView.swift in Sources */,
 				7FBFF4522A07C5B90069656E /* StartPermissionView.swift in Sources */,
 				A9F0ED982A08CABD006E02B6 /* AppStorageKeyManager.swift in Sources */,
+				B813F33F2A0D36D7003E7590 /* ShieldContent.swift in Sources */,
 				7FBFF4502A07C5B90069656E /* Fonts.swift in Sources */,
 				7FEA9E5B2A09D5C80050AA4B /* Onboarding2View.swift in Sources */,
 				7FBFF4552A07C5B90069656E /* MiddlePermissionView.swift in Sources */,
@@ -652,6 +657,7 @@
 			files = (
 				A9F0ED7B2A08C48E006E02B6 /* ShieldConfigurationExtension.swift in Sources */,
 				A9F0ED9A2A08DE0D006E02B6 /* AppStorageKeyManager.swift in Sources */,
+				B813F3402A0D36E0003E7590 /* ShieldContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

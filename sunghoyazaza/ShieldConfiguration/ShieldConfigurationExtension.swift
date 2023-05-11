@@ -17,10 +17,10 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     // TODO: 커스텀 이미지 추가하기
     let imageName = "stopwatch"
     // TODO: 로직에 따른 문구 분기처리 필요
-    let title = "😴 잠에 들 시간이에요"
-    let subtitle = "\n(N)시간 이상의 숙면은\n내일의 계획을 지키는 데 필수적이에요\n\n내일의 계획을 지키려면\n지금 반드시 잠에 들어야 해요\n\n내일의 계획을 지키기 위해\n이제 그만 앱을 종료해볼까요?"
-    let primaryButtonnText = "내일의 계획 지키기"
-    let secondaryButtonText = "내일의 계획 안지키기"
+    let title = ShieldContent.case1.title
+    let subtitle = ShieldContent.case1.subTitle
+    let primaryButtonnText = ShieldContent.case1.primaryButtonText
+    let secondaryButtonText = ShieldContent.case1.secondaryButtonText
     
     let uiColorValue = UIColor(red: 15/255, green: 0/255, blue: 148/255, alpha: 1.0) // Hex 0x0F0094의 UIColor값
     
