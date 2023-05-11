@@ -74,35 +74,66 @@ class ScreenTimeVM: ObservableObject {
         deviceActivityName: DeviceActivityName = .dailySleep,
         warningTime: DateComponents = DateComponents(minute: 5) // 5분 전 알림
     ) {
+        let schedule: DeviceActivitySchedule
         
-        let schedule = DeviceActivitySchedule(
-            intervalStart: startTime,
-            intervalEnd: endTime,
-            repeats: true,
-            warningTime: warningTime
-        )
-        if deviceActivityName == .dailySleep {
+        if deviceActivityName == .dailySleep { // 기본 수면계획 스케줄일 경우
+            schedule = DeviceActivitySchedule(
+                intervalStart: startTime,
+                intervalEnd: endTime,
+                repeats: true,
+                warningTime: warningTime
+            )
             print("Daily Sleep Schedule: \(startTime.hour!):\(startTime.minute!) ~ \(endTime.hour!):\(endTime.minute!)")
+            
+        } else { // 추가시간 15분 스케줄일 경우
+            let currentDateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: Date()) // 현재시간
+            let startHour = currentDateComponents.hour ?? 0
+            let startMinute  = currentDateComponents.minute ?? 0
+            var endHour = startHour + 0
+            var endMinute = startMinute + 15 // 15분
+            if endMinute >= 60 {
+                endMinute -= 60
+                endHour += 1
+            }
+            if endHour > 23 {
+                endHour = 23
+                endMinute = 59
+            }
+            print("Additional time schedule: \(startHour):\(startMinute) ~ \(endHour):\(endMinute)")
+            
+            // (추가시간 15분 종료 시점 ~ 수면 종료 시간)의 새로운 스케줄 생성하기
+            schedule = DeviceActivitySchedule(
+                intervalStart: DateComponents(hour: endHour, minute: endMinute),
+                intervalEnd: endTime,
+                repeats: false,
+                warningTime: DateComponents(minute: 5) // 종료 5분 전에 알림
+            )
+            
         }
-        
-        let event = DeviceActivityEvent(
-            applications: selectionToDiscourage.applicationTokens,
-            categories: selectionToDiscourage.categoryTokens,
-            webDomains: selectionToDiscourage.webDomainTokens,
-            threshold: DateComponents(minute: 1) // 테스트 필요 시 수정해서 사용할 것 ex) minute: 15
-        )
         
         do {
             ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring()
             try ScreenTimeVM.shared.deviceActivityCenter.startMonitoring(
                 deviceActivityName,
-                during: schedule,
-                events: [.default: event]
+                during: schedule
             )
-            print("Monitoring started")
+            if deviceActivityName == .dailySleep {
+                print("Daily sleep monitoring started")
+            } else if deviceActivityName == .additionalTime {
+                print("Additional 15 minutes Monitoring started")
+            }
         } catch {
             print("Unexpected error: \(error).")
         }
+        
+        //TODO: 이벤트 미사용 - 코드 삭제 논의하기
+//        let event = DeviceActivityEvent(
+//            applications: selectionToDiscourage.applicationTokens,
+//            categories: selectionToDiscourage.categoryTokens,
+//            webDomains: selectionToDiscourage.webDomainTokens,
+//            threshold: DateComponents(minute: 1) // 테스트 필요 시 수정해서 사용할 것 ex) minute: 15
+//        )
+        
     }
 }
 
@@ -154,6 +185,7 @@ extension DeviceActivityName {
 }
 
 //MARK: Schedule Event Name List
-extension DeviceActivityEvent.Name {
-    static let `default` = Self("threshold.default")
-}
+//TODO: 이벤트 미사용 - 논의 후 코드 삭제
+//extension DeviceActivityEvent.Name {
+//    static let `default` = Self("threshold.default")
+//}
