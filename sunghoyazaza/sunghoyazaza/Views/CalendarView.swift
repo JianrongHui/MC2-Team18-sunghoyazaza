@@ -86,6 +86,7 @@ struct CalendarView: View {
             }
             Spacer()
             
+            
         }
         // 월 변경시 새로운 월 업데이트
         .onChange(of: currentMonth){newValue in
