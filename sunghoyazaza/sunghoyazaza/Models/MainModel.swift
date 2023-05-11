@@ -11,20 +11,52 @@ import SwiftUI
 
 struct MainModel{
     
+    let dateModel = DateModel.shared
     // 메인 화면 최상단 텍스트 DB
-    var mainLabel : [String] = [
-        "😿 연속 누적일이\n초기화 되었어요..",
-//        "🚀 \(DateVM().findConsecutiveDays())일 연속 6시간 숙면\n진행중!"
-    //    "📅 \(findConsecutiveDays())일 연속 8시간 숙면\n루틴을 완성했어요"
-    ]
+    var mainLabel:String{
+        switch dateModel.grade{
+        case .noRecord:
+            return "noRecord"
+        case .successContinue:
+            return "successContinue - \(dateModel.recentSuccessCount)"
+        case .firstSuccess:
+            return "firstSuccess"
+        case .onlyFail:
+            return "onlyFail"
+        case .failAfterSuccess:
+            return "failAfterSuccess"
+        case .failContinueAfterSuccess:
+            return "failContinueAfterSuccess - \(dateModel.recentFailCount)"
+        case .successFailSuccess:
+            return "successFailSuccess"
+        @unknown default:
+            return "another"
+            
+        }
+    }
 
     // 메인 화면 상단 응원 텍스트 DB
-    var subLabel : [String] = [
-        "오늘부터 다시 시작해볼까요?",
-        "오늘 하루도 열심히 공부해요",
-        "공무원 합격을 응원합니다. 오늘도 빡공!",
-        "7시간 이상의 숙면은 내일의 집중을 도와줍니다."
-    ]
+    var subLabel:String{
+        switch dateModel.grade{
+        case .noRecord:
+            return "noRecord"
+        case .successContinue:
+            return "successContinue"
+        case .firstSuccess:
+            return "firstSuccess"
+        case .onlyFail:
+            return "onlyFail"
+        case .failAfterSuccess:
+            return "failAfterSuccess"
+        case .failContinueAfterSuccess:
+            return "failContinueAfterSuccess"
+        case .successFailSuccess:
+            return "case successFailSuccess"
+        @unknown default:
+            return "another"
+            
+        }
+    }
     
     //MARK: 달력 DB는 따로 정리 ==> DateModel()
     //MARK: 달력 DB는 따로 정리 ==> DateModel()
