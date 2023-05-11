@@ -35,9 +35,9 @@ class ScreenTimeVM: ObservableObject {
     @AppStorage(AppStorageKey.isUserNotificationOn.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isUserNotificationOn: Bool = true
     
-    // MARK: 오늘의 약속 지켰는지 여부
-    @AppStorage(AppStorageKey.isSucceeded.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var isSucceeded: Bool = true
+    // MARK: 오늘 수면 계획 동안 15분 연장 횟수
+    @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var additionalCount: Int = 0
     
     let managedSettingStore = ManagedSettingsStore()
     let deviceActivityCenter = DeviceActivityCenter()

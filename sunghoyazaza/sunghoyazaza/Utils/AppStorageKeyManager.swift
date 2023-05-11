@@ -13,7 +13,7 @@ public enum AppStorageKey: String {
     case sleepEndDateComponent
     case daysOfWeek
     case isUserNotificationOn
-    case isSucceeded
+    case additionalCount
 }
 
 // MARK: 실기 테스트 시 App Groups 설정 후 동일한 이름으로 수정하세요.

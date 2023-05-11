@@ -49,6 +49,8 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
+            //TODO: 오늘의 약속 지키기 실패 시 실패 날짜 리스트에 해당 스케줄 날짜 추가
+            //dummyDate.append(DateValue.key)
             // 기존 수면시간 스케줄의 모니터링 중단
             ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring([.dailySleep])
             // 15분 연장 스케줄 모니터링 시작
