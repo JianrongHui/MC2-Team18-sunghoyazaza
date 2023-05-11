@@ -51,14 +51,18 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .secondaryButtonPressed:
             //TODO: 오늘의 약속 지키기 실패 시 실패 날짜 리스트에 해당 스케줄 날짜 추가
             //dummyDate.append(DateValue.key)
-            // 기존 수면시간 스케줄의 모니터링 중단
-            ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring([.dailySleep])
-            // 15분 연장 스케줄 모니터링 시작
-            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-                startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
-                endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
-                deviceActivityName: .additionalTime
-            )
+            if ScreenTimeVM.shared.additionalCount < 2 { //MARK: 연장 횟수 2회 미만
+                // 기존 스케줄의 모니터링 중단
+                ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring()
+                // 15분 연장 스케줄 모니터링 시작
+                ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                    startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
+                    endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
+                    deviceActivityName: .additionalTime
+                )
+                ScreenTimeVM.shared.additionalCount += 1 // 연장 횟수 1 카운트
+            } else { //MARK: 연장 횟수 2회 이상
+            }
             completionHandler(.none)
             
         @unknown default:

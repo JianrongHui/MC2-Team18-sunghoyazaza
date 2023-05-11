@@ -41,10 +41,12 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         if activity == .dailySleep { // 수면 계획 스케줄 종료
             let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
             managedSettingsStore.clearAllSettings()
+            ScreenTimeVM.shared.additionalCount = 0 // 스케줄 연장 횟수 카운트 초기화
             
         } else if activity == .additionalTime { // 추가 15분 스케줄 종료
             let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
             managedSettingsStore.clearAllSettings()
+            ScreenTimeVM.shared.additionalCount = 0
             
         }
     }
