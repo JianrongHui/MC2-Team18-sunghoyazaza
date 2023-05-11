@@ -6,6 +6,7 @@
 //
 
 import DeviceActivity
+import Foundation
 import ManagedSettings
 
 // Override the functions below to customize the shield actions used in various situations.
@@ -20,7 +21,14 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
-            completionHandler(.defer)
+            // 기존 수면시간 스케줄의 모니터링 중단
+            ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring([.dailySleep])
+            // 15분 연장 스케줄 모니터링 시작
+            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                startTime: DateComponents(hour: 23, minute: 00), //TODO: 어떤 값을 넣어줘도 상관 X (적절하게 코드 수정)
+                endTime: DateComponents(hour: 07, minute: 00) //TODO: 사용자 설정 종료 시간으로 수정 필요
+            )
+            completionHandler(.none)
         @unknown default:
             fatalError()
         }
@@ -39,7 +47,14 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
-            completionHandler(.defer)
+            // 기존 수면시간 스케줄의 모니터링 중단
+            ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring([.dailySleep])
+            // 15분 연장 스케줄 모니터링 시작
+            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                startTime: DateComponents(hour: 23, minute: 00), //TODO: 어떤 값을 넣어줘도 상관 X (적절하게 코드 수정)
+                endTime: DateComponents(hour: 07, minute: 00) //TODO: 사용자 설정 종료 시간으로 수정 필요
+            )
+            completionHandler(.none)
         @unknown default:
             fatalError()
         }
