@@ -11,13 +11,13 @@ struct MainVM{
     
     //MARK: 메인 문구 바꿔주기
     func changeMainText()->Int{
-        var indexNumber : Int
+        var indexNumber : Int = 0
         
-        if DateVM().findConsecutiveDays() == 0{
-            indexNumber = 0
-        } else{
-            indexNumber = 1
-        }
+//        if DateVM().findConsecutiveDays() == 0{
+//            indexNumber = 0
+//        } else{
+//            indexNumber = 1
+//        }
         return indexNumber
     }
     
