@@ -11,7 +11,7 @@ import SwiftUI
 struct MainView: View {
     @State var textIndex = MainVM().changeMainText() //
     @State var currentDate : Date = Date()
-
+    
     var body: some View {
         //        ScrollView{  //꽉찬 뷰 해결방법?
         //전체 뷰 Stack
