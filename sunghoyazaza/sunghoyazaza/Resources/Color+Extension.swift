@@ -24,6 +24,9 @@ extension Color {
     static let primary = Color(#colorLiteral(red: 0.07639225572, green: 0.1141367927, blue: 0.6474509239, alpha: 1))
     /// 강조색 - 2
     static let primary2 = Color(#colorLiteral(red: 0.8509803922, green: 0.8823529412, blue: 1, alpha: 1))
+    /// 강조색 - 2
+    static let primary3 = Color(#colorLiteral(red: 0.9647058824, green: 0.9725490196, blue: 1, alpha: 1))
+    
     
     // MARK: ColorScale - SecondaryColor
     static let systemGreen = Color(UIColor.green)
@@ -45,3 +48,10 @@ extension Color {
     static let systemBlack = Color(UIColor.black)
 }
 
+extension UIColor {
+    // MARK: ColorScale - PrimaryColor
+    /// 강조색 - 1
+    static let primary = #colorLiteral(red: 0.07639225572, green: 0.1141367927, blue: 0.6474509239, alpha: 1)
+    /// 강조색 - 2
+    static let primary2 = #colorLiteral(red: 0.8509803922, green: 0.8823529412, blue: 1, alpha: 1)
+}
