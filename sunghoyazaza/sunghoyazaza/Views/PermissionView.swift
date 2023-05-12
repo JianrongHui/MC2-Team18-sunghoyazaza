@@ -19,7 +19,7 @@ struct PermissionView: View {
         VStack{
             
             Text("머스트 슬립은\n아래 기능들에 대한 권한 설정이 필요해요\n권한을 설정을 완료하면\n첫 수면 계획을 만들러 갈 수 있어요")
-                .font(.system(size: 20, weight: .bold))
+                .font(Font.systemTitle)
                 .lineSpacing(8)
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity, alignment: .leading)
