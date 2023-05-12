@@ -11,13 +11,14 @@ import SwiftUI
 struct MainView: View {
     @State var textIndex = MainVM().changeMainText() //
     @State var currentDate : Date = Date()
-
+    let mainModel = MainModel()
+    
     var body: some View {
         //        ScrollView{  //꽉찬 뷰 해결방법?
         //전체 뷰 Stack
         VStack(spacing: 0){
             // 메인 Text
-            Text("\(MainModel().mainLabel[textIndex])")
+            Text("\(mainModel.mainLabel)")
                 .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -25,7 +26,7 @@ struct MainView: View {
                 .padding(.horizontal)
                 .bold()
             // 서브 Text (문구 랜덤 생성)
-            Text("\(MainModel().subLabel[MainVM().makeRandomNumber()])")
+            Text("\(mainModel.mainLabel)")
                 .font(.system(size: 17))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
@@ -55,7 +56,7 @@ struct MainView: View {
             Spacer()
             
             //취침 및 기상시간 알려주는 View
-            SleepPlanTopView(weekDay: MainModel().$weekDay, sleepTime: MainModel().$sleepTime, wakeupTime: MainModel().$wakeupTime)
+            SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
                 .padding(.horizontal)
                 .padding(.bottom, 8)
             
@@ -67,7 +68,9 @@ struct MainView: View {
         .padding(.top, 30)
         .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
         .navigationBarBackButtonHidden(true)
-        
+        .onAppear{
+            print("what is grade? : ",DateModel.shared.grade)
+        }
         //        }
         //        .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
     }
