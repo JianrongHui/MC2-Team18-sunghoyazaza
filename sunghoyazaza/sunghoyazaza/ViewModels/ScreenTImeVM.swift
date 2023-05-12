@@ -18,8 +18,13 @@ class ScreenTimeVM: ObservableObject {
     @Published
     var testInt = 0
     
+    // MARK: 제한할 앱 정보를 담고 있는 변수
     @AppStorage(AppStorageKey.selectionToDiscourage.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var selectionToDiscourage = FamilyActivitySelection()
+    
+    // MARK: 온보딩을 완료한 유저인지 체크하기 위한 변수
+    @AppStorage(AppStorageKey.isUserInit.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var isUserInitStatus: Bool = true
 
     // MARK: 스케쥴 시작 시간을 담기 위한 변수
     @AppStorage(AppStorageKey.sleepStartDateComponent.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
@@ -41,17 +46,17 @@ class ScreenTimeVM: ObservableObject {
     
     let managedSettingStore = ManagedSettingsStore()
     let deviceActivityCenter = DeviceActivityCenter()
+    let authorizationCenter = AuthorizationCenter.shared
     
     // MARK: 스크린타임 권한 요청
     func requestAuthorization() {
-        let center = AuthorizationCenter.shared
         
-        if center.authorizationStatus == .approved {
+        if authorizationCenter.authorizationStatus == .approved {
             print("ScreenTime Permission approved")
         } else {
             Task {
                 do {
-                     try await center.requestAuthorization(for: .individual)
+                     try await authorizationCenter.requestAuthorization(for: .individual)
                     // 동의함
                  } catch {
                      //동의 X
