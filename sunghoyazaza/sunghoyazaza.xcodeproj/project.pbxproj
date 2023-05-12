@@ -45,6 +45,8 @@
 		A92CA0442A0CC9060061EEE2 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */; };
 		A92CA0452A0CC9070061EEE2 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */; };
 		A92CA0462A0CC9080061EEE2 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */; };
+		A9C194EB2A0DC0B4008D9103 /* ScreenTImeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */; };
+		A9C194EC2A0DC0B4008D9103 /* ScreenTImeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */; };
 		A9F0ED582A08C0D4006E02B6 /* ScreenTImeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */; };
 		A9F0ED5B2A08C209006E02B6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */; };
 		A9F0ED632A08C2CD006E02B6 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F0ED622A08C2CD006E02B6 /* DeviceActivity.framework */; };
@@ -62,7 +64,6 @@
 		A9F0ED992A08CB9B006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
 		A9F0ED9A2A08DE0D006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
 		A9F0ED9B2A08DE0E006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
-		B813F3322A0C982D003E7590 /* ScreenTImeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */; };
 		B813F3332A0C9AAF003E7590 /* ScreenTImeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */; };
 		B813F33F2A0D36D7003E7590 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 /* End PBXBuildFile section */
@@ -687,6 +688,7 @@
 				A92CA03F2A0CC8FF0061EEE2 /* Font+Extension.swift in Sources */,
 				A92CA0422A0CC9030061EEE2 /* Color+Extension.swift in Sources */,
 				A92CA0452A0CC9070061EEE2 /* CGFloat+Extension.swift in Sources */,
+				A9C194EB2A0DC0B4008D9103 /* ScreenTImeVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +702,7 @@
 				A92CA0402A0CC8FF0061EEE2 /* Font+Extension.swift in Sources */,
 				A92CA0432A0CC9030061EEE2 /* Color+Extension.swift in Sources */,
 				A92CA0462A0CC9080061EEE2 /* CGFloat+Extension.swift in Sources */,
+				A9C194EC2A0DC0B4008D9103 /* ScreenTImeVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
