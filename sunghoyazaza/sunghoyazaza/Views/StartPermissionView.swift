@@ -16,6 +16,7 @@ struct StartPermissionView: View {
     
     var body: some View {
         ZStack{
+            Color.systemGray6.edgesIgnoringSafeArea(.all)
             VStack{
                 //TODO: APP이름 정해지면 넣을 것
                 Text("\"App Name\"은 \n아래 기능을 사용해요")
@@ -30,7 +31,8 @@ struct StartPermissionView: View {
                     .padding()
                     .frame(width: 240)
                     .foregroundColor(.white)
-                    .background(Color.systemGray6)
+                    .background(screenTimeAPIOnOff ? Color.accentColor : Color.systemGray4)
+                    .disabled(!screenTimeAPIOnOff)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             VStack{
@@ -59,6 +61,7 @@ struct StartPermissionView: View {
                     }
                     Button {
                         print("screenNotificationAPI Notification Click")
+                        ScreenTimeVM.shared.requestAuthorization()
                     } label: {
                         Text("screenNotificationAPI Notification")
                     }
@@ -77,6 +80,12 @@ struct StartPermissionView: View {
                 //                Text("앱을 사용하려면 \nScreen Time 권한이 필요합니다.")
                 //                    .multilineTextAlignment(.center)
                 //                    .font(.system(size: 17))
+            }
+        }
+        .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in
+            print(authStatus)
+            if authStatus == .approved {
+                screenTimeAPIOnOff = true
             }
         }
         
