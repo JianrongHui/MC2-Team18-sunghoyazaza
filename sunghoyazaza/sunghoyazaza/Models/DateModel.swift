@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-let startDate = "20230501"
+let startDate = "20230508"
 
 struct Record{
     var type:RecordType
@@ -30,11 +30,14 @@ struct Record{
 
 
 var dummyData:[String] = [
-    "20230508",
-    "20230509",
-    "20230510",
-    "20230502"
+//    "20230508",
+//    "20230509",
+//    "20230510",
+//    "20230502"
 //    "20230511":false
+   //  "20230510",
+    "20230509",
+     "20230510"
 ]
 
 
@@ -49,7 +52,7 @@ class DateModel{
         var current = startDate.toDate()!
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: startDate.toDate()!, to: Date.now.toDate()!)
-        let days = (components.day ?? 0) + 1
+        let days = (components.day ?? 0)
         
         var tempRecords:[String:Record] = [:]
         
@@ -81,6 +84,40 @@ class DateModel{
         getCount(.success)
     }
 
+    var grade:UsageType{
+        let totalSuccessCount = totalSuccessCount
+        let recentSuccessCount = recentSuccessCount
+        let recentFailCount = recentFailCount
+        
+
+        if recentSuccessCount > 1{
+            return .successContinue
+        }else if recentSuccessCount == 1{
+            if totalSuccessCount == 1{
+                return .firstSuccess
+            }else if totalSuccessCount > 1{
+                return .successFailSuccess
+            }
+        }
+        
+        if recentFailCount == 1{
+            if totalSuccessCount == 0{
+                return .onlyFail
+            }else{
+                return .failAfterSuccess
+            }
+        }else if recentFailCount > 1{
+            if totalSuccessCount == 0{
+                return .onlyFail
+            }else{
+                return .failContinueAfterSuccess
+            }
+        }
+
+        return .noRecord //recentSuccess == 0 , recentFail == 0
+    }
+    
+    
     
     func getCount(_ type:Record.RecordType)->Int{
         var count = 0
@@ -94,5 +131,13 @@ class DateModel{
         }
         return count
     }
-    
+    enum UsageType{
+        case noRecord
+        case onlyFail
+        case failAfterSuccess
+        case failContinueAfterSuccess
+        case firstSuccess
+        case successFailSuccess
+        case successContinue
+    }
 }

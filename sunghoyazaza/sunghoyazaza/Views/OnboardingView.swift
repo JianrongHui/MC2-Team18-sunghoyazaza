@@ -9,7 +9,9 @@ import SwiftUI
 import FamilyControls
 
 struct OnboardingView: View {
-    @State var repeatDays: [String] = []
+    @State var startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
+    @State var endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
+    @State var selectedDays:[Bool] = UserDefaults.standard.array(forKey: "selectedDays") as? [Bool] ?? [Bool](repeating: false, count: 7)
     
     var body: some View {
         VStack(spacing: 24) {
@@ -18,19 +20,23 @@ struct OnboardingView: View {
                 Text("7시간 이상의 숙면은 내일의 집중을 도와줍니다.").foregroundColor(.gray)
             }.frame(maxWidth: .infinity, alignment: .leading)
             
-            RepeatDaysPicker()
+            RepeatDaysPicker(selectedDays: $selectedDays)
             
             Spacer().frame(height: 0)
             
-            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, displayedComponents: .hourAndMinute, label: { Text("취침시간") })
+            DatePicker(selection: $startAt, displayedComponents: .hourAndMinute, label: { Text("취침시간") })
             
-            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, displayedComponents: .hourAndMinute, label: { Text("기상시간") })
+            DatePicker(selection: $endAt, displayedComponents: .hourAndMinute, label: { Text("기상시간") })
             
             Spacer()
             
             NavigationLink(destination: Onboarding2View()) {
                 Text("설정 완료").foregroundColor(.white)
-            }.padding()
+            }.simultaneousGesture(TapGesture().onEnded{
+                UserDefaults.standard.set(startAt, forKey: "startAt")
+                UserDefaults.standard.set(endAt, forKey: "endAt")
+                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+            }).padding()
                 .frame(width: 240)
                 .background(Color.accentColor)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -47,8 +53,8 @@ struct OnboardingView: View {
 }
 
 struct RepeatDaysPicker: View {
-    let daysOfWeek = ["월", "화", "수", "목", "금", "토", "일"]
-    @State var selectedDays: Set<String> = []
+    let daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"]
+    @Binding var selectedDays:[Bool]
     
     var body: some View {
         VStack {
@@ -56,28 +62,33 @@ struct RepeatDaysPicker: View {
                 Text("반복일 설정").font(.subheadline)
                     .foregroundColor(.gray)
                 Spacer()
-                Button("전체반복") {
-                    for day in daysOfWeek {
-                        selectedDays.insert(day)
+                if selectedDays == [Bool](repeating: true, count: 7) {
+                    Button("전체취소") {
+                        selectedDays = [Bool](repeating: false, count: 7)
+                    }
+                }
+                else {
+                    Button("전체반복") {
+                        selectedDays = [Bool](repeating: true, count: 7)
                     }
                 }
             }
             HStack {
-                ForEach(daysOfWeek, id: \.self) { day in
+                ForEach(0 ..< daysOfWeek.count, id: \.self) { index in
                     Button(action: {
-                        if selectedDays.contains(day) {
-                            selectedDays.remove(day)
+                        if selectedDays[index] {
+                            selectedDays[index] = false
                         } else {
-                            selectedDays.insert(day)
+                            selectedDays[index] = true
                         }
                     }) {
-                        Text(day)
+                        Text(daysOfWeek[index])
                             .font(.system(size: 18))
-                            .fontWeight(selectedDays.contains(day) ? .bold : .regular)
-                            .foregroundColor(selectedDays.contains(day) ? Color.accentColor : .black)
+                            .fontWeight(selectedDays[index] ? .bold : .regular)
+                            .foregroundColor(selectedDays[index] ? Color.accentColor : .black)
                     }
                     .frame(width: 44, height: 44)
-                    .background(selectedDays.contains(day) ? Color.accentColor.opacity(0.1) : Color.white)
+                    .background(selectedDays[index] ? Color.accentColor.opacity(0.1) : Color.white)
                     .cornerRadius(50)
                     .frame(maxWidth: .infinity)
                 }

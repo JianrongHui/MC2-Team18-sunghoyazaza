@@ -11,9 +11,9 @@ import SwiftUI
 struct SleepPlanTopView: View {
     
 //MARK: DATABASE
-    @Binding var weekDay : String
-    @Binding var sleepTime : String
-    @Binding var wakeupTime : String
+    var weekDay : String
+    var sleepTime : String
+    var wakeupTime : String
     
 //MARK: View
     var body: some View {
@@ -72,7 +72,7 @@ struct SleepPlanTopView: View {
 //MARK: PREVIEW
 struct SleepPlanTopView_Previews: PreviewProvider {
     static var previews: some View {
-        SleepPlanTopView(weekDay: MainModel().$weekDay, sleepTime: MainModel().$sleepTime, wakeupTime: MainModel().$wakeupTime)
+        SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
     }
 }
 
