@@ -13,15 +13,14 @@ struct sunghoyazazaApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                if ScreenTimeVM.shared.requestAuthorizationStatus() == .approved || true {
+                if ScreenTimeVM.shared.requestAuthorizationStatus() == .approved {
                     MainView()
-                        .environmentObject(ScreenTimeVM.shared)
                 }
                 else {
-                    StartPermissionView()
-                        .environmentObject(ScreenTimeVM.shared)
+                    Onboarding0View()
                 }
             }
+            .environmentObject(ScreenTimeVM.shared)
         }
     }
 }
