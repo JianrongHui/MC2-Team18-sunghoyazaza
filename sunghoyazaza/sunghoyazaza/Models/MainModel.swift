@@ -18,7 +18,7 @@ struct MainModel{
         case .noRecord:
             return "수면 계획을 달성하고\n첫걸음을 내디뎌요 👣"
         case .successContinue:
-            return "\(dateModel.recentSuccessCount)회 연속으로\n수면 계획을 달성했어요 🔥"
+            return "\(dateModel.recentSuccessCount)일 연속으로\n수면 계획을 달성했어요 🔥"
         case .firstSuccess:
             return "수면 계획을\n처음으로 달성했어요 🎉"
         case .onlyFail:
@@ -26,7 +26,7 @@ struct MainModel{
         case .failAfterSuccess:
             return "기록이 깨졌지만\n힘내서 다시 시작해요 💪"
         case .failContinueAfterSuccess:
-            return "수면 계획 달성이\n\(dateModel.recentFailCount)회째 안되고 있어요 🥺"
+            return "수면 계획 달성이\n\(dateModel.recentFailCount)일째 안되고 있어요 🥺"
         case .successFailSuccess:
             return "초심을 찾으셨군요\n오늘부터 다시 달려요 🏃"
         @unknown default:
