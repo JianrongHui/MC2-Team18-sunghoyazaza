@@ -15,7 +15,6 @@ public enum AppStorageKey: String {
     case isUserNotificationOn
     case additionalCount
     case isUserInit
-    case additionalCount
 
 }
 
