@@ -22,9 +22,7 @@ struct StartPermissionView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .bold()
-                    .font(.system(size: 34))
-                
-                
+                    .font(.systemLargeTitle)
                 Spacer()
                 
                 // 권한 설정 하기 버튼
@@ -32,7 +30,7 @@ struct StartPermissionView: View {
                     .padding()
                     .frame(width: 240)
                     .foregroundColor(.white)
-                    .background(Color.accentColor)
+                    .background(Color.systemGray6)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             VStack{
@@ -64,7 +62,6 @@ struct StartPermissionView: View {
                     } label: {
                         Text("screenNotificationAPI Notification")
                     }
-
                 }
 
                 

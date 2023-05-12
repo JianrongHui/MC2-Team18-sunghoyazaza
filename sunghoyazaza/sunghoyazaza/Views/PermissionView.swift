@@ -31,7 +31,7 @@ struct PermissionView: View {
                 
                 Text("선택 권한")
                     .font(.system(size: 15, weight: .regular))
-                    .foregroundColor(Color(hex: "AEAEB2"))
+//                    .foregroundColor(Color(hex: "AEAEB2"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Button {
@@ -42,18 +42,18 @@ struct PermissionView: View {
                             .padding([.vertical], 10)
                             .padding(.trailing, 8)
                         Text("알림")
-                            .foregroundColor(Color(hex: "000000"))
+//                            .foregroundColor(Color(hex: "000000"))
                         Spacer()
                         Text("설정 완료")
                             .padding(.trailing, 10)
                     }
                 }
                 .buttonStyle(.bordered)
-                .tint(Color(hex: "3F3F3F")) // 배경 색이 적용이 안돼서 일단 아무 색깔로 해놓음 (바꿔야 함)
+//                .tint(Color(hex: "3F3F3F")) // 배경 색이 적용이 안돼서 일단 아무 색깔로 해놓음 (바꿔야 함)
                 
                 Text("자야 할 시간이 되기 5분 전에 알림을 받을 수 있고,\n약속한 15분이 끝나기 5분 전에 알림을 받을 수 있어요")
                     .font(.system(size: 15, weight: .regular))
-                    .foregroundColor(Color(hex: "8E8E93"))
+//                    .foregroundColor(Color(hex: "8E8E93"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
             
@@ -65,7 +65,7 @@ struct PermissionView: View {
                 
                 Text("필수 권한")
                     .font(.system(size: 15, weight: .regular))
-                    .foregroundColor(Color(hex: "AEAEB2"))
+//                    .foregroundColor(Color(hex: "AEAEB2"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Button {
@@ -82,11 +82,11 @@ struct PermissionView: View {
                     }
                 }
                 .buttonStyle(.bordered)
-                .tint(Color(hex: "3F3F3F")) // 배경 색이 적용이 안돼서 일단 아무 색깔로 해놓음 (바꿔야 함)
+//                .tint(Color(hex: "3F3F3F")) // 배경 색이 적용이 안돼서 일단 아무 색깔로 해놓음 (바꿔야 함)
                 
                 Text("자야 할 시간에 잠에 드는 데 방해가 되는 앱을 선택하고\n자야 할 시간이 됐을 때 사용을 제한할 수 있어요")
                     .font(.system(size: 15, weight: .regular))
-                    .foregroundColor(Color(hex: "8E8E93"))
+//                    .foregroundColor(Color(hex: "8E8E93"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
             }

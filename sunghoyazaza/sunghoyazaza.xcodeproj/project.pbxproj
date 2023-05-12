@@ -23,8 +23,8 @@
 		7FBFF44D2A07C5B90069656E /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43C2A07C5B90069656E /* MainVM.swift */; };
 		7FBFF44E2A07C5B90069656E /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43D2A07C5B90069656E /* DateVM.swift */; };
 		7FBFF44F2A07C5B90069656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FBFF43F2A07C5B90069656E /* Assets.xcassets */; };
-		7FBFF4502A07C5B90069656E /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4402A07C5B90069656E /* Fonts.swift */; };
-		7FBFF4512A07C5B90069656E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4412A07C5B90069656E /* Colors.swift */; };
+		7FBFF4502A07C5B90069656E /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4402A07C5B90069656E /* Font+Extension.swift */; };
+		7FBFF4512A07C5B90069656E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4412A07C5B90069656E /* Color+Extension.swift */; };
 		7FBFF4522A07C5B90069656E /* StartPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4432A07C5B90069656E /* StartPermissionView.swift */; };
 		7FBFF4532A07C5B90069656E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4442A07C5B90069656E /* AlertView.swift */; };
 		7FBFF4542A07C5B90069656E /* SleepPlanBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4452A07C5B90069656E /* SleepPlanBottomView.swift */; };
@@ -35,6 +35,7 @@
 		7FEA9E572A09D55B0050AA4B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA9E562A09D55B0050AA4B /* OnboardingView.swift */; };
 		7FEA9E5B2A09D5C80050AA4B /* Onboarding2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA9E5A2A09D5C80050AA4B /* Onboarding2View.swift */; };
 		7FEA9E5D2A09E0610050AA4B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA9E5C2A09E0610050AA4B /* DetailView.swift */; };
+		A92CA03D2A0CC2DD0061EEE2 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */; };
 		A9F0ED582A08C0D4006E02B6 /* ScreenTImeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */; };
 		A9F0ED5B2A08C209006E02B6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */; };
 		A9F0ED632A08C2CD006E02B6 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F0ED622A08C2CD006E02B6 /* DeviceActivity.framework */; };
@@ -132,8 +133,8 @@
 		7FBFF43C2A07C5B90069656E /* MainVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
 		7FBFF43D2A07C5B90069656E /* DateVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateVM.swift; sourceTree = "<group>"; };
 		7FBFF43F2A07C5B90069656E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7FBFF4402A07C5B90069656E /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		7FBFF4412A07C5B90069656E /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7FBFF4402A07C5B90069656E /* Font+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		7FBFF4412A07C5B90069656E /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		7FBFF4432A07C5B90069656E /* StartPermissionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPermissionView.swift; sourceTree = "<group>"; };
 		7FBFF4442A07C5B90069656E /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		7FBFF4452A07C5B90069656E /* SleepPlanBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepPlanBottomView.swift; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 		7FEA9E562A09D55B0050AA4B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7FEA9E5A2A09D5C80050AA4B /* Onboarding2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2View.swift; sourceTree = "<group>"; };
 		7FEA9E5C2A09E0610050AA4B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		A9F0ED572A08C0D4006E02B6 /* ScreenTImeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTImeVM.swift; sourceTree = "<group>"; };
 		A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		A9F0ED602A08C2CD006E02B6 /* DeviceActivityMonitor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DeviceActivityMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -308,10 +310,11 @@
 			isa = PBXGroup;
 			children = (
 				7FBFF43F2A07C5B90069656E /* Assets.xcassets */,
-				7FBFF4402A07C5B90069656E /* Fonts.swift */,
-				7FBFF4412A07C5B90069656E /* Colors.swift */,
+				7FBFF4402A07C5B90069656E /* Font+Extension.swift */,
+				7FBFF4412A07C5B90069656E /* Color+Extension.swift */,
 				76CA10B92A0C1C9F00689C42 /* Date.swift */,
 				76CA10BB2A0C1D9400689C42 /* String.swift */,
+				A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -612,9 +615,10 @@
 				7FEA9E5B2A09D5C80050AA4B /* Onboarding2View.swift in Sources */,
 				7FBFF4552A07C5B90069656E /* MiddlePermissionView.swift in Sources */,
 				7FEA9E572A09D55B0050AA4B /* OnboardingView.swift in Sources */,
-				7FBFF4512A07C5B90069656E /* Colors.swift in Sources */,
+				7FBFF4512A07C5B90069656E /* Color+Extension.swift in Sources */,
 				7FBFF4572A07C5B90069656E /* CalendarView.swift in Sources */,
 				7FBFF4532A07C5B90069656E /* AlertView.swift in Sources */,
+				A92CA03D2A0CC2DD0061EEE2 /* CGFloat+Extension.swift in Sources */,
 				7F37852E2A07AD650055EAB2 /* sunghoyazazaApp.swift in Sources */,
 				7FBFF44D2A07C5B90069656E /* MainVM.swift in Sources */,
 				7FBFF4592A07C5EA0069656E /* MainView.swift in Sources */,
