@@ -26,7 +26,7 @@ struct MainView: View {
                 .padding(.horizontal)
                 .bold()
             // 서브 Text (문구 랜덤 생성)
-            Text("\(mainModel.mainLabel)")
+            Text("\(mainModel.subLabel)")
                 .font(.system(size: 17))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
@@ -69,7 +69,7 @@ struct MainView: View {
         .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
         .navigationBarBackButtonHidden(true)
         .onAppear{
-            print("what is grade? : ",DateModel.shared.grade)
+
         }
         //        }
         //        .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
