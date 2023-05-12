@@ -15,6 +15,8 @@ public enum AppStorageKey: String {
     case isUserNotificationOn
     case additionalCount
     case isUserInit
+    case additionalCount
+
 }
 
 // MARK: 실기 테스트 시 App Groups 설정 후 동일한 이름으로 수정하세요.
