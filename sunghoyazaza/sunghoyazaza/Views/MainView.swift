@@ -7,13 +7,20 @@
 
 //MARK: 앱의 메인 화면
 import SwiftUI
+import Lottie
 
 struct MainView: View {
     @State var textIndex = MainVM().changeMainText() //
     @State var currentDate : Date = Date()
     let mainModel = MainModel()
+    @State var lottieHeight = CGFloat(800.0)
+    @State var lottieWeight = CGFloat(380.0)
+    
+    
     
     var body: some View {
+        ZStack{
+            //전체 뷰 Stack
         //        ScrollView{  //꽉찬 뷰 해결방법?
         //전체 뷰 Stack
         ScrollView(){
@@ -27,7 +34,7 @@ struct MainView: View {
                     .padding(.horizontal)
                     .bold()
                 // 서브 Text (문구 랜덤 생성)
-                Text("\(mainModel.subLabel)")
+                Text("\(mainModel.mainLabel)")
                     .font(.system(size: 17))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
@@ -54,23 +61,40 @@ struct MainView: View {
                     NavigationLink(destination: DetailView(), label: {Text("편집").foregroundColor(Color(hex: 0x0F0094))}).padding(.horizontal)
                 }
                 
-                Spacer()
-                
                 //취침 및 기상시간 알려주는 View
                 SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
                     .padding(.horizontal)
                     .padding(.bottom, 8)
-                
                 //차단된 앱 알려주는 View
                 SleepPlanBottomView()
                     .padding(.horizontal)
                     .padding(.bottom, 10)
             }
-            .padding(.top, 30)
             .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
             .navigationBarBackButtonHidden(true)
+            .onAppear{
+                print("what is grade? : ",DateModel.shared.grade)
+            }
+        //
+        //if newbie == 0{
+                LottieView(lottieFile: "lottieSuccess")
+                    .frame(width: lottieWeight, height: lottieHeight)
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.8){
+                    lottieWeight = 0
+                    lottieHeight = 0
+                }
+
+            }
+        //.frame(maxWidth: .infinity, maxHeight: .infinity)
+        //.onAppear {
+        //newbie = 1
+        //       }
+        //    }
         }.background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
     }
+       
+    
 }
 
 //MARK: PREVIEW
