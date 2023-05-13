@@ -79,7 +79,6 @@
 		A9F0ED9A2A08DE0D006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
 		A9F0ED9B2A08DE0E006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
 		B813F33F2A0D36D7003E7590 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
-		E59D0FEB2A0DECBD005C0B05 /* lottieSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = E59D0FEA2A0DECBC005C0B05 /* lottieSuccess.json */; };
 		E59D0FEE2A0DECF3005C0B05 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E59D0FED2A0DECF3005C0B05 /* Lottie */; };
 		E59D0FF02A0DED37005C0B05 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D0FEF2A0DED37005C0B05 /* LottieView.swift */; };
 /* End PBXBuildFile section */
@@ -193,7 +192,6 @@
 		A9F0ED952A08C4F3006E02B6 /* sunghoyazaza.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sunghoyazaza.entitlements; sourceTree = "<group>"; };
 		A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeyManager.swift; sourceTree = "<group>"; };
 		B813F33E2A0D36D7003E7590 /* ShieldContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldContent.swift; sourceTree = "<group>"; };
-		E59D0FEA2A0DECBC005C0B05 /* lottieSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lottieSuccess.json; path = ../../../../../../Downloads/lottieSuccess.json; sourceTree = "<group>"; };
 		E59D0FEF2A0DED37005C0B05 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -347,7 +345,6 @@
 				76CA10B92A0C1C9F00689C42 /* Date.swift */,
 				76CA10BB2A0C1D9400689C42 /* String.swift */,
 				A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */,
-				E59D0FEA2A0DECBC005C0B05 /* lottieSuccess.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -599,7 +596,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E59D0FEB2A0DECBD005C0B05 /* lottieSuccess.json in Resources */,
 				7FBFF44F2A07C5B90069656E /* Assets.xcassets in Resources */,
 				7F3785352A07AD660055EAB2 /* Preview Assets.xcassets in Resources */,
 			);
@@ -666,7 +662,6 @@
 				7FBFF4592A07C5EA0069656E /* MainView.swift in Sources */,
 				12C3B77E2A0C838A001CF237 /* Onboarding0View.swift in Sources */,
 				E59D0FF02A0DED37005C0B05 /* LottieView.swift in Sources */,
-				A9F0ED582A08C0D4006E02B6 /* ScreenTImeVM.swift in Sources */,
 				7FBFF44B2A07C5B90069656E /* DateModel.swift in Sources */,
 				7FBFF44A2A07C5B90069656E /* BlockApplicationModel.swift in Sources */,
 				76CA10BC2A0C1D9400689C42 /* String.swift in Sources */,
