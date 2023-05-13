@@ -11,6 +11,14 @@
 		12C3B7802A0D0A19001CF237 /* PermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C3B77F2A0D0A19001CF237 /* PermissionView.swift */; };
 		76CA10BA2A0C1C9F00689C42 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10B92A0C1C9F00689C42 /* Date.swift */; };
 		76CA10BC2A0C1D9400689C42 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10BB2A0C1D9400689C42 /* String.swift */; };
+		76CA10BD2A0E774700689C42 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43D2A07C5B90069656E /* DateVM.swift */; };
+		76CA10BE2A0E776D00689C42 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43D2A07C5B90069656E /* DateVM.swift */; };
+		76CA10BF2A0E776E00689C42 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43D2A07C5B90069656E /* DateVM.swift */; };
+		76CA10C12A0E77AE00689C42 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4392A07C5B90069656E /* DateModel.swift */; };
+		76CA10C22A0E77BE00689C42 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10BB2A0C1D9400689C42 /* String.swift */; };
+		76CA10C32A0E77C200689C42 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10B92A0C1C9F00689C42 /* Date.swift */; };
+		76CA10C62A0E787500689C42 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10BB2A0C1D9400689C42 /* String.swift */; };
+		76CA10C72A0E787600689C42 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10BB2A0C1D9400689C42 /* String.swift */; };
 		7F37852E2A07AD650055EAB2 /* sunghoyazazaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37852D2A07AD650055EAB2 /* sunghoyazazaApp.swift */; };
 		7F3785352A07AD660055EAB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F3785342A07AD660055EAB2 /* Preview Assets.xcassets */; };
 		7F37853F2A07AD660055EAB2 /* sunghoyazazaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37853E2A07AD660055EAB2 /* sunghoyazazaTests.swift */; };
@@ -673,7 +681,9 @@
 			files = (
 				A9F0ED992A08CB9B006E02B6 /* AppStorageKeyManager.swift in Sources */,
 				A92CA0412A0CC9020061EEE2 /* Color+Extension.swift in Sources */,
+				76CA10C62A0E787500689C42 /* String.swift in Sources */,
 				A9D5C5732A0DD2DD002723F0 /* ShieldContent.swift in Sources */,
+				76CA10BE2A0E776D00689C42 /* DateVM.swift in Sources */,
 				A92CA0442A0CC9060061EEE2 /* CGFloat+Extension.swift in Sources */,
 				A9F0ED962A08C9E6006E02B6 /* NotificationManager.swift in Sources */,
 				A92CA03E2A0CC8FE0061EEE2 /* Font+Extension.swift in Sources */,
@@ -686,11 +696,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76CA10BD2A0E774700689C42 /* DateVM.swift in Sources */,
 				A9F0ED7B2A08C48E006E02B6 /* ShieldConfigurationExtension.swift in Sources */,
+				76CA10C22A0E77BE00689C42 /* String.swift in Sources */,
 				A9F0ED9A2A08DE0D006E02B6 /* AppStorageKeyManager.swift in Sources */,
 				A92CA03F2A0CC8FF0061EEE2 /* Font+Extension.swift in Sources */,
 				A92CA0422A0CC9030061EEE2 /* Color+Extension.swift in Sources */,
+				76CA10C12A0E77AE00689C42 /* DateModel.swift in Sources */,
 				A92CA0452A0CC9070061EEE2 /* CGFloat+Extension.swift in Sources */,
+				76CA10C32A0E77C200689C42 /* Date.swift in Sources */,
 				A9C194EB2A0DC0B4008D9103 /* ScreenTImeVM.swift in Sources */,
 				A9D5C5742A0DD2DE002723F0 /* ShieldContent.swift in Sources */,
 			);
@@ -700,8 +714,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76CA10BF2A0E776E00689C42 /* DateVM.swift in Sources */,
 				A9F0ED8C2A08C49E006E02B6 /* ShieldActionExtension.swift in Sources */,
 				A9F0ED9B2A08DE0E006E02B6 /* AppStorageKeyManager.swift in Sources */,
+				76CA10C72A0E787600689C42 /* String.swift in Sources */,
 				A92CA0402A0CC8FF0061EEE2 /* Font+Extension.swift in Sources */,
 				A92CA0432A0CC9030061EEE2 /* Color+Extension.swift in Sources */,
 				A92CA0462A0CC9080061EEE2 /* CGFloat+Extension.swift in Sources */,
@@ -865,7 +881,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sunghoyazaza/Preview Content\"";
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -879,7 +895,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazaza;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazaza;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -897,7 +913,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sunghoyazaza/Preview Content\"";
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -911,7 +927,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazaza;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazaza;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -926,11 +942,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazazaTests;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -946,11 +962,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazazaTests;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -965,10 +981,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazazaUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaUITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -983,10 +999,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazazaUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaUITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1001,7 +1017,7 @@
 				CODE_SIGN_ENTITLEMENTS = DeviceActivityMonitor/DeviceActivityMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeviceActivityMonitor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DeviceActivityMonitor;
@@ -1012,7 +1028,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazaza.DeviceActivityMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaDevice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1027,7 +1043,7 @@
 				CODE_SIGN_ENTITLEMENTS = DeviceActivityMonitor/DeviceActivityMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeviceActivityMonitor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DeviceActivityMonitor;
@@ -1038,7 +1054,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazaza.DeviceActivityMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaDevice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1053,7 +1069,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShieldConfiguration/ShieldConfiguration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShieldConfiguration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShieldConfiguration;
@@ -1064,7 +1080,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazaza.ShieldConfiguration;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1079,7 +1095,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShieldConfiguration/ShieldConfiguration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShieldConfiguration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShieldConfiguration;
@@ -1090,7 +1106,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazaza.ShieldConfiguration;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1105,7 +1121,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShieldAction/ShieldAction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShieldAction/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShieldAction;
@@ -1116,7 +1132,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazaza.ShieldAction;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaAction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1131,7 +1147,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShieldAction/ShieldAction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShieldAction/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShieldAction;
@@ -1142,7 +1158,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = yuncoffee.sunghoyazaza.ShieldAction;
+				PRODUCT_BUNDLE_IDENTIFIER = peter.com.sunghoyazazaAction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

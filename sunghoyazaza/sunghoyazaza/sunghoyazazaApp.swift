@@ -27,6 +27,7 @@ struct sunghoyazazaApp: App {
                 print(authStatus)
             }
             .environmentObject(ScreenTimeVM.shared)
+
         }
     }
 }

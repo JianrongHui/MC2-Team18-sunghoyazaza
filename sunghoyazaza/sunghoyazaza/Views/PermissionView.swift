@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FamilyControls
 
 struct PermissionView: View {
     
@@ -14,7 +15,7 @@ struct PermissionView: View {
     func enableNavigationLink () {
         
     }
-    
+
     var body: some View {
         VStack{
             
@@ -60,16 +61,18 @@ struct PermissionView: View {
             }
             .padding([.horizontal], 16)
             .padding(.bottom, 24)
-            
+
             VStack {
                 
                 Text("필수 권한")
                     .font(.system(size: 15, weight: .regular))
 //                    .foregroundColor(Color(hex: "AEAEB2"))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
+
                 Button {
                     print("Screen Time Permission Button Clicked")
+
+
                 } label: {
                     HStack{
                         Image("Screen_Time_Icon")
