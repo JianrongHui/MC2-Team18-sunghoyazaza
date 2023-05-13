@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FamilyControls
 
 struct PermissionView: View {
     @Environment(\.scenePhase) private var scenePhase
