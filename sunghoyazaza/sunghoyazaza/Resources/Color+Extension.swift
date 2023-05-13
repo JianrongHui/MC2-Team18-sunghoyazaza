@@ -29,8 +29,8 @@ extension Color {
     
     
     // MARK: ColorScale - SecondaryColor
-    static let systemGreen = Color(UIColor.green)
-    static let systemRed = Color(UIColor.red)
+    static let systemGreen = Color(UIColor.systemGreen)
+    static let systemRed = Color(UIColor.systemRed)
     
     // MARK: GrayScale
     static let systemWhite = Color(UIColor.white)

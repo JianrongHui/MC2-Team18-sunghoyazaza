@@ -16,6 +16,8 @@ struct PermissionButtonInfo: Identifiable {
     let footerText: String
 }
 
+typealias PermissionButtonStatus = (label: String, img: String, color: Color)
+
 class PermissionViewModel: ObservableObject {
     
     @Published
@@ -40,10 +42,10 @@ class PermissionViewModel: ObservableObject {
     )
 
     @Published
-    var notificationButtonStatus: (label: String, img: String, color: Color) = (label: "설정하기", img: "checkmark.circle.fill", color: .systemGray2)
+    var notificationButtonStatus: PermissionButtonStatus = (label: "설정하기", img: "checkmark.circle.fill", color: .systemGray2)
     
     @Published
-    var screenTimeButtonStatus: (label: String, img: String, color: Color) = (label: "설정하기", img: "checkmark.circle.fill", color: .systemGray2)
+    var screenTimeButtonStatus: PermissionButtonStatus = (label: "설정하기", img: "checkmark.circle.fill", color: .systemGray2)
     
     @Published
     var hasNotificationPermission = false
@@ -59,6 +61,8 @@ extension PermissionViewModel {
     }
     
     private func updateNotificationPermissionStatus() {
+        print("vm-hasNotificationPermission: ", NotificationManager.shared.hasNotificationPermission)
+        
         if NotificationManager.shared.hasNotificationPermission == 1 {
             notificationButtonStatus.label = "설정완료"
             notificationButtonStatus.img = "checkmark.circle.fill"

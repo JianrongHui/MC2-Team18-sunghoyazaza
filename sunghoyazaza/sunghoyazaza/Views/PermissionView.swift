@@ -27,13 +27,15 @@ struct PermissionView: View {
         VStack{
             pageTitleView()
             RequestPermissionButtonView()
-                .padding(.horizontal, .spacing24)
+                .padding([.top, .horizontal], .spacing24)
             Spacer()
             //MARK: 16.0 이상 was deprecated
             GoToOnboardingButtonView()
         }
         .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
         .onAppear {
+            NotificationManager.shared.requestAuthStatus()
+            print(NotificationManager.shared.hasNotificationPermission)
             vm.updatePermissionStatus()
         }
         .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in
@@ -58,92 +60,69 @@ extension PermissionView {
     
     // MARK: 권한요청 버튼 리스트
     func RequestPermissionButtonView() -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            // sectionHeader
-            HStack(spacing: 0) {
-                Text(vm.notificationButtonInfo.headerText)
-                    .font(.systemSubInfo)
-                    .foregroundColor(.systemGray2)
-                    .padding(.trailing, .spacing2)
-                Image(systemName: vm.notificationButtonStatus.img)
-                    .font(.systemSubInfo)
-                    .foregroundColor(vm.notificationButtonStatus.color)
-            }
-            .padding(.leading, .spacing8)
-            .padding(.bottom, .spacing4)
-            // sectionBody
-            Button {
-                vm.handlePermissionButton(permissionName: vm.notificationButtonInfo.permissionName)
-            } label: {
-                HStack{
-                    Image(vm.notificationButtonInfo.src)
-                    Text(vm.notificationButtonInfo.permissionName)
-                        .tint(Color.systemBlack)
-                    Spacer()
-                    Text(vm.notificationButtonStatus.label)
-                        .frame(width: 100, height: 50)
-                        .foregroundColor(vm.hasNotificationPermission ? Color.systemGray2 : Color.primary)
-                }
-                .padding([.leading, .vertical], .spacing16)
-                .padding(.trailing, .spacing8)
-            }
-            .disabled(vm.hasNotificationPermission)
-            .background(vm.hasNotificationPermission ? Color.systemGray4 : Color.systemWhite)
-            .cornerRadius(.spacing16)
-            .padding(.bottom, .spacing8)
-            //sectionFooter
-            Text(vm.notificationButtonInfo.footerText)
-                .font(Font.systemSubHeadline)
-                .foregroundColor(.systemGray)
-                .multilineTextAlignment(.leading)
-                .lineLimit(2)
-                .frame(maxWidth: .infinity, minHeight: 40, alignment: .leading)
-                .padding(.leading, .spacing8)
-                .padding(.bottom, .spacing24)
-            // sectionHeader
-            HStack(spacing: 0) {
-                Text(vm.screenTimeButtonInfo.headerText)
-                    .font(.systemSubInfo)
-                    .foregroundColor(.systemGray2)
-                    .padding(.trailing, .spacing2)
-                Image(systemName: vm.screenTimeButtonStatus.img)
-                    .font(.systemSubInfo)
-                    .foregroundColor(vm.screenTimeButtonStatus.color)
-            }
-            .padding(.leading, .spacing8)
-            .padding(.bottom, .spacing4)
-            // sectionBody
-            Button {
-                vm.handlePermissionButton(permissionName: vm.screenTimeButtonInfo.permissionName)
-            } label: {
-                HStack{
-                    Image(vm.screenTimeButtonInfo.src)
-                    Text(vm.screenTimeButtonInfo.permissionName)
-                        .tint(Color.systemBlack)
-                    Spacer()
-                    Text(vm.screenTimeButtonStatus.label)
-                        .frame(width: 100, height: 50)
-                        .foregroundColor(vm.hasScreenTimePermission ? Color.systemGray2 : Color.primary)
-                }
-                .padding([.leading, .vertical], .spacing16)
-                .padding(.trailing, .spacing8)
-            }
-            .disabled(vm.hasScreenTimePermission)
-            .background(vm.hasScreenTimePermission ? Color.systemGray4 : Color.systemWhite)
-            .cornerRadius(16)
-            .padding(.bottom, .spacing8)
-            // sectionFooter
-            Text(vm.screenTimeButtonInfo.footerText)
-                .font(Font.systemSubHeadline)
-                .foregroundColor(.systemGray)
-                .multilineTextAlignment(.leading)
-                .lineLimit(2)
-                .frame(maxWidth: .infinity, minHeight: 40, alignment: .leading)
-                .padding(.leading, .spacing8)
-                .padding(.bottom, .spacing24)
+        VStack(alignment: .leading, spacing: .spacing24) {
+            RequestButtonView(
+                staticInfo: vm.notificationButtonInfo,
+                buttonStatus: vm.notificationButtonStatus,
+                hasPermission: vm.hasNotificationPermission
+            )
+            RequestButtonView(
+                staticInfo: vm.screenTimeButtonInfo,
+                buttonStatus: vm.screenTimeButtonStatus,
+                hasPermission: vm.hasScreenTimePermission
+            )
         }
     }
 
+    // MARK: 권한요청 버튼
+    func RequestButtonView(
+        staticInfo: PermissionButtonInfo,
+        buttonStatus: PermissionButtonStatus,
+        hasPermission: Bool) -> some View {
+        VStack(alignment: .leading ,spacing: 0) {
+            // sectionHeader
+            HStack(spacing: 0) {
+                Text(staticInfo.headerText)
+                    .font(.systemSubInfo)
+                    .foregroundColor(.systemGray2)
+                    .padding(.trailing, .spacing2)
+                Image(systemName: buttonStatus.img)
+                    .font(.systemSubInfo)
+                    .foregroundColor(buttonStatus.color)
+            }
+            .padding(.leading, .spacing8)
+            .padding(.bottom, .spacing4)
+            // sectionBody
+            Button {
+                vm.handlePermissionButton(permissionName: staticInfo.permissionName)
+            } label: {
+                HStack{
+                    Image(staticInfo.src)
+                    Text(staticInfo.permissionName)
+                        .tint(Color.systemBlack)
+                    Spacer()
+                    Text(buttonStatus.label)
+                        .frame(width: 100, height: 50)
+                        .foregroundColor(hasPermission ? Color.systemGray2 : Color.primary)
+                }
+                .padding([.leading, .vertical], .spacing16)
+                .padding(.trailing, .spacing8)
+            }
+            .disabled(hasPermission)
+            .background(hasPermission ? Color.systemGray4 : Color.systemWhite)
+            .cornerRadius(16)
+            .padding(.bottom, .spacing8)
+            // sectionFooter
+            Text(staticInfo.footerText)
+                .font(Font.systemSubHeadline)
+                .foregroundColor(.systemGray)
+                .multilineTextAlignment(.leading)
+                .lineLimit(2)
+                .frame(maxWidth: .infinity, minHeight: 40, alignment: .leading)
+                .padding(.leading, .spacing8)
+        }
+    }
+    
     // MARK: 시작하기 버튼
     func GoToOnboardingButtonView() -> some View{
         NavigationLink("시작하기", destination: OnboardingView(), isActive: $isNavigationActive)

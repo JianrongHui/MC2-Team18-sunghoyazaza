@@ -17,7 +17,11 @@ class NotificationManager {
     
     // MARK: 사용자 알림 설정 여부
     @AppStorage(AppStorageKey.hasNotificationPermission.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var hasNotificationPermission: Int = -1
+    var hasNotificationPermission: Int = -1 {
+        didSet {
+            print("hasNotificationPermission: ", hasNotificationPermission)
+        }
+    }
     
     //MARK: 알림 권한요청
     func requestAuthorization() {
@@ -27,13 +31,37 @@ class NotificationManager {
                 print("ERROR: \(error)")
                 self.hasNotificationPermission = 0
             } else {
-                print("SUCCESS")
                 print(success)
                 if success {
                     self.hasNotificationPermission = 1
+                    print("111")
                 } else {
                     self.hasNotificationPermission = 0
+                    print("222")
                 }
+            }
+        }
+    }
+
+    // MARK: 노피티케이션 권한 조회
+    func requestAuthStatus() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                self.hasNotificationPermission = -1
+                print("11")
+            case .denied:
+                self.hasNotificationPermission = 0
+                print("22")
+            case .authorized:
+                self.hasNotificationPermission = 1
+                print("33")
+            case .provisional:
+                print("provisional")
+            case .ephemeral:
+                print("ephemeral")
+            @unknown default:
+                print("설정된 권한 상태가 없습니다")
             }
         }
     }

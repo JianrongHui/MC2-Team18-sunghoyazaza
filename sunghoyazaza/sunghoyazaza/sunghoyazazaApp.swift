@@ -20,12 +20,14 @@ struct sunghoyazazaApp: App {
 //                    Onboarding0View()
                     PermissionView()
                 }
-                
             }
             .environmentObject(ScreenTimeVM.shared)
             .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
             .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in
                 print(authStatus)
+            }
+            .onAppear {
+                NotificationManager.shared.requestAuthStatus()
             }
             .environmentObject(ScreenTimeVM.shared)
         }
