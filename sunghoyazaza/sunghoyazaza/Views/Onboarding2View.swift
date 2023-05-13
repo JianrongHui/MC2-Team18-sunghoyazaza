@@ -10,7 +10,7 @@ import FamilyControls
 
 struct Onboarding2View: View {
     
-    @State var selection = ScreenTimeVM.shared.selectionToDiscourage
+    @State var selection = FamilyActivitySelection()
     @State var isPresented = false
     
     var body: some View {
@@ -58,7 +58,10 @@ struct Onboarding2View: View {
                 .frame(width: 240)
                 .background(Color.accentColor)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-        }.padding().navigationBarTitleDisplayMode(.inline)
+        }.simultaneousGesture(TapGesture().onEnded{
+            // MARK: 선택한 제한 앱 @AppStorage 변수에 저장
+            ScreenTimeVM.shared.selectionToDiscourage = selection
+        }).padding().navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {

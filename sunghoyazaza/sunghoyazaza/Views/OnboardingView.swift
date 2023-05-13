@@ -33,9 +33,12 @@ struct OnboardingView: View {
             NavigationLink(destination: Onboarding2View()) {
                 Text("다음").foregroundColor(.white)
             }.simultaneousGesture(TapGesture().onEnded{
-                UserDefaults.standard.set(startAt, forKey: "startAt")
-                UserDefaults.standard.set(endAt, forKey: "endAt")
-                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+//                UserDefaults.standard.set(startAt, forKey: "startAt")
+//                UserDefaults.standard.set(endAt, forKey: "endAt")
+//                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+                // MARK: 사용자 선택 수면시간 @AppStorage 변수에 저장
+                ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
+                ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
             }).padding()
                 .frame(width: 240)
                 .background(Color.accentColor)
