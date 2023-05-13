@@ -14,6 +14,7 @@ public enum AppStorageKey: String {
     case daysOfWeek
     case isUserNotificationOn
     case additionalCount
+    case isEndPoint
     case isUserInit
     case hasNotificationPermission
     case hasScreenTimePermission

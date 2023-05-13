@@ -64,7 +64,11 @@ class ScreenTimeVM: ObservableObject {
     // MARK: 오늘 수면 계획 동안 15분 연장 횟수
     @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var additionalCount: Int = 0
-
+    
+    // MARK: 스케줄 종료 지점 판별을 위한 변수
+    @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var isEndPoint: Bool = true
+    
     let managedSettingStore = ManagedSettingsStore()
     let deviceActivityCenter = DeviceActivityCenter()
     let authorizationCenter = AuthorizationCenter.shared
@@ -124,7 +128,7 @@ class ScreenTimeVM: ObservableObject {
     ) {
         let schedule: DeviceActivitySchedule
 
-        if deviceActivityName == .dailySleep { // 기본 수면계획 스케줄일 경우
+        if deviceActivityName == .dailySleep { //MARK: 기본 수면계획 스케줄일 경우
             schedule = DeviceActivitySchedule(
                 intervalStart: startTime,
                 intervalEnd: endTime,
@@ -133,7 +137,7 @@ class ScreenTimeVM: ObservableObject {
             )
             print("Daily Sleep Schedule: \(startTime.hour!):\(startTime.minute!) ~ \(endTime.hour!):\(endTime.minute!)")
 
-        } else { // 추가시간 15분 스케줄일 경우
+        } else { //MARK: 추가시간 15분 스케줄일 경우
             let currentDateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: Date()) // 현재시간
             let startHour = currentDateComponents.hour ?? 0
             let startMinute  = currentDateComponents.minute ?? 0
@@ -160,8 +164,8 @@ class ScreenTimeVM: ObservableObject {
         }
 
         do {
-            ScreenTimeVM.shared.deviceActivityCenter.stopMonitoring()
-            try ScreenTimeVM.shared.deviceActivityCenter.startMonitoring(
+            deviceActivityCenter.stopMonitoring()
+            try deviceActivityCenter.startMonitoring(
                 deviceActivityName,
                 during: schedule
             )
@@ -241,5 +245,4 @@ extension DeviceActivityName {
 extension ManagedSettingsStore.Name {
     static let tenSeconds = Self("threshold.seconds.ten")
     static let dailySleep = Self("dailySleep")
-    static let additionalFifteen = Self("additionalFifteen")
 }
