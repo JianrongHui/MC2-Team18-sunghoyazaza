@@ -81,14 +81,7 @@ struct StartPermissionView: View {
                 //                    .multilineTextAlignment(.center)
                 //                    .font(.system(size: 17))
             }
-        }
-        .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in
-            print(authStatus)
-            if authStatus == .approved {
-                screenTimeAPIOnOff = true
-            }
-        }
-        
+        }    
     }
 }
 
