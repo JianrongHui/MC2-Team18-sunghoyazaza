@@ -33,9 +33,12 @@ struct OnboardingView: View {
             NavigationLink(destination: Onboarding2View()) {
                 Text("다음").foregroundColor(.white)
             }.simultaneousGesture(TapGesture().onEnded{
-                UserDefaults.standard.set(startAt, forKey: "startAt")
-                UserDefaults.standard.set(endAt, forKey: "endAt")
-                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+//                UserDefaults.standard.set(startAt, forKey: "startAt")
+//                UserDefaults.standard.set(endAt, forKey: "endAt")
+//                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+                // MARK: 사용자 선택 수면시간 @AppStorage 변수에 저장
+                ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
+                ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
             }).padding()
                 .frame(width: 240)
                 .background(Color.accentColor)
@@ -62,18 +65,28 @@ struct RepeatDaysPicker: View {
             HStack {
                 Text("반복일 설정").font(.subheadline)
                     .foregroundColor(.gray)
+
+
                 Spacer()
                 if selectedDays == [Bool](repeating: true, count: 7) {
                     Button("전체취소") {
                         selectedDays = [Bool](repeating: false, count: 7)
-                    }
+                    }.padding(.horizontal, 10)
+                        .background(.white)
+                        .border(.white, width: 0)
+                        .cornerRadius(20)
                 }
                 else {
                     Button("전체반복") {
                         selectedDays = [Bool](repeating: true, count: 7)
-                    }
+                    }.padding(.horizontal, 10)
+                        .background(.white)
+                        .border(.white, width: 0)
+                        .cornerRadius(20)
+                        
                 }
-            }
+            }.frame(height: 28)
+                .padding(.horizontal,24)
             HStack {
                 ForEach(0 ..< daysOfWeek.count, id: \.self) { index in
                     Button(action: {
@@ -84,16 +97,17 @@ struct RepeatDaysPicker: View {
                         }
                     }) {
                         Text(daysOfWeek[index])
-                            .font(.system(size: 18))
+                            .font(.system(size: 17))
                             .fontWeight(selectedDays[index] ? .bold : .regular)
                             .foregroundColor(selectedDays[index] ? Color.accentColor : .black)
                     }
                     .frame(width: 44, height: 44)
-                    .background(selectedDays[index] ? Color.accentColor.opacity(0.1) : Color.white)
+                    .background(selectedDays[index] ? Color.accentColor.opacity(0.2) : Color.systemGray5)
                     .cornerRadius(50)
                     .frame(maxWidth: .infinity)
                 }
-            }
-        }
+            }.frame(height:56)
+                .padding(.horizontal,24)
+        }.frame(height:84)
     }
 }
