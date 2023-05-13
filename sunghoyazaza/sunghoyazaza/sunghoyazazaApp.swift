@@ -17,7 +17,8 @@ struct sunghoyazazaApp: App {
                     MainView()
                 }
                 else {
-                    Onboarding0View()
+//                    Onboarding0View()
+                    PermissionView()
                 }
                 
             }

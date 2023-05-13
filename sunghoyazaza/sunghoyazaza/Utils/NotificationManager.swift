@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import UserNotifications
 
 
@@ -14,14 +15,25 @@ class NotificationManager {
     static let shared = NotificationManager()
     private init() {}
     
+    // MARK: 사용자 알림 설정 여부
+    @AppStorage(AppStorageKey.hasNotificationPermission.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var hasNotificationPermission: Int = -1
+    
     //MARK: 알림 권한요청
     func requestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         UNUserNotificationCenter.current().requestAuthorization(options: options) {(success, error) in
             if let error = error {
                 print("ERROR: \(error)")
+                self.hasNotificationPermission = 0
             } else {
                 print("SUCCESS")
+                print(success)
+                if success {
+                    self.hasNotificationPermission = 1
+                } else {
+                    self.hasNotificationPermission = 0
+                }
             }
         }
     }
