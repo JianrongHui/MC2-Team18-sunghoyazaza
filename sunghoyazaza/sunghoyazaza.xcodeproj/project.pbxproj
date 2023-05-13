@@ -57,6 +57,7 @@
 		A94A97DB2A0F76FA0012E8A9 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
 		A94A97DC2A0F76FB0012E8A9 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
 		A94A97DD2A0F76FB0012E8A9 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
+		A94A97DF2A0F7EC40012E8A9 /* Onboarding0VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97DE2A0F7EC40012E8A9 /* Onboarding0VM.swift */; };
 		A9D5C5732A0DD2DD002723F0 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 		A9D5C5742A0DD2DE002723F0 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 		A9D5C5752A0DD2DF002723F0 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
@@ -168,6 +169,7 @@
 		7FEA9E5C2A09E0610050AA4B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeVM.swift; sourceTree = "<group>"; };
+		A94A97DE2A0F7EC40012E8A9 /* Onboarding0VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding0VM.swift; sourceTree = "<group>"; };
 		A9D5C5762A0E6ECC002723F0 /* PermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewModel.swift; sourceTree = "<group>"; };
 		A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		A9F0ED602A08C2CD006E02B6 /* DeviceActivityMonitor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DeviceActivityMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,6 +327,7 @@
 				7FBFF43D2A07C5B90069656E /* DateVM.swift */,
 				A9D5C5762A0E6ECC002723F0 /* PermissionViewModel.swift */,
 				A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */,
+				A94A97DE2A0F7EC40012E8A9 /* Onboarding0VM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				B813F33F2A0D36D7003E7590 /* ShieldContent.swift in Sources */,
 				7FBFF4502A07C5B90069656E /* Font+Extension.swift in Sources */,
 				7FEA9E5B2A09D5C80050AA4B /* Onboarding2View.swift in Sources */,
+				A94A97DF2A0F7EC40012E8A9 /* Onboarding0VM.swift in Sources */,
 				7FBFF4552A07C5B90069656E /* MiddlePermissionView.swift in Sources */,
 				7FEA9E572A09D55B0050AA4B /* OnboardingView.swift in Sources */,
 				7FBFF4512A07C5B90069656E /* Color+Extension.swift in Sources */,
@@ -709,7 +713,6 @@
 				76CA10C12A0E77AE00689C42 /* DateModel.swift in Sources */,
 				A92CA0452A0CC9070061EEE2 /* CGFloat+Extension.swift in Sources */,
 				76CA10C32A0E77C200689C42 /* Date.swift in Sources */,
-				A9C194EB2A0DC0B4008D9103 /* ScreenTImeVM.swift in Sources */,
 				A9D5C5742A0DD2DE002723F0 /* ShieldContent.swift in Sources */,
 				A94A97DC2A0F76FB0012E8A9 /* ScreenTimeVM.swift in Sources */,
 			);

@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct Onboarding0View: View {
+    
+    @State
+    private var isNavigationActive = false
+    
     var body: some View {
         VStack {
             TabView {
@@ -18,6 +22,7 @@ struct Onboarding0View: View {
                     Image("Onboarding_1")
                         .modifier(Illustration())
                 }
+                .border(.red)
                 VStack {
                     Text("⚙️ 수면 계획 설정")
                         .modifier(TitleText())
@@ -64,13 +69,42 @@ struct Onboarding0View: View {
             }
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
-            
-            NavigationLink("권한 설정하러 가기", destination: PermissionView())
-                .padding()
-                .frame(width: 240)
-                .foregroundColor(.white)
-                .background(Color.accentColor)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+            GoToPermissionButtonView()
+        }
+    }
+}
+
+
+
+
+// MARK: Views
+extension Onboarding0View {
+    // MARK: 캐로셀 컨테이너 뷰
+    func CarouselContainerView() {
+        
+    }
+    
+    func CarouselItemView() {
+        
+    }
+    
+    // MARK: 시작하기 버튼
+    func GoToPermissionButtonView() -> some View {
+        VStack {
+            Button {
+                isNavigationActive = true
+            } label: {
+                Text("권한 설정하러 가기")
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .foregroundColor(.systemWhite)
+            .background(Color.accentColor)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding([.horizontal, .bottom], CGFloat.spacing24)
+            NavigationLink(destination: PermissionView(), isActive: $isNavigationActive) {
+                EmptyView()
+            }
         }
     }
 }
