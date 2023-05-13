@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PermissionView: View {
+    @Environment(\.scenePhase) private var scenePhase
     
     @StateObject
     var vm = PermissionViewModel()
@@ -22,11 +23,31 @@ struct PermissionView: View {
        
     @State
     private var isNavigationActive = false
-        
+    
+    @State
+    private var showAlert = false
+    
     var body: some View {
         VStack{
             pageTitleView()
             RequestPermissionButtonView()
+                .alert(
+                    "알림이 이전에 거부되었어요",
+                    isPresented: $showAlert
+                ) {
+                    Button {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    } label: {
+                        Text("설정으로 가기")
+                    }
+                    Button(role: .cancel) {
+                        // Handle the deletion.
+                    } label: {
+                        Text("닫기")
+                    }
+                } message: {
+                    Text("알림은 한 번 거부되면 설정에서 변경해야 해요 설정에서 알림을 허용해 주세요")
+                }
                 .padding([.top, .horizontal], .spacing24)
             Spacer()
             //MARK: 16.0 이상 was deprecated
@@ -34,15 +55,17 @@ struct PermissionView: View {
         }
         .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
         .onAppear {
-            NotificationManager.shared.updateHasNotificationPermission()
-            NotificationManager.shared.updateAuthStatus()
             vm.updatePermissionStatus()
+        }
+        .onChange(of: ScreenTimeVM.shared.authorizationCenter.authorizationStatus) {
+            authStatus in
+            vm.updatePermissionStatus()
+            
         }
         .onReceive(NotificationManager.shared.$sharedHasNotificationPermission) { status in
             vm.updatePermissionStatus()
         }
-        .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in
-            ScreenTimeVM.shared.updateAuthorizationStatus(authStatus: authStatus)
+        .onReceive(ScreenTimeVM.shared.$sharedHasScreenTimePermission) { authStatus in
             vm.updatePermissionStatus()
         }
     }
@@ -97,6 +120,9 @@ extension PermissionView {
             .padding(.bottom, .spacing4)
             // sectionBody
             Button {
+                if staticInfo.permissionName == "알림" && NotificationManager.shared.sharedHasNotificationPermission == 0 {
+                    showAlert = true
+                }
                 vm.handlePermissionButton(permissionName: staticInfo.permissionName)
             } label: {
                 HStack{
@@ -128,7 +154,13 @@ extension PermissionView {
     
     // MARK: 시작하기 버튼
     func GoToOnboardingButtonView() -> some View{
-        NavigationLink("시작하기", destination: OnboardingView(), isActive: $isNavigationActive)
+        VStack {
+            Button {
+                ScreenTimeVM.shared.requestAuthorization()
+                isNavigationActive = true
+            } label: {
+                Text("시작하기")
+            }
             .padding()
             .frame(maxWidth: .infinity)
             .foregroundColor(
@@ -137,6 +169,10 @@ extension PermissionView {
             .disabled(!vm.hasScreenTimePermission)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .padding([.horizontal, .bottom], CGFloat.spacing24)
+            NavigationLink(destination: OnboardingView(), isActive: $isNavigationActive) {
+                EmptyView()
+            }
+        }
     }
 }
 

@@ -17,19 +17,12 @@ class NotificationManager {
     @AppStorage(AppStorageKey.hasNotificationPermission.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var hasNotificationPermission: Int = -1 {
         didSet {
-            print("hasNotificationPermission: ", hasNotificationPermission)
             updateHasNotificationPermission()
-
-          
         }
     }
     
     @Published
-    var sharedHasNotificationPermission = -1 {
-        didSet {
-            print("!!!")
-        }
-    }
+    var sharedHasNotificationPermission = -1
     
     func updateHasNotificationPermission() {
         DispatchQueue.global().async {
@@ -50,10 +43,8 @@ class NotificationManager {
                 print(success)
                 if success {
                     self.hasNotificationPermission = 1
-                    print("111")
                 } else {
                     self.hasNotificationPermission = 0
-                    print("222")
                 }
             }
         }
@@ -65,13 +56,10 @@ class NotificationManager {
             switch settings.authorizationStatus {
             case .notDetermined:
                 self.hasNotificationPermission = -1
-                print("11")
             case .denied:
                 self.hasNotificationPermission = 0
-                print("22")
             case .authorized:
                 self.hasNotificationPermission = 1
-                print("33")
             case .provisional:
                 print("provisional")
             case .ephemeral:

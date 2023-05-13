@@ -68,10 +68,10 @@ extension PermissionViewModel {
             notificationButtonStatus.color = .systemGreen
             hasNotificationPermission = true
         } else if NotificationManager.shared.hasNotificationPermission == 0 {
-            notificationButtonStatus.label = "설정완료"
+            notificationButtonStatus.label = "설정변경"
             notificationButtonStatus.img = "x.circle.fill"
             notificationButtonStatus.color = .systemRed
-            hasNotificationPermission = true
+            hasNotificationPermission = false
         } else {
             notificationButtonStatus.label = "설정하기"
             notificationButtonStatus.img = "checkmark.circle.fill"

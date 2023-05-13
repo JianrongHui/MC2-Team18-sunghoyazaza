@@ -28,7 +28,23 @@ class ScreenTimeVM: ObservableObject {
 
     // MARK: 스크린 타임 설정 여부
     @AppStorage(AppStorageKey.hasScreenTimePermission.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var hasScreenTimePermission: Bool = false
+    var hasScreenTimePermission: Bool = false {
+        didSet {
+            print("Changed: ", hasScreenTimePermission)
+            updateHasScreenTimePermission()
+        }
+    }
+    
+    @Published
+    var sharedHasScreenTimePermission = false
+    
+    func updateHasScreenTimePermission() {
+        DispatchQueue.global().async {
+            DispatchQueue.main.async {
+                self.sharedHasScreenTimePermission = self.hasScreenTimePermission
+            }
+        }
+    }
     
     // MARK: 스케쥴 시작 시간을 담기 위한 변수
     @AppStorage(AppStorageKey.sleepStartDateComponent.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
