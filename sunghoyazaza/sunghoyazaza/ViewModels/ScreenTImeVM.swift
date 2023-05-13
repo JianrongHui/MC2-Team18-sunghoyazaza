@@ -90,7 +90,7 @@ class ScreenTimeVM: ObservableObject {
         }
     }
     
-    // MARK: onReceive 시 권한 상태 업데이트
+    // MARK: onReceive 권한 상태 업데이트
     func updateAuthorizationStatus(authStatus: AuthorizationStatus) {
         switch authStatus {
         case .notDetermined:
