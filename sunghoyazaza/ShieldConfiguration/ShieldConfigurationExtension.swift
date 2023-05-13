@@ -58,30 +58,54 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     
     override func configuration(shielding application: Application) -> ShieldConfiguration {
         // Customize the shiel d as needed for applications.
-        return ShieldConfiguration(
-            backgroundBlurStyle: UIBlurEffect.Style.extraLight,
-            backgroundColor: UIColor.white.withAlphaComponent(0.1),
-            icon: UIImage(systemName: imageName),
-            title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
-            subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
-            primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
-            primaryButtonBackgroundColor: uiColorValue,
-            secondaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.secondaryButtonText, color: uiColorValue)
-        )
+        if shieldContent.self == .case8 { //MARK: 2회 이상 휴대폰을 본 뒤에는 더보기 버튼이 없는 쉴드 페이지
+            return ShieldConfiguration(
+                backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+                backgroundColor: UIColor.white.withAlphaComponent(0.1),
+                icon: UIImage(systemName: imageName),
+                title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
+                subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
+                primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
+                primaryButtonBackgroundColor: uiColorValue
+            )
+        } else {
+            return ShieldConfiguration(
+                backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+                backgroundColor: UIColor.white.withAlphaComponent(0.1),
+                icon: UIImage(systemName: imageName),
+                title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
+                subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
+                primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
+                primaryButtonBackgroundColor: uiColorValue,
+                secondaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.secondaryButtonText, color: uiColorValue)
+            )
+        }
     }
     
     override func configuration(shielding application: Application, in category: ActivityCategory) -> ShieldConfiguration {
         // Customize the shield as needed for applications shielded because of their category.
-        return ShieldConfiguration(
-            backgroundBlurStyle: UIBlurEffect.Style.extraLight,
-            backgroundColor: UIColor.white.withAlphaComponent(0.1),
-            icon: UIImage(systemName: imageName),
-            title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
-            subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
-            primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
-            primaryButtonBackgroundColor: uiColorValue,
-            secondaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.secondaryButtonText, color: uiColorValue)
-        )
+        if shieldContent.self == .case8 { //MARK: 2회 이상 휴대폰을 본 뒤에는 더보기 버튼이 없는 쉴드 페이지
+            return ShieldConfiguration(
+                backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+                backgroundColor: UIColor.white.withAlphaComponent(0.1),
+                icon: UIImage(systemName: imageName),
+                title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
+                subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
+                primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
+                primaryButtonBackgroundColor: uiColorValue
+            )
+        } else {
+            return ShieldConfiguration(
+                backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+                backgroundColor: UIColor.white.withAlphaComponent(0.1),
+                icon: UIImage(systemName: imageName),
+                title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
+                subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
+                primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
+                primaryButtonBackgroundColor: uiColorValue,
+                secondaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.secondaryButtonText, color: uiColorValue)
+            )
+        }
     }
     
     // TODO: 미사용 시 제거할지 말지 논의하기
