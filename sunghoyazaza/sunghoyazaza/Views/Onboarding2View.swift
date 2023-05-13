@@ -10,7 +10,7 @@ import FamilyControls
 
 struct Onboarding2View: View {
     
-    @State var selection = FamilyActivitySelection()
+    @State var selection = ScreenTimeVM.shared.selectionToDiscourage
     @State var isPresented = false
     
     var body: some View {
@@ -23,27 +23,37 @@ struct Onboarding2View: View {
             // TODO::Pick interface
             
             // VERSION 1
-            FamilyActivityPicker(headerText: "사용이 제한되는 앱", selection: ScreenTimeVM.shared.$selectionToDiscourage)
-                .onChange(of: ScreenTimeVM.shared.selectionToDiscourage) { newSelection in
-
-                }
+            HStack {
+                Text("제한 중인 앱 목록").font(.subheadline)
+                    .foregroundColor(.gray)
+                Spacer()
+                Button("편집") { isPresented = true }
+                    .familyActivityPicker(isPresented: $isPresented,
+                                          selection: $selection)
+            }
             
-            // VERSION 2
-            /*
-            Button("FamilyActivityPicker 열기") { isPresented = true }
-                .familyActivityPicker(isPresented: $isPresented,
-                                      selection: $selection)
-                .onChange(of: selection) { newSelection in
-                    _ = selection.applications
-                    _ = selection.categories
-                    _ = selection.webDomains
-                }
-             */
+            Spacer().frame(height: 8.0)
+            
+            // 앱 아이콘 나오는 부분
+            ForEach (0 ..< selection.applicationTokens.count, id: \.self) { index in
+                Label(Array(selection.applicationTokens)[index])
+            }
+            
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.gray)
+                .frame(height: 120)
+            
+            
+//            ForEach (selection.applicationTokens) { application in
+//                Label(application)
+//            }
+            
+            Spacer()
             
             NavigationLink(destination: {
                 MainView()
             }) {
-                Text("설정 완료").foregroundColor(.white)
+                Text("시작하기").foregroundColor(.white)
             }.padding()
                 .frame(width: 240)
                 .background(Color.accentColor)
