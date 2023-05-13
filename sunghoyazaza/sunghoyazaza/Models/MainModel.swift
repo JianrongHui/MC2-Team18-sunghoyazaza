@@ -88,13 +88,17 @@ func fDateTime(time: Date) -> String {
 }
 
 func getBedTime() -> String {
-    let startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Date()
+    //let startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Date()
+    let userStartAt = ScreenTimeVM.shared.sleepStartDateComponent
+    let startAt = Calendar.current.date(from: userStartAt)!
     
     return fDateTime(time: startAt)
 }
 
 func getWakeupTime() -> String {
-    let endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Date()
+    //let endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Date()
+    let userEndAt = ScreenTimeVM.shared.sleepEndDateComponent
+    let endAt = Calendar.current.date(from: userEndAt)!
     
     return fDateTime(time: endAt)
 }
