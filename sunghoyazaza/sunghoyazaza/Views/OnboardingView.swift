@@ -31,7 +31,7 @@ struct OnboardingView: View {
             Spacer()
             
             NavigationLink(destination: Onboarding2View()) {
-                Text("설정 완료").foregroundColor(.white)
+                Text("다음").foregroundColor(.white)
             }.simultaneousGesture(TapGesture().onEnded{
                 UserDefaults.standard.set(startAt, forKey: "startAt")
                 UserDefaults.standard.set(endAt, forKey: "endAt")

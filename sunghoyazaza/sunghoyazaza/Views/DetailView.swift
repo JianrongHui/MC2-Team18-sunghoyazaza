@@ -10,7 +10,8 @@ import FamilyControls
 
 struct DetailView: View {
     @State private var settingIndex = 0
-    @State var selection = FamilyActivitySelection()
+    @State var selection = ScreenTimeVM.shared.selectionToDiscourage
+    @State var isPresented = false
     @State var startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
     @State var endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
     @State var selectedDays:[Bool] = UserDefaults.standard.array(forKey: "selectedDays") as? [Bool] ?? [Bool](repeating: false, count: 7)
@@ -35,12 +36,21 @@ struct DetailView: View {
                 DatePicker(selection: $endAt, displayedComponents: .hourAndMinute, label: { Text("기상시간") })
             }
             else {
-                FamilyActivityPicker(headerText: "사용이 제한되는 앱", selection: $selection)
-                    .onChange(of: selection) { newSelection in
-                        _ = selection.applications
-                        _ = selection.categories
-                        _ = selection.webDomains
-                    }
+                HStack {
+                    Text("제한 중인 앱 목록").font(.subheadline)
+                        .foregroundColor(.gray)
+                    Spacer()
+                    Button("편집") { isPresented = true }
+                        .familyActivityPicker(isPresented: $isPresented,
+                                              selection: $selection)
+                }
+                
+                Spacer().frame(height: 8.0)
+                
+                // 앱 아이콘 나오는 부분
+//                ForEach (0 ..< selection.applicationTokens.count, id: \.self) { index in
+//                    Label(Array(selection.applicationTokens)[index])
+//                }
             }
             
             Spacer()
