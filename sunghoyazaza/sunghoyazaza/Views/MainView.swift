@@ -21,6 +21,9 @@ struct MainView: View {
     var body: some View {
         ZStack{
             //전체 뷰 Stack
+        //        ScrollView{  //꽉찬 뷰 해결방법?
+        //전체 뷰 Stack
+        ScrollView(){
             VStack(spacing: 0){
                 // 메인 Text
                 Text("\(mainModel.mainLabel)")
@@ -62,7 +65,6 @@ struct MainView: View {
                 SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
                     .padding(.horizontal)
                     .padding(.bottom, 8)
-                
                 //차단된 앱 알려주는 View
                 SleepPlanBottomView()
                     .padding(.horizontal)
@@ -73,7 +75,6 @@ struct MainView: View {
             .onAppear{
                 print("what is grade? : ",DateModel.shared.grade)
             }
-            
         //
         //if newbie == 0{
                 LottieView(lottieFile: "lottieSuccess")
@@ -90,8 +91,7 @@ struct MainView: View {
         //newbie = 1
         //       }
         //    }
-        }
-        .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
+        }.background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
     }
        
     

@@ -9,7 +9,8 @@ import SwiftUI
 
 @main
 struct sunghoyazazaApp: App {
-
+    @Environment(\.scenePhase) private var scenePhase
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -19,14 +20,16 @@ struct sunghoyazazaApp: App {
                 else {
                     Onboarding0View()
                 }
-                
             }
             .environmentObject(ScreenTimeVM.shared)
             .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
             .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in
-                print(authStatus)
+                ScreenTimeVM.shared.updateAuthorizationStatus(authStatus: authStatus)
             }
-            .environmentObject(ScreenTimeVM.shared)
+        }
+        .onChange(of: scenePhase) { phase in
+            NotificationManager.shared.updateHasNotificationPermission()
+            NotificationManager.shared.updateAuthStatus()
         }
     }
 }
