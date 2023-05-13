@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 import UserNotifications
 
-
-
 class NotificationManager {
     static let shared = NotificationManager()
     private init() {}
@@ -20,6 +18,24 @@ class NotificationManager {
     var hasNotificationPermission: Int = -1 {
         didSet {
             print("hasNotificationPermission: ", hasNotificationPermission)
+            updateHasNotificationPermission()
+
+          
+        }
+    }
+    
+    @Published
+    var sharedHasNotificationPermission = -1 {
+        didSet {
+            print("!!!")
+        }
+    }
+    
+    func updateHasNotificationPermission() {
+        DispatchQueue.global().async {
+            DispatchQueue.main.async {
+                self.sharedHasNotificationPermission = self.hasNotificationPermission
+            }
         }
     }
     
@@ -44,7 +60,7 @@ class NotificationManager {
     }
 
     // MARK: 노피티케이션 권한 조회
-    func requestAuthStatus() {
+    func updateAuthStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             switch settings.authorizationStatus {
             case .notDetermined:

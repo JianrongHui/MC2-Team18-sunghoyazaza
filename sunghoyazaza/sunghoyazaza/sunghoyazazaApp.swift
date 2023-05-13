@@ -26,9 +26,6 @@ struct sunghoyazazaApp: App {
             .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in
                 print(authStatus)
             }
-            .onAppear {
-                NotificationManager.shared.requestAuthStatus()
-            }
             .environmentObject(ScreenTimeVM.shared)
         }
     }

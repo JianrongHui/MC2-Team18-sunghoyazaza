@@ -34,8 +34,11 @@ struct PermissionView: View {
         }
         .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
         .onAppear {
-            NotificationManager.shared.requestAuthStatus()
-            print(NotificationManager.shared.hasNotificationPermission)
+            NotificationManager.shared.updateHasNotificationPermission()
+            NotificationManager.shared.updateAuthStatus()
+            vm.updatePermissionStatus()
+        }
+        .onReceive(NotificationManager.shared.$sharedHasNotificationPermission) { status in
             vm.updatePermissionStatus()
         }
         .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in

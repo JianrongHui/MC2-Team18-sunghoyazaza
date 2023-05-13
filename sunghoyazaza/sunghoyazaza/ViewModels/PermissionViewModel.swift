@@ -61,7 +61,6 @@ extension PermissionViewModel {
     }
     
     private func updateNotificationPermissionStatus() {
-        print("vm-hasNotificationPermission: ", NotificationManager.shared.hasNotificationPermission)
         
         if NotificationManager.shared.hasNotificationPermission == 1 {
             notificationButtonStatus.label = "설정완료"
@@ -74,6 +73,9 @@ extension PermissionViewModel {
             notificationButtonStatus.color = .systemRed
             hasNotificationPermission = true
         } else {
+            notificationButtonStatus.label = "설정하기"
+            notificationButtonStatus.img = "checkmark.circle.fill"
+            notificationButtonStatus.color = .systemGray2
             hasNotificationPermission = false
         }
     }
@@ -85,6 +87,9 @@ extension PermissionViewModel {
             screenTimeButtonStatus.color = .systemGreen
             hasScreenTimePermission = true
         } else {
+            screenTimeButtonStatus.label = "설정하기"
+            screenTimeButtonStatus.img = "checkmark.circle.fill"
+            screenTimeButtonStatus.color = .systemGray2
             hasScreenTimePermission = false
         }
     }
@@ -96,6 +101,7 @@ extension PermissionViewModel {
             requestScreenTimePermission()
         }
     }
+    
     // MARK: Notification 권한 요청
     private func requestNotificationPermission() {
         NotificationManager.shared.requestAuthorization()
