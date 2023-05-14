@@ -63,6 +63,7 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     override func intervalWillStartWarning(for activity: DeviceActivityName) {
         super.intervalWillStartWarning(for: activity)
         // Handle the warning before the interval starts.
+        //MARK: 사용자가 알림을 켜놨으면 동작
         if ScreenTimeVM.shared.isUserNotificationOn {
             if activity == .dailySleep { //MARK: 수면 스케줄 시작 알림
                 NotificationManager.shared.requestNotificationCreate(

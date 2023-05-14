@@ -142,6 +142,10 @@ struct Onboarding2View: View {
                 endTime: ScreenTimeVM.shared.sleepEndDateComponent,
                 deviceActivityName: .dailySleep
             )
+            
+            if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
+                print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
+            }
         }).padding().navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {

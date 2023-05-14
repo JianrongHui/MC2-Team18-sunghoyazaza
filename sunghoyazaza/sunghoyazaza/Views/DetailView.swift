@@ -177,6 +177,10 @@ struct DetailView: View {
                             endTime: ScreenTimeVM.shared.sleepEndDateComponent,
                             deviceActivityName: .dailySleep
                         )
+                        
+                        if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
+                            print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
+                        }
                     }
                 }
             }
