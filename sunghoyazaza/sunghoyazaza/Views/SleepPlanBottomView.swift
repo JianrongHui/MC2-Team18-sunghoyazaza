@@ -74,10 +74,10 @@ struct SleepPlanBottomView: View {
                     .frame(maxWidth: .infinity)
             }
         }
-        .frame(maxWidth: .infinity)
-        .padding(.all, 16)
-        .background(Color(hex: 0xF6F8FF))
-        .cornerRadius(24)
+        .frame(maxWidth: .infinity, minHeight: 60)
+        .padding()
+        .background(Color.primary3)
+        .cornerRadius(24) // , corners: [.bottomLeft, .bottomRight]
         .onAppear() {
             //MARK: 사용자가 기존에 설정한 제한 앱 불러오기
             selection = ScreenTimeVM.shared.selectionToDiscourage

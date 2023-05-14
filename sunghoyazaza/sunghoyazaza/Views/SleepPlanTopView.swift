@@ -19,7 +19,7 @@ struct SleepPlanTopView: View {
     var body: some View {
         
         //전체 Stack
-        HStack(spacing: 0){
+        HStack(spacing: 0) {
             
             //침대 이미지
             Image("sleepPlanImage")
@@ -30,12 +30,12 @@ struct SleepPlanTopView: View {
             VStack{
                 
                 //요일 Stack (우측으로 밀기 위한 HStack+Spacer)
-                HStack{
-                    Spacer()
-                    Text("\(weekDay)")
-                        .font(.system(size: 13))
-                }
-                .padding(.horizontal)
+//                HStack{
+//                    Spacer()
+//                    Text("\(weekDay)")
+//                        .font(.system(size: 13))
+//                }
+//                .padding(.horizontal)
                 
                 // 취침 시간 Text + 유저 설정 취침시간
                 HStack{
@@ -44,10 +44,10 @@ struct SleepPlanTopView: View {
                     Spacer()
                     Text("\(sleepTime)")
                         .font(.system(size: 28))
-                        .foregroundColor((Color(hex: 0x0F0094)))
+                        .foregroundColor((Color.accentColor))
                         .bold()
                 }
-                .padding(.horizontal)
+                .padding(.leading, .spacing24)
                 
                 // 기상 시간 Text + 유저 설정 취침시간
                 HStack{
@@ -56,18 +56,35 @@ struct SleepPlanTopView: View {
                     Spacer()
                     Text("\(wakeupTime)")
                         .font(.system(size: 28))
-                        .foregroundColor((Color(hex: 0x0F0094)))
+                        .foregroundColor((Color.accentColor))
                         .bold()
                 }
-                .padding(.horizontal)
+                .padding(.leading, .spacing24)
             }
         }
         .padding()
-        .background(Color(hex: 0xF6F8FF))
-        .cornerRadius(24)
+        .background(Color.primary3)
+        .cornerRadius(24) // , corners: [.topLeft, .topRight]
         
     }
 }
+
+//extension View {
+//    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+//        clipShape( RoundedCorner(radius: radius, corners: corners) )
+//    }
+//}
+//
+//struct RoundedCorner: Shape {
+//
+//    var radius: CGFloat = .infinity
+//    var corners: UIRectCorner = .allCorners
+//
+//    func path(in rect: CGRect) -> Path {
+//        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+//        return Path(path.cgPath)
+//    }
+//}
 
 //MARK: PREVIEW
 struct SleepPlanTopView_Previews: PreviewProvider {

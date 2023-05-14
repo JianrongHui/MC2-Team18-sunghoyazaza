@@ -16,14 +16,14 @@ struct CalendarView: View {
     @State var currentMonth : Int = 0 // 화살표 클릭으로 인한 월 세는 변수
     
     //MARK: Database
-    let days: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    let days: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     let columns = Array(repeating: GridItem(.flexible()), count: 7) //달력 틀
     
     
     //MARK: MAIN
     var body: some View {
         // 전체 Stack
-        VStack(spacing: 10){
+        VStack(spacing: 10) {
             // 월, 년도, 좌화살표, 우화살표 포함 Stack
             HStack(spacing: 20){
                 // 월, 년도 Stack
@@ -46,7 +46,7 @@ struct CalendarView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title2)
-                        .foregroundColor(Color(hex: 0x0F0094))
+                        .foregroundColor(Color.accentColor)
                 }
                 
                 // 우화살표 버튼
@@ -55,35 +55,38 @@ struct CalendarView: View {
                 } label: {
                     Image(systemName: "chevron.right")
                         .font(.title2)
-                        .foregroundColor(Color(hex: 0x0F0094))
+                        .foregroundColor(Color.accentColor)
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, .spacing16)
+            .padding(.bottom)
             
             // 상단 요일 Stack
             HStack(spacing: 0){
                 ForEach(days,id: \.self){day in
                     Text(day)
-                        .font(.system(size: 13))
+//                        .font(.system(size: 14))
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
                         .foregroundColor(.gray)
                 }
             }
+            .padding(.horizontal, 2)
             
             // LazyGrid를 사용한 달력 그리기
             LazyVGrid(columns: columns, spacing: 15){
                 ForEach(extractDate()){ value in
                     CardView(value: value)
                         .background(
-                            //선택 시 생기는 파란색 원
-                            Capsule()
-                                .fill(Color(hex: 0x0F0094))
+                            Capsule() //선택 시 생기는 파란색 원
+                                .fill(Color.accentColor)
                                 .padding(.horizontal, 10)
                                 .opacity(isSameDay(date1: value.date, date2: Date()) ? 0.3 : 0)
                         )
                 }
             }
+            .padding(.horizontal, 6)
+            
             Spacer()
             
             
@@ -104,7 +107,7 @@ struct CalendarView: View {
             if value.day != -1{
                 if let record = dateModel.records[value.key], record.type == .success{
                     Text("\(value.day)")
-                        .foregroundColor(.primary)
+                        .foregroundColor(.systemBlack)
                         .frame(maxWidth: .infinity)
                     
                     Spacer()
@@ -117,7 +120,7 @@ struct CalendarView: View {
                 // 수면 계획 실패 + 미래 날짜 코드
                 else{
                     Text("\(value.day)")
-                        .foregroundColor(.primary)
+                        .foregroundColor(.systemBlack)
                         .frame(maxWidth: .infinity)
                     
                     Spacer()
@@ -125,45 +128,45 @@ struct CalendarView: View {
                 }
             }
         }
-        .padding(.vertical, 9)
-        .frame(height: 35,alignment: .top)
+        .padding(.vertical, 8)
+        .frame(height: 36, alignment: .top)
     }
-//    @ViewBuilder
-//    func CardView(value: DateValue)->some View{
-//        // 날짜 하루 + 수면 계획 성공 여부 Stack
-//        VStack{
-//            // 수면 계획 성공한 날짜 코드
-//            if value.day != -1{
-//                if let task = DateVM().datesHavingDots().first(where: {task in
-//                    print(value.key)
-//                    print("@")
-//                    return isSameDay(date1: task.date, date2: value.date)
-//                }){
-//                    Text("\(value.day)")
-//                        .foregroundColor(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
-//                        .frame(maxWidth: .infinity)
-//
-//                    Spacer()
-//
-//                    Circle()
-//                        .fill(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : Color(hex: 0x0F0094))
-//                        .frame(width: 8, height: 8)
-//
-//                }
-//                // 수면 계획 실패 + 미래 날짜 코드
-//                else{
-//                    Text("\(value.day)")
-//                        .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
-//                        .frame(maxWidth: .infinity)
-//
-//                    Spacer()
-//
-//                }
-//            }
-//        }
-//        .padding(.vertical, 9)
-//        .frame(height: 35,alignment: .top)
-//    }
+    //    @ViewBuilder
+    //    func CardView(value: DateValue)->some View{
+    //        // 날짜 하루 + 수면 계획 성공 여부 Stack
+    //        VStack{
+    //            // 수면 계획 성공한 날짜 코드
+    //            if value.day != -1{
+    //                if let task = DateVM().datesHavingDots().first(where: {task in
+    //                    print(value.key)
+    //                    print("@")
+    //                    return isSameDay(date1: task.date, date2: value.date)
+    //                }){
+    //                    Text("\(value.day)")
+    //                        .foregroundColor(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
+    //                        .frame(maxWidth: .infinity)
+    //
+    //                    Spacer()
+    //
+    //                    Circle()
+    //                        .fill(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : Color(hex: 0x0F0094))
+    //                        .frame(width: 8, height: 8)
+    //
+    //                }
+    //                // 수면 계획 실패 + 미래 날짜 코드
+    //                else{
+    //                    Text("\(value.day)")
+    //                        .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
+    //                        .frame(maxWidth: .infinity)
+    //
+    //                    Spacer()
+    //
+    //                }
+    //            }
+    //        }
+    //        .padding(.vertical, 9)
+    //        .frame(height: 35,alignment: .top)
+    //    }
     
     
     
@@ -177,9 +180,9 @@ struct CalendarView: View {
     
     
     
-//MARK: VM, M 정리 필요
-//MARK: VM, M 정리 필요
-//MARK: VM, M 정리 필요
+    //MARK: VM, M 정리 필요
+    //MARK: VM, M 정리 필요
+    //MARK: VM, M 정리 필요
     
     
     //MARK: 날짜 확인 코드
