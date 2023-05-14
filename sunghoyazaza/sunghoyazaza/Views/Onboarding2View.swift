@@ -16,11 +16,11 @@ struct Onboarding2View: View {
     @State private var isPresented = false
 
     let columns = [
-        GridItem(.fixed(66)),
-        GridItem(.fixed(66)),
-        GridItem(.fixed(66)),
-        GridItem(.fixed(66)),
-        GridItem(.fixed(66))
+        GridItem(.fixed(56)),
+        GridItem(.fixed(56)),
+        GridItem(.fixed(56)),
+        GridItem(.fixed(56)),
+        GridItem(.fixed(56))
     ]
     
     var body: some View {
@@ -57,7 +57,6 @@ extension Onboarding2View {
             }
             .padding(CGFloat.spacing24)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .border(.red)
         }
     }
     
@@ -66,7 +65,7 @@ extension Onboarding2View {
         // TODO::Pick interface
         // VERSION 1
         VStack(spacing: 0) {
-            HStack(spacing: 0) {
+            HStack(alignment: .center, spacing: 0) {
                 Text("제한 중인 앱 목록")
                     .font(.subheadline)
                     .foregroundColor(.gray)
@@ -91,17 +90,16 @@ extension Onboarding2View {
     func SelectedAppListView() -> some View {
         VStack {
             if (selection.applicationTokens.count > 0 || selection.categoryTokens.count > 0) {
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 18){
+                LazyVGrid(columns: columns, alignment: .leading){
                     if selection.applicationTokens.count > 0 {
                         ForEach(Array(selection.applicationTokens), id: \.self) {
                             token in
                             HStack {
                                 Label(token)
                                     .labelStyle(.iconOnly)
-                                    .scaleEffect(3)
+                                    .scaleEffect(2.5)
                             }
                             .frame(width: 56, height: 56)
-                            .border(.red)
                         }
                     }
                     if selection.categoryTokens.count > 0 {
@@ -110,25 +108,23 @@ extension Onboarding2View {
                             HStack {
                                 Label(token)
                                     .labelStyle(.iconOnly)
-                                    .scaleEffect(2.0)
+                                    .scaleEffect(1.8)
                             }
                             .frame(width: 56, height: 56)
                         }
                     }
                 }
-                .padding(CGFloat.spacing16)
+                .padding(.spacing16)
                 .frame(maxWidth: .infinity, minHeight: 80)
                 .background(Color.primary3)
                 .cornerRadius(16)
-                .border(.red)
             } else {
                 Text("선택된 앱이 없습니다.")
-                    .foregroundColor(Color.systemGray)
-                    .padding(CGFloat.spacing16)
+                    .foregroundColor(.systemGray)
+                    .padding(.spacing16)
                     .frame(maxWidth: .infinity, minHeight: 80)
                     .background(Color.primary3)
                     .cornerRadius(16)
-                    .border(.red)
             }
         }
         .padding(.top, .spacing8)
