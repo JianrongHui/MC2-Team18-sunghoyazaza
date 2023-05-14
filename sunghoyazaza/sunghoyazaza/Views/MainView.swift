@@ -7,6 +7,7 @@
 
 //MARK: 앱의 메인 화면
 import SwiftUI
+import ManagedSettings
 //import Lottie
 
 struct MainView: View {

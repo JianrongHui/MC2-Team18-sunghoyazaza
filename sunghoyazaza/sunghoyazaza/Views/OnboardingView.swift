@@ -9,8 +9,13 @@ import SwiftUI
 import FamilyControls
 
 struct OnboardingView: View {
-    @State var startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
-    @State var endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
+    // TODO: @AppStorage로 사용하기 때문에 논의 후 코드 삭제
+//    @State var startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
+//    @State var endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
+    
+    @State var startAt = Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
+    @State var endAt = Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
+    
     @State var selectedDays:[Bool] = UserDefaults.standard.array(forKey: "selectedDays") as? [Bool] ?? [Bool](repeating: false, count: 7)
     
     var body: some View {
@@ -46,14 +51,15 @@ struct OnboardingView: View {
         }
         .padding([.bottom, .horizontal], .spacing24)
         .padding(.top, .spacing32)
-        //        .navigationBarTitleDisplayMode(.inline)
-        //            .toolbar {
-        //                ToolbarItem(placement: .principal) {
-        //                    VStack {
-        //                        Text("수면 루틴 설정").font(.headline)
-        //                    }
-        //                }
-        //            }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("수면 루틴 설정")
+                        .font(.headline)
+                }
+            }
+        }
         .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
     }
 }
