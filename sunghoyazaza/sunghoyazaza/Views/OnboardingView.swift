@@ -14,54 +14,47 @@ struct OnboardingView: View {
     @State var selectedDays:[Bool] = UserDefaults.standard.array(forKey: "selectedDays") as? [Bool] ?? [Bool](repeating: false, count: 7)
     
     var body: some View {
-        VStack(spacing: 0) {
-            VStack(spacing: 0) {
-                Spacer().frame(height: 24.0)
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("계획한 수면 시간을 설정해주세요").font(.largeTitle.bold())
-                    Text("7시간 이상의 숙면은 내일의 집중을 도와줍니다.").foregroundColor(.gray)
-                }.frame(maxWidth: .infinity, alignment: .leading)
-                
-                Spacer().frame(height: 24.0)
-                
-                RepeatDaysPicker(selectedDays: $selectedDays)
-                
-                Spacer().frame(height: 16.0)
-                
-                DatePicker(selection: $startAt, displayedComponents: .hourAndMinute, label: { Text("취침시간") })
-                
-                Spacer().frame(height: 24.0)
-                
-                DatePicker(selection: $endAt, displayedComponents: .hourAndMinute, label: { Text("기상시간") })
-                
-            }.padding(.horizontal, 24)
+        VStack { //(spacing: 24)
+            VStack(alignment: .leading, spacing: 8) {
+                Text("수면 루틴을 설정해주세요").font(.largeTitle.bold())
+                Text("7시간 이상의 숙면은 내일 집중할 수 있게 도와줘요").foregroundColor(.gray)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom, .spacing32)
+            
+            //RepeatDaysPicker(selectedDays: $selectedDays)
+            
+            //            Spacer().frame(height: 0)
+            
+            DatePicker(selection: $startAt, displayedComponents: .hourAndMinute, label: { Text("🌙 취침 시간") })
+                .padding(.bottom, .spacing24)
+            DatePicker(selection: $endAt, displayedComponents: .hourAndMinute, label: { Text("🔔 기상 시간") })
             
             Spacer()
             
             NavigationLink(destination: Onboarding2View()) {
-                Text("다음").foregroundColor(.white)
+                Text("수면 루틴 설정 완료").foregroundColor(.white)
             }.simultaneousGesture(TapGesture().onEnded{
-//                UserDefaults.standard.set(startAt, forKey: "startAt")
-//                UserDefaults.standard.set(endAt, forKey: "endAt")
-//                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
-                // MARK: 사용자 선택 수면시간 @AppStorage 변수에 저장
-                ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
-                ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
-            }).padding().frame(maxWidth: .infinity)
-                .foregroundColor(.systemWhite)
-                .background(Color.accentColor)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding([.horizontal, .bottom], CGFloat.spacing24)
-        }.navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text("수면계획 설정").font(.headline)
-                    }
-                }
-            }
-            .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
+                UserDefaults.standard.set(startAt, forKey: "startAt")
+                UserDefaults.standard.set(endAt, forKey: "endAt")
+                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+            })
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.accentColor)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        .padding([.bottom, .horizontal], .spacing24)
+        .padding(.top, .spacing32)
+        //        .navigationBarTitleDisplayMode(.inline)
+        //            .toolbar {
+        //                ToolbarItem(placement: .principal) {
+        //                    VStack {
+        //                        Text("수면 루틴 설정").font(.headline)
+        //                    }
+        //                }
+        //            }
+        .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
     }
 }
 
@@ -70,13 +63,15 @@ struct RepeatDaysPicker: View {
     @Binding var selectedDays:[Bool]
     
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Text("반복일 설정").font(.subheadline)
-                    .foregroundColor(.gray)
+        VStack {
+            HStack {
+                Text("요일 선택")
+//                    .font(.subheadline)
+//                    .foregroundColor(.gray)
+
                 Spacer()
                 if selectedDays == [Bool](repeating: true, count: 7) {
-                    Button("전체취소") {
+                    Button("전체 취소") {
                         selectedDays = [Bool](repeating: false, count: 7)
                     }.font(.subheadline).padding(.horizontal, 10.0).padding(.vertical, 4.0)
                         .background(.white)
@@ -84,7 +79,7 @@ struct RepeatDaysPicker: View {
                         .cornerRadius(16)
                 }
                 else {
-                    Button("전체반복") {
+                    Button("전체 반복") {
                         selectedDays = [Bool](repeating: true, count: 7)
                     }.font(.subheadline).padding(.horizontal, 10.0).padding(.vertical, 4.0)
                         .background(.white)

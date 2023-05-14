@@ -16,8 +16,8 @@ struct PermissionView: View {
     
     private var pageContents =
     """
-    머스트 슬립은 아래 기능들에
-    대한 권한 설정이 필요해요
+    머스트 슬립은
+    아래와 같은 권한 설정이 필요해요
     권한 설정을 완료하면
     첫 수면 계획을 만들러 갈 수 있어요
     """
@@ -81,7 +81,7 @@ extension PermissionView {
             .font(Font.systemTitle3)
             .multilineTextAlignment(.center)
             .padding([.horizontal, .bottom], .spacing16)
-            .padding(.top, .spacing56)
+            .padding(.top, .spacing32)
             .frame(maxWidth: .infinity)
     }
     
@@ -160,7 +160,7 @@ extension PermissionView {
                 ScreenTimeVM.shared.requestAuthorization()
                 isNavigationActive = true
             } label: {
-                Text("시작하기")
+                Text("첫 수면 계획 만들러 가기")
             }
             .padding()
             .frame(maxWidth: .infinity)
