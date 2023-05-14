@@ -34,10 +34,19 @@ class ShieldActionExtension: ShieldActionDelegate {
             )
             
             //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
-            let dateString = Date().toString()
+            var current = Date()
+            let calendar = Calendar.current
+            let hour = calendar.component(.hour, from: current)
+            
+            if hour < 12{
+                current = calendar.date(byAdding: .day, value: -1, to: current)!
+            }
+            
+            let dateString = current.toString()
             if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
                 failList.append(dateString)
                 DateModel.shared.failList = (failList.encode)!
+                
             }
             
             completionHandler(.defer)

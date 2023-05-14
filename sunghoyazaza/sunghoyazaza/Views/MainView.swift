@@ -89,6 +89,11 @@ struct MainView: View {
                 .navigationBarBackButtonHidden(true)
                 .onAppear{
                     print("what is grade? : ",DateModel.shared.grade)
+                    let now = Date()
+                    let calendar = Calendar.current
+                    let hour = calendar.component(.hour, from: now)
+
+                    print(hour)
                 }
                 // TODO: Lottie 파일 없음 해결 필요
                 //if newbie == 0{
