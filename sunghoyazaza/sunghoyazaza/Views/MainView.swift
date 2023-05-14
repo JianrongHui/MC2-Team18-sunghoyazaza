@@ -37,6 +37,7 @@ struct MainView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal)
                         .foregroundColor(Color(hex: 0x8E8E93))
+                    //테스트용 버튼
 //                    Button {
 //                        print("Start: \(ScreenTimeVM.shared.sleepStartDateComponent)")
 //                        print("End: \(ScreenTimeVM.shared.sleepEndDateComponent)")
