@@ -57,30 +57,28 @@ struct Onboarding2View: View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Spacer().frame(height: 24.0)
-                
                 VStack(alignment: .leading, spacing: 8) {
                     Text("계획한 수면 시간을 설정해주세요").font(.largeTitle.bold())
                     Text("7시간 이상의 숙면은 내일의 집중을 도와줍니다.").foregroundColor(.gray)
                 }.frame(maxWidth: .infinity, alignment: .leading)
-                
                 Spacer().frame(height: 24.0)
-                
                 // TODO::Pick interface
-                
                 // VERSION 1
                 HStack(spacing: 0) {
                     Text("제한 중인 앱 목록").font(.subheadline)
                         .foregroundColor(.gray)
                     Spacer()
                     Button("편집") { isPresented = true }
-                        .familyActivityPicker(isPresented: $isPresented,
-                                              selection: $selection).font(.subheadline).padding(.horizontal, 10.0).padding(.vertical, 4.0)
+                        .familyActivityPicker(
+                            isPresented: $isPresented,
+                            selection: $selection)
+                        .font(.subheadline)
+                        .padding(.horizontal, 10.0)
+                        .padding(.vertical, 4.0)
                         .background(.white)
                         .border(.white, width: 0)
                         .cornerRadius(16)
                 }
-                
-                
                 Spacer().frame(height: 8.0)
                 
                 // 앱 아이콘 나오는 부분
