@@ -21,22 +21,22 @@ struct MainView: View {
         ZStack{
             //        ScrollView{  //꽉찬 뷰 해결방법?
             //전체 뷰 Stack
-            ScrollView(){
-                VStack(spacing: 0){
+            ScrollView() {
+                VStack {
+                    
                     // 메인 Text
                     Text("\(mainModel.mainLabel)")
-                        .lineLimit(2)
-                        .fixedSize(horizontal: false, vertical: true)
+                        .font(.largeTitle.bold())
+                        .tracking(-1)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 34))
-                        .padding(.horizontal)
-                        .bold()
+                        .padding(.bottom, .spacing4)
+                    
                     // 서브 Text (문구 랜덤 생성)
                     Text("\(mainModel.subLabel)")
-                        .font(.system(size: 17))
+                        .tracking(-1)
+                        .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
-                        .foregroundColor(Color(hex: 0x8E8E93))
+                        .padding(.bottom, .spacing8)
                     //테스트용 버튼
 //                    Button {
 //                        print("Start: \(ScreenTimeVM.shared.sleepStartDateComponent)")
@@ -53,34 +53,39 @@ struct MainView: View {
                     //캘린더
                     CalendarView(currentDate: $currentDate)
                         .padding(.vertical)
-                        .cornerRadius(24)
-                        .frame(height: 393)
-                        .background(Color.white)
-                        .cornerRadius(20)
-                        .padding()
+                        .frame(maxHeight: .infinity)
+                        .background(Color.systemWhite)
+                        .cornerRadius(16)
                     
-                    
-                    HStack{
+                    HStack {
                         //수면계획 택스트
                         Text("수면 계획")
-                            .padding(.horizontal)
+//                            .padding(.horizontal)
                         
                         Spacer()
                         
                         // 편집 버튼
-                        NavigationLink(destination: DetailView(), label: {Text("편집").foregroundColor(Color(hex: 0x0F0094))}).padding(.horizontal)
+                        NavigationLink(
+                            destination: DetailView(),
+                            label: { Text("편집").foregroundColor(Color.accentColor) }
+                        )
+                        .padding(.horizontal)
+                        .padding(.vertical, .spacing4)
+                        .background(Color.systemWhite)
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
                     }
+                    .padding(.top, .spacing4)
                     
                     //취침 및 기상시간 알려주는 View
                     SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
-                        .padding(.horizontal)
-                        .padding(.bottom, 8)
+//                        .padding(.horizontal)
                     //차단된 앱 알려주는 View
                     SleepPlanBottomView()
-                        .padding(.horizontal)
-                        .padding(.bottom, 10)
+//                        .padding(.horizontal)
+                
                 }
-                .background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
+                .padding([.top, .horizontal], .spacing24)
+                .background(Color.systemGray6.edgesIgnoringSafeArea(.all))
                 .navigationBarBackButtonHidden(true)
                 .onAppear{
                     print("what is grade? : ",DateModel.shared.grade)
@@ -100,7 +105,9 @@ struct MainView: View {
                 //newbie = 1
                 //       }
                 //    }
-            }.background(Color(hex: 0xF0F0F5).edgesIgnoringSafeArea(.all))
+            }
+            
+            .background(Color.systemGray6.edgesIgnoringSafeArea(.all))
         }
     }
 }
