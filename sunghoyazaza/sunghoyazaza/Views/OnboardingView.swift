@@ -68,16 +68,23 @@ struct RepeatDaysPicker: View {
                 Text("요일 선택")
 //                    .font(.subheadline)
 //                    .foregroundColor(.gray)
+
                 Spacer()
                 if selectedDays == [Bool](repeating: true, count: 7) {
                     Button("전체 취소") {
                         selectedDays = [Bool](repeating: false, count: 7)
-                    }
+                    }.font(.subheadline).padding(.horizontal, 10.0).padding(.vertical, 4.0)
+                        .background(.white)
+                        .border(.white, width: 0)
+                        .cornerRadius(16)
                 }
                 else {
                     Button("전체 반복") {
                         selectedDays = [Bool](repeating: true, count: 7)
-                    }
+                    }.font(.subheadline).padding(.horizontal, 10.0).padding(.vertical, 4.0)
+                        .background(.white)
+                        .border(.white, width: 0)
+                        .cornerRadius(16)
                 }
             }
             HStack {
@@ -90,16 +97,16 @@ struct RepeatDaysPicker: View {
                         }
                     }) {
                         Text(daysOfWeek[index])
-                            .font(.system(size: 18))
+                            .font(.system(size: 17))
                             .fontWeight(selectedDays[index] ? .bold : .regular)
                             .foregroundColor(selectedDays[index] ? Color.accentColor : .black)
                     }
                     .frame(width: 44, height: 44)
-                    .background(selectedDays[index] ? Color.accentColor.opacity(0.1) : Color.white)
+                    .background(selectedDays[index] ? Color.accentColor.opacity(0.2) : Color.systemGray5)
                     .cornerRadius(50)
                     .frame(maxWidth: .infinity)
                 }
-            }
+            }.padding(.vertical, 6.0)
         }
     }
 }

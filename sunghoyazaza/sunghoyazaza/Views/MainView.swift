@@ -28,29 +28,29 @@ struct MainView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 34))
-                        .padding(.horizontal)
+//                        .padding(.horizontal)
                         .bold()
                     // 서브 Text (문구 랜덤 생성)
                     Text("\(mainModel.subLabel)")
                         .font(.system(size: 17))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
+//                        .padding(.horizontal)
                         .foregroundColor(Color(hex: 0x8E8E93))
                     
                     //캘린더
                     CalendarView(currentDate: $currentDate)
-                        .padding(.vertical)
+//                        .padding(.vertical)
                         .cornerRadius(24)
                         .frame(height: 393)
                         .background(Color.white)
                         .cornerRadius(20)
-                        .padding()
+//                        .padding()
                     
                     
                     HStack{
                         //수면계획 택스트
                         Text("수면 계획")
-                            .padding(.horizontal)
+//                            .padding(.horizontal)
                         
                         Spacer()
                         
@@ -60,11 +60,11 @@ struct MainView: View {
                     
                     //취침 및 기상시간 알려주는 View
                     SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
-                        .padding(.horizontal)
+//                        .padding(.horizontal)
                         .padding(.bottom, 8)
                     //차단된 앱 알려주는 View
                     SleepPlanBottomView()
-                        .padding(.horizontal)
+//                        .padding(.horizontal)
                         .padding(.bottom, 10)
                 }
                 .padding([.top, .horizontal], .spacing24)
