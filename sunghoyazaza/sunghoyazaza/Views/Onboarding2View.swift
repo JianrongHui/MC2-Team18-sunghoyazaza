@@ -59,7 +59,8 @@ struct Onboarding2View: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("제한할 앱을 설정해주세요").font(.largeTitle.bold())
                 Text("SNS, 영상 컨텐츠 등을 제한하는 것을 추천해요").foregroundColor(.gray)
-            }.frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
             // TODO::Pick interface
             
@@ -76,8 +77,6 @@ struct Onboarding2View: View {
                         .border(.white, width: 0)
                         .cornerRadius(16)
                 }
-                
-                Spacer().frame(height: 8.0)
                 
                 // 앱 아이콘 나오는 부분
                 
