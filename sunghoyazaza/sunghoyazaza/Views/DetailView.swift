@@ -68,6 +68,7 @@ struct DetailView: View {
                     ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
                     ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
                     ScreenTimeVM.shared.selectionToDiscourage = selection
+                    ScreenTimeVM.shared.isUserNotificationOn = toggleIndex // 알림 설정 값 저장
                     
                     //TODO: 수면 계획 모니터링 시작 -> 사용자 설정시간으로 넘겨주도록 수정 필요
                     ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(

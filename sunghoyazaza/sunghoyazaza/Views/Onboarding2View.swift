@@ -140,6 +140,10 @@ extension Onboarding2View {
             Text("시작하기")
                 .foregroundColor(.white)
         }
+        .simultaneousGesture(TapGesture().onEnded{
+            // MARK: 앱 선택 값을 뷰모델로 저장)
+            ScreenTimeVM.shared.selectionToDiscourage = selection
+        })
         .padding()
         .frame(maxWidth: .infinity)
         .background(Color.accentColor)
