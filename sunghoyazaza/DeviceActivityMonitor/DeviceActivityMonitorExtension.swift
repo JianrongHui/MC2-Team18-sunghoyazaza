@@ -2,7 +2,7 @@
 //  DeviceActivityMonitorExtension.swift
 //  DeviceActivityMonitor
 //
-//  Created by Yun Dongbeom on 2023/05/08.
+//  Created by 김영빈 on 2023/05/15.
 //
 
 import DeviceActivity
