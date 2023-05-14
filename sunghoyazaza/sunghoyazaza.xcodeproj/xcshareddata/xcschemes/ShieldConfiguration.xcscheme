@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A9F0ED732A08C48E006E02B6"
+               BlueprintIdentifier = "B8252EBD2A11330900D1B692"
                BuildableName = "ShieldConfiguration.appex"
                BlueprintName = "ShieldConfiguration"
                ReferencedContainer = "container:sunghoyazaza.xcodeproj">
