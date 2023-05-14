@@ -24,7 +24,6 @@ struct MainView: View {
             ScrollView() {
                 ZStack{
                     VStack {
-                        
                         // 메인 Text
                         Text("\(mainModel.mainLabel)")
                             .font(.largeTitle.bold())
@@ -93,9 +92,6 @@ struct MainView: View {
                     }
 
                     
-                    // TODO: Lottie 파일 없음 해결 필요
-                    //if newbie == 0{
-                    
                     LottieView(lottieFile: "LottieFile")
                         .frame(width: lottieWeight, height: lottieHeight)
                         .onAppear{
@@ -105,30 +101,7 @@ struct MainView: View {
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
-                    //.onAppear {
-                    //newbie = 1
-                    //       }
-                    //    }
-                    
-                    //취침 및 기상시간 알려주는 View
-                    SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
-//                        .padding(.horizontal)
-                    //차단된 앱 알려주는 View
-                    SleepPlanBottomView()
-//                        .padding(.horizontal)
-                
-                }
-                .padding([.top, .horizontal], .spacing24)
-                .background(Color.systemGray6.edgesIgnoringSafeArea(.all))
-                .navigationBarBackButtonHidden(true)
-                .onAppear{
-                    print("what is grade? : ",DateModel.shared.grade)
-                    let now = Date()
-                    let calendar = Calendar.current
-                    let hour = calendar.component(.hour, from: now)
 
-                    print(hour)
                 }
             }
             .background(Color.systemGray6.edgesIgnoringSafeArea(.all))
