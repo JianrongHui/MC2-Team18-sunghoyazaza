@@ -18,4 +18,24 @@ extension String {
             return nil
         }
     }
+    
+    var decode:[String]?{
+        let encodedString = self
+
+        if let data = encodedString.data(using: .utf8) {
+            do {
+                let decodedData = try JSONDecoder().decode(StringArray.self, from: data)
+                let decodedArray = decodedData.strings
+                print("Decoded array: \(decodedArray)")
+                return decodedArray
+            } catch {
+                print("Error decoding string array: \(error.localizedDescription)")
+                return nil
+            }
+        }else{
+            return nil
+        }
+    }
+    
+
 }

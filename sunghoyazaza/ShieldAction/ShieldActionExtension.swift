@@ -32,6 +32,14 @@ class ShieldActionExtension: ShieldActionDelegate {
                 endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
                 deviceActivityName: .additionalTime
             )
+            
+            //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
+            let dateString = Date().toString()
+            if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
+                failList.append(dateString)
+                DateModel.shared.failList = (failList.encode)!
+            }
+            
             completionHandler(.defer)
         @unknown default:
             fatalError()

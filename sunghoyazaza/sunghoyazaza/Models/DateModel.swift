@@ -29,22 +29,33 @@ struct Record{
 // 20230511 10시에 fail -> 20230510 fail,
 
 
-var dummyData:[String] = [
-//    "20230508",
+//var dummyData:[String] = [
+////    "20230508",
+////    "20230509",
+////    "20230510",
+////    "20230502"
+////    "20230511":false
+//   //  "20230510",
 //    "20230509",
-//    "20230510",
-//    "20230502"
-//    "20230511":false
-   //  "20230510",
-    "20230509",
-     "20230510"
-]
+//     "20230510"
+//]
 
 
 
-class DateModel{
+class DateModel:ObservableObject{
     
-    private init(failList:[String]){
+    private init(){}
+    
+    static let shared = DateModel()
+    
+    @AppStorage("failList", store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var failList: String = "{\"strings\":[]}"
+    
+    @Published
+    var records:[String:Record] = [:]
+    
+    func reloadData(){
+        guard let failList = self.failList.decode else { return }
         var failDic:[String:Bool] = [:]
         failList.forEach{
             failDic[$0] = true
@@ -68,10 +79,6 @@ class DateModel{
         }
         self.records = tempRecords
     }
-    
-    static let shared = DateModel(failList:dummyData)
-    
-    var records:[String:Record]
     
     var totalSuccessCount:Int{
         self.records.filter{$0.value.type == .success}.count

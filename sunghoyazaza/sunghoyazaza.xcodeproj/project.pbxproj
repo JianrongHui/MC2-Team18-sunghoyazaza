@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		12C3B77E2A0C838A001CF237 /* Onboarding0View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C3B77D2A0C838A001CF237 /* Onboarding0View.swift */; };
 		12C3B7802A0D0A19001CF237 /* PermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C3B77F2A0D0A19001CF237 /* PermissionView.swift */; };
+		766572122A11144200780CA5 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766572112A11144200780CA5 /* StringArray.swift */; };
+		766572142A1115DE00780CA5 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766572132A1115DE00780CA5 /* Array.swift */; };
+		766572152A1117AC00780CA5 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766572112A11144200780CA5 /* StringArray.swift */; };
+		766572162A1117AC00780CA5 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766572112A11144200780CA5 /* StringArray.swift */; };
+		766572172A1117AD00780CA5 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766572112A11144200780CA5 /* StringArray.swift */; };
+		766572182A1119A200780CA5 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4392A07C5B90069656E /* DateModel.swift */; };
+		766572192A1119A500780CA5 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF4392A07C5B90069656E /* DateModel.swift */; };
+		7665721A2A1119B600780CA5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10B92A0C1C9F00689C42 /* Date.swift */; };
+		7665721B2A1119B700780CA5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10B92A0C1C9F00689C42 /* Date.swift */; };
+		7665721C2A111DED00780CA5 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766572132A1115DE00780CA5 /* Array.swift */; };
+		7665721D2A111DED00780CA5 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766572132A1115DE00780CA5 /* Array.swift */; };
+		7665721E2A111DED00780CA5 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766572132A1115DE00780CA5 /* Array.swift */; };
 		76CA10BA2A0C1C9F00689C42 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10B92A0C1C9F00689C42 /* Date.swift */; };
 		76CA10BC2A0C1D9400689C42 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA10BB2A0C1D9400689C42 /* String.swift */; };
 		76CA10BD2A0E774700689C42 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43D2A07C5B90069656E /* DateVM.swift */; };
@@ -145,6 +157,8 @@
 /* Begin PBXFileReference section */
 		12C3B77D2A0C838A001CF237 /* Onboarding0View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding0View.swift; sourceTree = "<group>"; };
 		12C3B77F2A0D0A19001CF237 /* PermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionView.swift; sourceTree = "<group>"; };
+		766572112A11144200780CA5 /* StringArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringArray.swift; sourceTree = "<group>"; };
+		766572132A1115DE00780CA5 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		76CA10B92A0C1C9F00689C42 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		76CA10BB2A0C1D9400689C42 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7F37852A2A07AD650055EAB2 /* sunghoyazaza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sunghoyazaza.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -350,6 +364,8 @@
 				76CA10B92A0C1C9F00689C42 /* Date.swift */,
 				76CA10BB2A0C1D9400689C42 /* String.swift */,
 				A92CA03C2A0CC2DD0061EEE2 /* CGFloat+Extension.swift */,
+				766572112A11144200780CA5 /* StringArray.swift */,
+				766572132A1115DE00780CA5 /* Array.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -651,6 +667,7 @@
 				7F37852E2A07AD650055EAB2 /* sunghoyazazaApp.swift in Sources */,
 				7FBFF4542A07C5B90069656E /* SleepPlanBottomView.swift in Sources */,
 				7FBFF4522A07C5B90069656E /* StartPermissionView.swift in Sources */,
+				766572142A1115DE00780CA5 /* Array.swift in Sources */,
 				A9F0ED982A08CABD006E02B6 /* AppStorageKeyManager.swift in Sources */,
 				B813F33F2A0D36D7003E7590 /* ShieldContent.swift in Sources */,
 				7FBFF4502A07C5B90069656E /* Font+Extension.swift in Sources */,
@@ -679,6 +696,7 @@
 				12C3B7802A0D0A19001CF237 /* PermissionView.swift in Sources */,
 				A9D5C5772A0E6ECC002723F0 /* PermissionViewModel.swift in Sources */,
 				7FBFF4492A07C5B90069656E /* DateValue.swift in Sources */,
+				766572122A11144200780CA5 /* StringArray.swift in Sources */,
 				7FBFF4562A07C5B90069656E /* SleepPlanTopView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,10 +727,14 @@
 				A9F0ED992A08CB9B006E02B6 /* AppStorageKeyManager.swift in Sources */,
 				A92CA0412A0CC9020061EEE2 /* Color+Extension.swift in Sources */,
 				76CA10C62A0E787500689C42 /* String.swift in Sources */,
+				766572192A1119A500780CA5 /* DateModel.swift in Sources */,
 				A9D5C5732A0DD2DD002723F0 /* ShieldContent.swift in Sources */,
 				76CA10BE2A0E776D00689C42 /* DateVM.swift in Sources */,
+				7665721C2A111DED00780CA5 /* Array.swift in Sources */,
 				A92CA0442A0CC9060061EEE2 /* CGFloat+Extension.swift in Sources */,
+				766572152A1117AC00780CA5 /* StringArray.swift in Sources */,
 				A9F0ED962A08C9E6006E02B6 /* NotificationManager.swift in Sources */,
+				7665721A2A1119B600780CA5 /* Date.swift in Sources */,
 				A92CA03E2A0CC8FE0061EEE2 /* Font+Extension.swift in Sources */,
 				A9F0ED662A08C2CD006E02B6 /* DeviceActivityMonitorExtension.swift in Sources */,
 				A94A97DB2A0F76FA0012E8A9 /* ScreenTimeVM.swift in Sources */,
@@ -730,8 +752,10 @@
 				A9F0ED9A2A08DE0D006E02B6 /* AppStorageKeyManager.swift in Sources */,
 				A92CA03F2A0CC8FF0061EEE2 /* Font+Extension.swift in Sources */,
 				A92CA0422A0CC9030061EEE2 /* Color+Extension.swift in Sources */,
+				766572162A1117AC00780CA5 /* StringArray.swift in Sources */,
 				76CA10C12A0E77AE00689C42 /* DateModel.swift in Sources */,
 				A92CA0452A0CC9070061EEE2 /* CGFloat+Extension.swift in Sources */,
+				7665721D2A111DED00780CA5 /* Array.swift in Sources */,
 				76CA10C32A0E77C200689C42 /* Date.swift in Sources */,
 				A9D5C5742A0DD2DE002723F0 /* ShieldContent.swift in Sources */,
 				A94A97DC2A0F76FB0012E8A9 /* ScreenTimeVM.swift in Sources */,
@@ -745,10 +769,14 @@
 				76CA10BF2A0E776E00689C42 /* DateVM.swift in Sources */,
 				A9F0ED8C2A08C49E006E02B6 /* ShieldActionExtension.swift in Sources */,
 				A9F0ED9B2A08DE0E006E02B6 /* AppStorageKeyManager.swift in Sources */,
+				766572182A1119A200780CA5 /* DateModel.swift in Sources */,
 				76CA10C72A0E787600689C42 /* String.swift in Sources */,
 				B8252DFF2A10DA8F00D1B692 /* NotificationManager.swift in Sources */,
+				7665721E2A111DED00780CA5 /* Array.swift in Sources */,
 				A92CA0402A0CC8FF0061EEE2 /* Font+Extension.swift in Sources */,
+				766572172A1117AD00780CA5 /* StringArray.swift in Sources */,
 				A92CA0432A0CC9030061EEE2 /* Color+Extension.swift in Sources */,
+				7665721B2A1119B700780CA5 /* Date.swift in Sources */,
 				A92CA0462A0CC9080061EEE2 /* CGFloat+Extension.swift in Sources */,
 				B8252DFB2A10DA1200D1B692 /* DeviceActivityMonitorExtension.swift in Sources */,
 				A9D5C5752A0DD2DF002723F0 /* ShieldContent.swift in Sources */,
