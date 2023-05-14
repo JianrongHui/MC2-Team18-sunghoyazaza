@@ -89,6 +89,7 @@ func fDateTime(time: Date) -> String {
 
 func getBedTime() -> String {
     //let startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Date()
+    //MARK: 사용자 설정 시간값 불러오기 (DateComponenet -> Date 타입 변환)
     let userStartAt = ScreenTimeVM.shared.sleepStartDateComponent
     let startAt = Calendar.current.date(from: userStartAt)!
     
@@ -97,6 +98,7 @@ func getBedTime() -> String {
 
 func getWakeupTime() -> String {
     //let endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Date()
+    //MARK: 사용자 설정 시간값 불러오기 (DateComponenet -> Date 타입 변환)
     let userEndAt = ScreenTimeVM.shared.sleepEndDateComponent
     let endAt = Calendar.current.date(from: userEndAt)!
     

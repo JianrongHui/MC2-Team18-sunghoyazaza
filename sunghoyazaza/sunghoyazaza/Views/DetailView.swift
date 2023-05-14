@@ -32,8 +32,12 @@ struct DetailView: View {
         GridItem(.fixed(56))
     ]
     
-    @State var startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
-    @State var endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
+    // TODO: @AppStorage로 사용하기 때문에 논의 후 코드 삭제
+//    @State var startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
+//    @State var endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
+    @State var startAt = Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
+    @State var endAt = Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
+    
     @State var selectedDays:[Bool] = UserDefaults.standard.array(forKey: "selectedDays") as? [Bool] ?? [Bool](repeating: false, count: 7)
     
     @State private var toggleIndex = true
@@ -158,20 +162,25 @@ struct DetailView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("저장") {
-                        //                        UserDefaults.standard.set(startAt, forKey: "startAt")
-                        //                        UserDefaults.standard.set(endAt, forKey: "endAt")
-                        //                        UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
-                        //MARK: 사용자 설정 값들을 저장 @AppStorage 변수에 저장
+//                        UserDefaults.standard.set(startAt, forKey: "startAt")
+//                        UserDefaults.standard.set(endAt, forKey: "endAt")
+//                        UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+                        // MARK: 사용자 설정 값들을 @AppStorage 변수에 저장
                         ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
                         ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
                         ScreenTimeVM.shared.selectionToDiscourage = selection
+                        ScreenTimeVM.shared.isUserNotificationOn = toggleIndex // 시작 전 알림 설정 여부 저장
                         
-                        //TODO: 수면 계획 모니터링 시작 -> 사용자 설정시간으로 넘겨주도록 수정 필요
+                        // MARK: 수면 계획 모니터링 시작
                         ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
                             startTime: ScreenTimeVM.shared.sleepStartDateComponent,
                             endTime: ScreenTimeVM.shared.sleepEndDateComponent,
                             deviceActivityName: .dailySleep
                         )
+                        
+                        if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
+                            print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
+                        }
                     }
                 }
             }

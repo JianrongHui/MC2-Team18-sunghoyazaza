@@ -27,11 +27,7 @@ struct ColorfulIconLabelStyle: LabelStyle {
 
 struct Onboarding2View: View {
     
-    @State var selection = FamilyActivitySelection() {
-        didSet {
-            ScreenTimeVM.shared.selectionToDiscourage = selection
-        }
-    }
+    @State var selection = FamilyActivitySelection()
     
     @State var isPresented = false
     var tokens: [ApplicationToken] {
@@ -127,7 +123,37 @@ struct Onboarding2View: View {
             NavigationLink(destination: {
                 MainView()
             }) {
-                
+                Text("시작하기").foregroundColor(.white)
+            }.padding().frame(maxWidth: .infinity)
+                .foregroundColor(.systemWhite)
+                .background(Color.accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .padding([.horizontal, .bottom], CGFloat.spacing24)
+        }.simultaneousGesture(TapGesture().onEnded{
+            // MARK: 선택한 제한 앱 @AppStorage 변수에 저장
+            ScreenTimeVM.shared.selectionToDiscourage = selection
+            // MARK: 수면 계획 모니터링 시작
+            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
+                deviceActivityName: .dailySleep
+            )
+            
+            if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
+                print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
+            }
+        }).padding().navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("수면계획 설정").font(.headline)
+                    }
+                }
+            }
+            .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
+            .onChange(of: selection) {
+                authStatus in
+                print("ggg")
                 Text("제한할 앱 설정 완료").foregroundColor(.white)
             }
             .padding()

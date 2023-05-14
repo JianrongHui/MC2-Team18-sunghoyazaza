@@ -180,16 +180,13 @@ class ScreenTimeVM: ObservableObject {
         }
 
         do {
+            print("Stop monitoring... --> \(deviceActivityCenter.activities.description)")
             deviceActivityCenter.stopMonitoring()
             try deviceActivityCenter.startMonitoring(
                 deviceActivityName,
                 during: schedule
             )
-            if deviceActivityName == .dailySleep {
-                print("Daily sleep monitoring started")
-            } else if deviceActivityName == .additionalTime {
-                print("Additional 15 minutes Monitoring started")
-            }
+            print("Start monitoring... --> \(deviceActivityCenter.activities.description)")
         } catch {
             print("Unexpected error: \(error).")
         }
@@ -257,6 +254,7 @@ extension DeviceActivityName {
 //extension DeviceActivityEvent.Name {
 //    static let `default` = Self("threshold.default")
 //}
+
 //MARK: ManagedSettingStore Name List
 extension ManagedSettingsStore.Name {
     static let tenSeconds = Self("threshold.seconds.ten")
