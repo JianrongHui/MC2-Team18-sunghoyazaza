@@ -40,9 +40,12 @@ struct OnboardingView: View {
             NavigationLink(destination: Onboarding2View()) {
                 Text("수면 루틴 설정 완료").foregroundColor(.white)
             }.simultaneousGesture(TapGesture().onEnded{
-                UserDefaults.standard.set(startAt, forKey: "startAt")
-                UserDefaults.standard.set(endAt, forKey: "endAt")
-                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+//                UserDefaults.standard.set(startAt, forKey: "startAt")
+//                UserDefaults.standard.set(endAt, forKey: "endAt")
+//                UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
+                // MARK: 설정한 시간값을 뷰모델로 저장
+                ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
+                ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
             })
             .padding()
             .frame(maxWidth: .infinity)
