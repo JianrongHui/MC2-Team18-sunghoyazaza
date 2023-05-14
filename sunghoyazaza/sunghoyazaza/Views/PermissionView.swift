@@ -81,7 +81,7 @@ extension PermissionView {
             .font(Font.systemTitle3)
             .multilineTextAlignment(.center)
             .padding([.horizontal, .bottom], .spacing16)
-            .padding(.top, .spacing32)
+            .padding(.top, .spacing24)
             .frame(maxWidth: .infinity)
     }
     

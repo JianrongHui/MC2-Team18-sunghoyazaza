@@ -45,13 +45,13 @@ struct SleepPlanBottomView: View {
         // 전체 Stack
         VStack {
             if (selection.applicationTokens.count > 0 || selection.categoryTokens.count > 0) {
-                LazyVGrid(columns: columns, spacing: 8){
+                LazyVGrid(columns: columns, spacing: 10){
                     if selection.applicationTokens.count > 0 {
                         ForEach(Array(selection.applicationTokens), id: \.self) {
                             token in
                             HStack {
                                 Label(token)
-                                    .labelStyle(.iconOnly).scaleEffect(1.5)
+                                    .labelStyle(.iconOnly).scaleEffect(1.67)
                             }
                         }
                     }
@@ -60,22 +60,22 @@ struct SleepPlanBottomView: View {
                             token in
                             HStack {
                                 Label(token)
-                                    .labelStyle(.iconOnly).scaleEffect(1.5)
+                                    .labelStyle(.iconOnly).scaleEffect(1.2)
                             }
                         }
                     }
                 }
-                .padding(CGFloat.spacing16)
+//                .padding(CGFloat.spacing16)
                 .frame(maxWidth: .infinity)
             }
             else {
                 Text("선택된 앱이 없습니다.")
-                    .padding(CGFloat.spacing16)
+                    .padding(.spacing20)
                     .frame(maxWidth: .infinity)
             }
         }
-        .frame(maxWidth: .infinity, minHeight: 60)
-        .padding()
+        .frame(maxWidth: .infinity, minHeight: 40)
+        .padding(.vertical, .spacing20)
         .background(Color.primary3)
         .cornerRadius(24) // , corners: [.bottomLeft, .bottomRight]
         .onAppear() {
