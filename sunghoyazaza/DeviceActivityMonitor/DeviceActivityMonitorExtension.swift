@@ -2,7 +2,7 @@
 //  DeviceActivityMonitorExtension.swift
 //  DeviceActivityMonitor
 //
-//  Created by Yun Dongbeom on 2023/05/08.
+//  Created by 김영빈 on 2023/05/15.
 //
 
 import DeviceActivity
@@ -36,7 +36,7 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     // MARK: 스케줄 종료 시점 or 모니터링 중단 시 호출
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
-        //TODO: MyModel.shared.isEndPoint == true 조건이 계속 적용됨 --> 수정 필요
+        //TODO: MyModel.shared.isEndPoint == true 조건이 계속 적용될거임 --> 수정 필요
         if activity == .additionalTime && ScreenTimeVM.shared.isEndPoint == true {
             ScreenTimeVM.shared.additionalCount = 0 // 스케줄 중단이 아니라 종료일 경우 additionalCount를 초기화 해줌
         }

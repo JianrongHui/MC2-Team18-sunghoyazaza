@@ -2,7 +2,7 @@
 //  ShieldConfigurationExtension.swift
 //  ShieldConfiguration
 //
-//  Created by Yun Dongbeom on 2023/05/08.
+//  Created by 김영빈 on 2023/05/15.
 //
 
 import ManagedSettings
@@ -113,7 +113,7 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
 //        // Customize the shield as needed for web domains.
 //        ShieldConfiguration()
 //    }
-//    
+//
 //    override func configuration(shielding webDomain: WebDomain, in category: ActivityCategory) -> ShieldConfiguration {
 //        // Customize the shield as needed for web domains shielded because of their category.
 //        ShieldConfiguration()

@@ -174,7 +174,7 @@ class ScreenTimeVM: ObservableObject {
                 intervalStart: DateComponents(hour: endHour, minute: endMinute),
                 intervalEnd: endTime,
                 repeats: false,
-                warningTime: DateComponents(minute: 5) // 종료 5분 전에 알림
+                warningTime: warningTime // 종료 5분 전에 알림
             )
 
         }
@@ -189,6 +189,13 @@ class ScreenTimeVM: ObservableObject {
             print("Start monitoring... --> \(deviceActivityCenter.activities.description)")
         } catch {
             print("Unexpected error: \(error).")
+        }
+        
+        if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
+            print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep)!)\n")
+        }
+        if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime) != nil {
+            print("Schedule .additionalTime: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime)!)\n")
         }
 
         //TODO: 이벤트 미사용 - 코드 삭제 논의하기

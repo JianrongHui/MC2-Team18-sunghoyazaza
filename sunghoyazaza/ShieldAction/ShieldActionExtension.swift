@@ -2,7 +2,7 @@
 //  ShieldActionExtension.swift
 //  ShieldAction
 //
-//  Created by Yun Dongbeom on 2023/05/08.
+//  Created by 김영빈 on 2023/05/15.
 //
 
 import DeviceActivity
@@ -64,7 +64,6 @@ class ShieldActionExtension: ShieldActionDelegate {
     //MARK: category로 선택된 앱에서의 동작
     override func handle(action: ShieldAction, for category: ActivityCategoryToken, completionHandler: @escaping (ShieldActionResponse) -> Void) {
         // Handle the action as needed.
-        completionHandler(.close)
         switch action {
         case .primaryButtonPressed:
             completionHandler(.close)
@@ -79,8 +78,24 @@ class ShieldActionExtension: ShieldActionDelegate {
                 endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
                 deviceActivityName: .additionalTime
             )
-            completionHandler(.defer)
             
+            //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
+            var current = Date()
+            let calendar = Calendar.current
+            let hour = calendar.component(.hour, from: current)
+            
+            if hour < 12{
+                current = calendar.date(byAdding: .day, value: -1, to: current)!
+            }
+            
+            let dateString = current.toString()
+            if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
+                failList.append(dateString)
+                DateModel.shared.failList = (failList.encode)!
+                
+            }
+            
+            completionHandler(.defer)
         @unknown default:
             fatalError()
         }
