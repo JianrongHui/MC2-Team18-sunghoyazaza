@@ -27,11 +27,7 @@ struct ColorfulIconLabelStyle: LabelStyle {
 
 struct Onboarding2View: View {
     
-    @State var selection = FamilyActivitySelection() {
-        didSet {
-            ScreenTimeVM.shared.selectionToDiscourage = selection
-        }
-    }
+    @State var selection = FamilyActivitySelection()
     
     @State var isPresented = false
     var tokens: [ApplicationToken] {

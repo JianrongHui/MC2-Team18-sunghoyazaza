@@ -9,6 +9,7 @@ import DeviceActivity
 import FamilyControls
 import ManagedSettings
 import SwiftUI
+import Foundation
 
 
 // Optionally override any of the functions below.
