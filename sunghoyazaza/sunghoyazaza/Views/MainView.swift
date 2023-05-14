@@ -110,20 +110,27 @@ struct MainView: View {
                         print("what is grade? : ",DateModel.shared.grade)
                     }
 
-                    
-                    LottieView(lottieFile: "LottieFile")
-                        .frame(width: lottieWeight, height: lottieHeight)
-                        .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.8){
-                                lottieWeight = 0
-                                lottieHeight = 0
+                    if ScreenTimeVM.shared.isUserInitStatus {
+                        LottieView(lottieFile: "LottieFile")
+                            .frame(width: lottieWeight, height: lottieHeight)
+                            .onAppear{
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.8){
+                                    lottieWeight = 0
+                                    lottieHeight = 0
+                                }
                             }
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
                 }
             }
             .background(Color.systemGray6.edgesIgnoringSafeArea(.all))
+            .onAppear {
+                if ScreenTimeVM.shared.isUserInitStatus {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.8){
+                        ScreenTimeVM.shared.isUserInitStatus = false
+                    }
+                }
+            }
     }
 }
 
