@@ -78,7 +78,7 @@ struct DetailView: View {
 //                        UserDefaults.standard.set(startAt, forKey: "startAt")
 //                        UserDefaults.standard.set(endAt, forKey: "endAt")
 //                        UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
-                        // MARK: 사용자 설정 값들을 저장 @AppStorage 변수에 저장
+                        // MARK: 사용자 설정 값들을 @AppStorage 변수에 저장
                         ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
                         ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
                         ScreenTimeVM.shared.selectionToDiscourage = selection
