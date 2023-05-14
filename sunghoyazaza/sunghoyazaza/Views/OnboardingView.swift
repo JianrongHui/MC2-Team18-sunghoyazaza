@@ -51,14 +51,15 @@ struct OnboardingView: View {
         }
         .padding([.bottom, .horizontal], .spacing24)
         .padding(.top, .spacing32)
-        //        .navigationBarTitleDisplayMode(.inline)
-        //            .toolbar {
-        //                ToolbarItem(placement: .principal) {
-        //                    VStack {
-        //                        Text("수면 루틴 설정").font(.headline)
-        //                    }
-        //                }
-        //            }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("수면 루틴 설정")
+                        .font(.headline)
+                }
+            }
+        }
         .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
     }
 }
