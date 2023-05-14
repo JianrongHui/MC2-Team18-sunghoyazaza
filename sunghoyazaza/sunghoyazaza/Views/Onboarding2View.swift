@@ -121,36 +121,33 @@ struct Onboarding2View: View {
                         .cornerRadius(16)
                 }
                 
-                
-            }.padding(.horizontal, 24)
+            }
+//            .padding(.horizontal, 24)
             
             Spacer()
             
             NavigationLink(destination: {
                 MainView()
             }) {
-                Text("시작하기").foregroundColor(.white)
-            }.padding().frame(maxWidth: .infinity)
-                .foregroundColor(.systemWhite)
-                .background(Color.accentColor)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding([.horizontal, .bottom], CGFloat.spacing24)
-        }.simultaneousGesture(TapGesture().onEnded{
-            // MARK: 선택한 제한 앱 @AppStorage 변수에 저장
-            ScreenTimeVM.shared.selectionToDiscourage = selection
-        }).navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text("수면계획 설정").font(.headline)
-                    }
-                }
-            }
-            .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
-            .onChange(of: selection) {
-                authStatus in
-                print("ggg")
                 
+                Text("제한할 앱 설정 완료").foregroundColor(.white)
             }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.accentColor)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        .padding([.bottom, .horizontal], .spacing24)
+        .padding(.top, .spacing32)
+        //            .navigationBarTitleDisplayMode(.inline)
+        //            .toolbar {
+        //                ToolbarItem(placement: .principal) {
+        //                    VStack {
+        //                        Text("수면계획 설정").font(.headline)
+        //                    }
+        //                }
+        //            }
+        .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
+        
     }
 }
