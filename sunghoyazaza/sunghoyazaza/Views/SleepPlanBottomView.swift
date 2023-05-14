@@ -7,66 +7,80 @@
 //MARK: 차단된 앱 로고 표시 화면
 
 import SwiftUI
+import FamilyControls
+import ManagedSettings
 
 struct SleepPlanBottomView: View {
     @State var dataCount = MainVM().blockApplicationCount()
-
+    
+    @State var selection = FamilyActivitySelection() {
+        didSet {
+            ScreenTimeVM.shared.selectionToDiscourage = selection
+        }
+    }
+    var tokens: [ApplicationToken] {
+        didSet {
+            print("GGG!")
+        }
+    }
+    
+    init() {
+        self.tokens = Array(ScreenTimeVM.shared.selectionToDiscourage.applicationTokens)
+        print(ScreenTimeVM.shared.selectionToDiscourage)
+    }
+    
+    let columns = [
+        GridItem(.fixed(36)),
+        GridItem(.fixed(36)),
+        GridItem(.fixed(36)),
+        GridItem(.fixed(36)),
+        GridItem(.fixed(36)),
+        GridItem(.fixed(36)),
+        GridItem(.fixed(36))
+    ]
+    
     var body: some View {
         
         // 차단된 앱 개수 변수
         // 전체 Stack
         VStack {
-            
-            // 가로 나열을 위한 Stack
-            HStack {
-                
-                //7개 이하일 시 보이는 화면 (앱 위에 +N 이 필요없기 때문)
-                if dataCount <= 7{
-                    ForEach(0..<dataCount) { i in
-                        Image(MainModel().blockApplicationData[i])
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .clipShape(Circle())
-                            .shadow(radius: 4)
+            if (selection.applicationTokens.count > 0 || selection.categoryTokens.count > 0) {
+                LazyVGrid(columns: columns, spacing: 8){
+                    if selection.applicationTokens.count > 0 {
+                        ForEach(Array(selection.applicationTokens), id: \.self) {
+                            token in
+                            HStack {
+                                Label(token)
+                                    .labelStyle(.iconOnly).scaleEffect(1.5)
+                            }
+                        }
                     }
-                    Spacer()
-                    
-                //7개 이상일 시 보이는 화면 (앱 위에 +N 표시)
-                }else{
-                    // 앱 로고 표시
-                    ForEach(0..<6) { i in
-                        Image(MainModel().blockApplicationData[i])
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .clipShape(Circle())
-                            .shadow(radius: 4)
-                    }
-                    
-                    // 앱 위에 +N 표시를 위한 ZStack (맨 마지막 앱에만 적용)
-                    ZStack{
-                        Image(MainModel().blockApplicationData[6])
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .clipShape(Circle())
-                            .shadow(radius: 4)
-                            .opacity(0.3)
-                        Text("+\(dataCount-7)")
-                            .bold()
+                    if selection.categoryTokens.count > 0 {
+                        ForEach(Array(selection.categoryTokens), id: \.self) {
+                            token in
+                            HStack {
+                                Label(token)
+                                    .labelStyle(.iconOnly).scaleEffect(1.5)
+                            }
+                        }
                     }
                 }
+                .padding(CGFloat.spacing16)
+                .frame(maxWidth: .infinity)
+            }
+            else {
+                Text("선택된 앱이 없습니다.")
+                    .padding(CGFloat.spacing16)
+                    .frame(maxWidth: .infinity)
             }
         }
         .frame(maxWidth: .infinity)
-        .padding()
+        .padding(.all, 16)
         .background(Color(hex: 0xF6F8FF))
         .cornerRadius(24)
+        .onAppear() {
+            //MARK: 사용자가 기존에 설정한 제한 앱 불러오기
+            selection = ScreenTimeVM.shared.selectionToDiscourage
+        }
     }
 }
-
-//MARK: PREVIEW
-struct SleepPlanBottomView_Previews: PreviewProvider {
-    static var previews: some View {
-        SleepPlanBottomView()
-    }
-}
-

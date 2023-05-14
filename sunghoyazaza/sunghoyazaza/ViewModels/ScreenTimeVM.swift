@@ -21,8 +21,24 @@ class ScreenTimeVM: ObservableObject {
 
     // MARK: 제한할 앱 정보를 담고 있는 변수
     @AppStorage(AppStorageKey.selectionToDiscourage.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var selectionToDiscourage = FamilyActivitySelection()
+    var selectionToDiscourage = FamilyActivitySelection() {
+        didSet {
+            print("ggg!")
+            updateSelectionToDiscourage()
+        }
+    }
 
+    @Published
+    var sharedSelectionToDiscourage = FamilyActivitySelection()
+    
+    func updateSelectionToDiscourage() {
+        DispatchQueue.global().async {
+            DispatchQueue.main.async {
+                self.sharedSelectionToDiscourage = self.selectionToDiscourage
+            }
+        }
+    }
+    
     // MARK: 온보딩을 완료한 유저인지 체크하기 위한 변수
     @AppStorage(AppStorageKey.isUserInit.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isUserInitStatus: Bool = true
