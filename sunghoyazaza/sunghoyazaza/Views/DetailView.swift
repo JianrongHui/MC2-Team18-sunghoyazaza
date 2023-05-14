@@ -34,6 +34,7 @@ struct DetailView: View {
                 DatePicker(selection: $startAt, displayedComponents: .hourAndMinute, label: { Text("취침시간") })
                 
                 DatePicker(selection: $endAt, displayedComponents: .hourAndMinute, label: { Text("기상시간") })
+
             }
             else {
                 HStack {
@@ -56,7 +57,7 @@ struct DetailView: View {
             Spacer()
         }
         .onAppear() {
-            //MARK: 사용자가 기존에 설정한 시간값을 DateComponent타입에서 Date타입으로 변환하여 불러오기
+            // MARK: 사용자가 기존에 설정한 시간값을 DateComponent타입에서 Date타입으로 변환하여 불러오기
             let userStartAt = ScreenTimeVM.shared.sleepStartDateComponent
             let userEndAt = ScreenTimeVM.shared.sleepEndDateComponent
             startAt = Calendar.current.date(from: userStartAt)!
@@ -77,12 +78,12 @@ struct DetailView: View {
 //                        UserDefaults.standard.set(startAt, forKey: "startAt")
 //                        UserDefaults.standard.set(endAt, forKey: "endAt")
 //                        UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
-                        //MARK: 사용자 설정 값들을 저장 @AppStorage 변수에 저장
+                        // MARK: 사용자 설정 값들을 저장 @AppStorage 변수에 저장
                         ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
                         ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
                         ScreenTimeVM.shared.selectionToDiscourage = selection
                         
-                        //MARK: 수면 계획 모니터링 시작
+                        // MARK: 수면 계획 모니터링 시작
                         ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
                             startTime: ScreenTimeVM.shared.sleepStartDateComponent,
                             endTime: ScreenTimeVM.shared.sleepEndDateComponent,

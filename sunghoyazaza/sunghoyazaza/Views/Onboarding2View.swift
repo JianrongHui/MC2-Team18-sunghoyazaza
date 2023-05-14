@@ -61,6 +61,12 @@ struct Onboarding2View: View {
         }.simultaneousGesture(TapGesture().onEnded{
             // MARK: 선택한 제한 앱 @AppStorage 변수에 저장
             ScreenTimeVM.shared.selectionToDiscourage = selection
+            // MARK: 수면 계획 모니터링 시작
+            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
+                deviceActivityName: .dailySleep
+            )
         }).padding().navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {

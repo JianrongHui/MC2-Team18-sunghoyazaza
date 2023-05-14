@@ -16,7 +16,7 @@ import SwiftUI
 class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     var selectionToDiscourage = ScreenTimeVM.shared.selectionToDiscourage
     
-    //MARK: 스케줄 시작 시점에 호출
+    // MARK: 스케줄 시작 시점에 호출
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
         // Handle the start of the interval.
@@ -27,16 +27,27 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         // 앱 제한 적용 시작
         let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
         managedSettingsStore.shield.applications = selectionToDiscourage.applicationTokens.isEmpty ? nil : selectionToDiscourage.applicationTokens
-        managedSettingsStore.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(selectionToDiscourage.categoryTokens)
+        managedSettingsStore.shield.applicationCategories = selectionToDiscourage.categoryTokens.isEmpty
+        ? nil
+        : ShieldSettings.ActivityCategoryPolicy.specific(selectionToDiscourage.categoryTokens)
     }
     
-    //MARK: 스케줄 종료 시점 or 모니터링 중단 시 호출
+    // MARK: 스케줄 종료 시점 or 모니터링 중단 시 호출
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
         //TODO: MyModel.shared.isEndPoint == true 조건이 계속 적용됨 --> 수정 필요
         if activity == .additionalTime && ScreenTimeVM.shared.isEndPoint == true {
             ScreenTimeVM.shared.additionalCount = 0 // 스케줄 중단이 아니라 종료일 경우 additionalCount를 초기화 해줌
         }
+        // TODO: 스케줄 종료 시에 dailySleep 모니터링 다시 시작하도록 코드 작성
+//        if 스케줄 종료일 경우 {
+//            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+//                startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+//                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
+//                deviceActivityName: .dailySleep
+//            )
+//        }
+
         let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
         managedSettingsStore.clearAllSettings()
     }
