@@ -50,9 +50,9 @@ extension Onboarding2View {
     func PageTitleView() -> some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 8) {
-                Text("계획한 수면 시간을 설정해주세요")
+                Text("제한할 앱을 설정해주세요")
                     .font(.largeTitle.bold())
-                Text("7시간 이상의 숙면은 내일의 집중을 도와줍니다.")
+                Text("SNS, 영상 컨텐츠 등을 제한하는 것을 추천해요")
                     .foregroundColor(.gray)
             }
             .padding(CGFloat.spacing24)
