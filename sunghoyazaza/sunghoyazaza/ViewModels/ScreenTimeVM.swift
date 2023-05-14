@@ -89,6 +89,26 @@ class ScreenTimeVM: ObservableObject {
     let deviceActivityCenter = DeviceActivityCenter()
     let authorizationCenter = AuthorizationCenter.shared
 
+    //MARK: DateComponent 시간값을 00:00 형식의 String으로 변환해주는 계산 프로퍼티
+    var sleepStartString: String {
+        let userStartAt = self.sleepStartDateComponent
+        let startAt = Calendar.current.date(from: userStartAt)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "a hh:mm"
+        let timeString = dateFormatter.string(from: startAt)
+        
+        return timeString
+    }
+    var sleepEndString: String {
+        let userEndAt = self.sleepEndDateComponent
+        let endAt = Calendar.current.date(from: userEndAt)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "a hh:mm"
+        let timeString = dateFormatter.string(from: endAt)
+        
+        return timeString
+    }
+    
     // MARK: 스크린타임 권한 요청
     func requestAuthorization() {
 
@@ -158,7 +178,7 @@ class ScreenTimeVM: ObservableObject {
             let startHour = currentDateComponents.hour ?? 0
             let startMinute  = currentDateComponents.minute ?? 0
             var endHour = startHour + 0
-            var endMinute = startMinute + 15 // 15분
+            var endMinute = startMinute + 1 // 15분
             if endMinute >= 60 {
                 endMinute -= 60
                 endHour += 1

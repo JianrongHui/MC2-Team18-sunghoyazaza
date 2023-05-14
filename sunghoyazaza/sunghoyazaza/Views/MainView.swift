@@ -17,6 +17,9 @@ struct MainView: View {
     @State var lottieHeight = CGFloat(800.0)
     @State var lottieWeight = CGFloat(380.0)
     
+    //MARK: 수면 계획 시간 변경 시 바로 뷰에 반영되도록 ScreenTimeVM을 ObservableObject로 사용
+    @StateObject var screenTimeVM = ScreenTimeVM.shared
+    
     var body: some View {
 
             //        ScrollView{  //꽉찬 뷰 해결방법?
@@ -24,6 +27,21 @@ struct MainView: View {
             ScrollView() {
                 ZStack{
                     VStack {
+//                        //MARK: 디버깅용 코드 (삭제 예정)
+//                        Button {
+//                            print("Activitiies: \(ScreenTimeVM.shared.deviceActivityCenter.activities)")
+//                            if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
+//                                print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
+//                            }
+//                            if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime) != nil {
+//                                print("Schedule .additionalFifteen: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime))\n")
+//                            }
+//                            print("additionalCount: \(ScreenTimeVM.shared.additionalCount)")
+//                            print("isEndPoint: \(ScreenTimeVM.shared.isEndPoint.description)")
+//                            
+//                        } label: {
+//                            Text("액티비티 조회")
+//                        }//여기까지 디버깅용 코드
                         // 메인 Text
                         Text("\(mainModel.mainLabel)")
                             .font(.largeTitle.bold())
@@ -77,7 +95,8 @@ struct MainView: View {
                         .padding(.top, .spacing4)
                         
                         //취침 및 기상시간 알려주는 View
-                        SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
+                        //MARK: DetailView에서 값 변경 시 바로 반영됨
+                        SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: screenTimeVM.sleepStartString, wakeupTime: screenTimeVM.sleepEndString)
                         //                        .padding(.horizontal)
                         //차단된 앱 알려주는 View
                         SleepPlanBottomView()
