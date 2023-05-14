@@ -98,6 +98,7 @@
 		B8C078FB2A100A8F00E7156F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA9E5C2A09E0610050AA4B /* DetailView.swift */; };
 		E59D0FEE2A0DECF3005C0B05 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E59D0FED2A0DECF3005C0B05 /* Lottie */; };
 		E59D0FF02A0DED37005C0B05 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D0FEF2A0DED37005C0B05 /* LottieView.swift */; };
+		E5E3B08C2A1124CC006C3A48 /* LottieFile.json in Resources */ = {isa = PBXBuildFile; fileRef = E5E3B08B2A1124CC006C3A48 /* LottieFile.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeyManager.swift; sourceTree = "<group>"; };
 		B813F33E2A0D36D7003E7590 /* ShieldContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldContent.swift; sourceTree = "<group>"; };
 		E59D0FEF2A0DED37005C0B05 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		E5E3B08B2A1124CC006C3A48 /* LottieFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LottieFile.json; path = ../../../../../../Downloads/LottieFile.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				7FBFF43F2A07C5B90069656E /* Assets.xcassets */,
+				E5E3B08B2A1124CC006C3A48 /* LottieFile.json */,
 				7FBFF4402A07C5B90069656E /* Font+Extension.swift */,
 				7FBFF4412A07C5B90069656E /* Color+Extension.swift */,
 				76CA10B92A0C1C9F00689C42 /* Date.swift */,
@@ -617,6 +620,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5E3B08C2A1124CC006C3A48 /* LottieFile.json in Resources */,
 				7FBFF44F2A07C5B90069656E /* Assets.xcassets in Resources */,
 				7F3785352A07AD660055EAB2 /* Preview Assets.xcassets in Resources */,
 			);
@@ -939,7 +943,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sunghoyazaza/Preview Content\"";
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = 6CNX5P6BQG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -970,7 +974,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sunghoyazaza/Preview Content\"";
-				DEVELOPMENT_TEAM = V7Y39HNV38;
+				DEVELOPMENT_TEAM = 6CNX5P6BQG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
