@@ -50,32 +50,28 @@ struct Onboarding2View: View {
     ]
     
     var body: some View {
-        VStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 0) {
-                Spacer().frame(height: 24.0)
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("계획한 수면 시간을 설정해주세요").font(.largeTitle.bold())
-                    Text("7시간 이상의 숙면은 내일의 집중을 도와줍니다.").foregroundColor(.gray)
-                }.frame(maxWidth: .infinity, alignment: .leading)
-                
-                Spacer().frame(height: 24.0)
-                
-                // TODO::Pick interface
-                
-                // VERSION 1
-                HStack(spacing: 0) {
+        
+        VStack(spacing: .spacing24) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("제한할 앱을 설정해주세요").font(.largeTitle.bold())
+                Text("SNS, 영상 컨텐츠 등을 제한하는 것을 추천해요").foregroundColor(.gray)
+            }.frame(maxWidth: .infinity, alignment: .leading)
+            
+            // TODO::Pick interface
+            
+            // VERSION 1
+            VStack(spacing: .spacing12) {
+                HStack {
+                    
                     Text("제한 중인 앱 목록").font(.subheadline)
                         .foregroundColor(.gray)
                     Spacer()
                     Button("편집") { isPresented = true }
-                        .familyActivityPicker(isPresented: $isPresented,
-                                              selection: $selection).font(.subheadline).padding(.horizontal, 10.0).padding(.vertical, 4.0)
+                        .familyActivityPicker(isPresented: $isPresented, selection: $selection).font(.subheadline).padding(.horizontal, 10.0).padding(.vertical, 4.0)
                         .background(.white)
                         .border(.white, width: 0)
                         .cornerRadius(16)
                 }
-                
                 
                 Spacer().frame(height: 8.0)
                 
@@ -119,8 +115,8 @@ struct Onboarding2View: View {
                         .cornerRadius(16)
                 }
                 
-                
-            }.padding(.horizontal, 24)
+            }
+//            .padding(.horizontal, 24)
             
             Spacer()
             
@@ -158,7 +154,24 @@ struct Onboarding2View: View {
             .onChange(of: selection) {
                 authStatus in
                 print("ggg")
-                
+                Text("제한할 앱 설정 완료").foregroundColor(.white)
             }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.accentColor)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        .padding([.bottom, .horizontal], .spacing24)
+        .padding(.top, .spacing32)
+        //            .navigationBarTitleDisplayMode(.inline)
+        //            .toolbar {
+        //                ToolbarItem(placement: .principal) {
+        //                    VStack {
+        //                        Text("수면계획 설정").font(.headline)
+        //                    }
+        //                }
+        //            }
+        .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
+        
     }
 }
