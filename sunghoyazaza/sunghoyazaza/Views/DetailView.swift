@@ -130,6 +130,7 @@ extension DetailView {
         }
     }
     
+    // MARK: 앱 선택 컨테이너 뷰
     func SelectAppContainerView() -> some View {
         // TODO::Pick interface
         // VERSION 1
@@ -156,6 +157,7 @@ extension DetailView {
         }
     }
     
+    // MARK: 선택된 앱 리스트 뷰
     func SelectedAppListView() -> some View {
         VStack {
             if (selection.applicationTokens.count > 0 || selection.categoryTokens.count > 0) {
