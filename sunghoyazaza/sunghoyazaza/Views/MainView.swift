@@ -111,6 +111,24 @@ struct MainView: View {
                     //       }
                     //    }
                     
+                    //취침 및 기상시간 알려주는 View
+                    SleepPlanTopView(weekDay: MainModel().weekDay, sleepTime: MainModel().sleepTime, wakeupTime: MainModel().wakeupTime)
+//                        .padding(.horizontal)
+                    //차단된 앱 알려주는 View
+                    SleepPlanBottomView()
+//                        .padding(.horizontal)
+                
+                }
+                .padding([.top, .horizontal], .spacing24)
+                .background(Color.systemGray6.edgesIgnoringSafeArea(.all))
+                .navigationBarBackButtonHidden(true)
+                .onAppear{
+                    print("what is grade? : ",DateModel.shared.grade)
+                    let now = Date()
+                    let calendar = Calendar.current
+                    let hour = calendar.component(.hour, from: now)
+
+                    print(hour)
                 }
             }
             .background(Color.systemGray6.edgesIgnoringSafeArea(.all))

@@ -30,6 +30,9 @@ struct sunghoyazazaApp: App {
         .onChange(of: scenePhase) { phase in
             NotificationManager.shared.updateHasNotificationPermission()
             NotificationManager.shared.updateAuthStatus()
+            if phase == .active{
+                DateModel.shared.reloadData()
+            }
         }
     }
 }
