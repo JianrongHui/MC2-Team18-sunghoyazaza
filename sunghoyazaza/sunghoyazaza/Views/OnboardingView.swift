@@ -25,7 +25,7 @@ struct OnboardingView: View {
                 Text("7시간 이상의 숙면은 내일 집중할 수 있게 도와줘요").foregroundColor(.gray)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.bottom, .spacing32)
+            .padding(.bottom, .spacing24)
             
             //RepeatDaysPicker(selectedDays: $selectedDays)
             
@@ -52,8 +52,7 @@ struct OnboardingView: View {
             .background(Color.accentColor)
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .padding([.bottom, .horizontal], .spacing24)
-        .padding(.top, .spacing32)
+        .padding(.spacing24)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
