@@ -10,22 +10,40 @@ import SwiftUI
 @main
 struct sunghoyazazaApp: App {
     @Environment(\.scenePhase) private var scenePhase
+    @State var isLoading: Bool = true {
+        didSet {
+            print(isLoading)
+        }
+    }
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                if !ScreenTimeVM.shared.isUserInitStatus && ScreenTimeVM.shared.authorizationCenter.authorizationStatus == .approved  {
-                    MainView()
-                }
-                else {
-                    Onboarding0View()
+            ZStack {
+                if isLoading {
+                    VStack(alignment: .center) {
+                        Spacer()
+                        Image("sungho")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
+                } else {
+                    initView()
                 }
             }
-            .environmentObject(ScreenTimeVM.shared)
-            .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
             .onReceive(ScreenTimeVM.shared.authorizationCenter.$authorizationStatus) { authStatus in
                 ScreenTimeVM.shared.updateAuthorizationStatus(authStatus: authStatus)
             }
+            .background(Color.systemGray6, ignoresSafeAreaEdges: .all)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                         isLoading.toggle()
+                     })
+            }
+            
         }
         .onChange(of: scenePhase) { phase in
             NotificationManager.shared.updateHasNotificationPermission()

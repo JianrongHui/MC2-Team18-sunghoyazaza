@@ -146,11 +146,11 @@ extension Onboarding2View {
             
             //TODO: 온보딩 시 수면 계획 모니터링 바로 시작할 지 논의
 //            //MARK: 수면 계획 모니터링 시작
-//            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-//                startTime: ScreenTimeVM.shared.sleepStartDateComponent,
-//                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
-//                deviceActivityName: .dailySleep
-//            )
+            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
+                deviceActivityName: .dailySleep
+            )
         })
         .padding()
         .frame(maxWidth: .infinity)
