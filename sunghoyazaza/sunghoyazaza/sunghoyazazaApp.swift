@@ -22,7 +22,7 @@ struct sunghoyazazaApp: App {
                 if isLoading {
                     VStack(alignment: .center) {
                         Spacer()
-                        Image("sungho")
+                        Image("mustsleep_80")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 100, height: 100)
@@ -43,13 +43,14 @@ struct sunghoyazazaApp: App {
                          isLoading.toggle()
                      })
             }
-            
         }
         .onChange(of: scenePhase) { phase in
             NotificationManager.shared.updateHasNotificationPermission()
             NotificationManager.shared.updateAuthStatus()
             if phase == .active{
                 DateModel.shared.reloadData()
+                print("돌아감")
+                UIApplication.shared.applicationIconBadgeNumber = 0
             }
         }
     }
