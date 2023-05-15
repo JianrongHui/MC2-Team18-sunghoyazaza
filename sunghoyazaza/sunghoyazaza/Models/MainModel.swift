@@ -9,9 +9,9 @@ import SwiftUI
 
 //MARK: 메인 뷰 DB
 
-struct MainModel{
+class MainModel:ObservableObject{
     
-    let dateModel = DateModel.shared
+    var dateModel = DateModel.shared
     // 메인 화면 최상단 텍스트 DB
     var mainLabel:String{
         switch dateModel.grade{

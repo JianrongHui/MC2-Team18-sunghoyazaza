@@ -11,17 +11,21 @@ import ManagedSettings
 //import Lottie
 
 struct MainView: View {
+    @Environment(\.scenePhase) private var scenePhase
+
+    
     @State var textIndex = MainVM().changeMainText() //
     @State var currentDate : Date = Date()
-    let mainModel = MainModel()
+    @StateObject var mainModel = MainModel()
     let myString = MainModel().subLabel
     @State var lottieHeight = CGFloat(600.0)
     @State var lottieWeight = CGFloat(320.0)
     @State var isLottieShow = true
     
+    @State var mainLabel = MainModel().mainLabel
+    @State var subLabel = MainModel().subLabel
     //MARK: 수면 계획 시간 변경 시 바로 뷰에 반영되도록 ScreenTimeVM을 ObservableObject로 사용
     @StateObject var screenTimeVM = ScreenTimeVM.shared
-    
     var body: some View {
 
             //        ScrollView{  //꽉찬 뷰 해결방법?
@@ -45,14 +49,14 @@ struct MainView: View {
 //                            Text("액티비티 조회")
 //                        }//여기까지 디버깅용 코드
                         // 메인 Text
-                        Text("\(mainModel.mainLabel)")
+                        Text("\(mainLabel)")
                             .font(.largeTitle.bold())
                             .tracking(-1)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom, .spacing4)
                         
                         // 서브 Text (문구 랜덤 생성)
-                        Text("\(myString)")
+                        Text("\(subLabel)")
                             .tracking(-1)
                             .foregroundColor(.gray)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -121,6 +125,9 @@ struct MainView: View {
 //                        ScreenTimeVM.shared.isUserInitStatus = false
                     }
                 }
+            } .onChange(of: scenePhase) { phase in
+                mainLabel = MainModel().mainLabel
+              //  subLabel = MainModel().subLabel
             }
     }
 }
