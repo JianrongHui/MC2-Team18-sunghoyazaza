@@ -178,7 +178,8 @@ class ScreenTimeVM: ObservableObject {
             let startHour = currentDateComponents.hour ?? 0
             let startMinute  = currentDateComponents.minute ?? 0
             var endHour = startHour + 0
-            var endMinute = startMinute + 1 // 15분
+            // MARK: 추가시간 끝나는 시간 변경하는 분
+            var endMinute = startMinute + 3 // 15분
             if endMinute >= 60 {
                 endMinute -= 60
                 endHour += 1
