@@ -40,6 +40,7 @@
 		A94A97DA2A0F76B40012E8A9 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
 		A94A97DF2A0F7EC40012E8A9 /* Onboarding0VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97DE2A0F7EC40012E8A9 /* Onboarding0VM.swift */; };
 		A94AF2CA2A11A0C800FDFEA6 /* initView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AF2C92A11A0C800FDFEA6 /* initView.swift */; };
+		A94AF2CD2A11CA3400FDFEA6 /* mustsleep_80.png in Resources */ = {isa = PBXBuildFile; fileRef = A94AF2CC2A11CA3400FDFEA6 /* mustsleep_80.png */; };
 		A9D5C5772A0E6ECC002723F0 /* PermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5C5762A0E6ECC002723F0 /* PermissionViewModel.swift */; };
 		A9F0ED5B2A08C209006E02B6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */; };
 		A9F0ED982A08CABD006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
@@ -194,7 +195,7 @@
 		A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeVM.swift; sourceTree = "<group>"; };
 		A94A97DE2A0F7EC40012E8A9 /* Onboarding0VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding0VM.swift; sourceTree = "<group>"; };
 		A94AF2C92A11A0C800FDFEA6 /* initView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initView.swift; sourceTree = "<group>"; };
-		A94AF2CB2A11A2A700FDFEA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A94AF2CC2A11CA3400FDFEA6 /* mustsleep_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mustsleep_80.png; sourceTree = "<group>"; };
 		A9D5C5762A0E6ECC002723F0 /* PermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewModel.swift; sourceTree = "<group>"; };
 		A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		A9F0ED622A08C2CD006E02B6 /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = SDKROOT; };
@@ -303,7 +304,6 @@
 		7F37852C2A07AD650055EAB2 /* sunghoyazaza */ = {
 			isa = PBXGroup;
 			children = (
-				A94AF2CB2A11A2A700FDFEA6 /* Info.plist */,
 				A9F0ED952A08C4F3006E02B6 /* sunghoyazaza.entitlements */,
 				A9F0ED592A08C1DF006E02B6 /* Utils */,
 				7FBFF4362A07C5B90069656E /* Models */,
@@ -435,6 +435,7 @@
 		B8252EC12A11330900D1B692 /* ShieldConfiguration */ = {
 			isa = PBXGroup;
 			children = (
+				A94AF2CC2A11CA3400FDFEA6 /* mustsleep_80.png */,
 				B8252F062A1134DE00D1B692 /* ShieldConfigurationDebug.entitlements */,
 				B8252EC22A11330900D1B692 /* ShieldConfigurationExtension.swift */,
 				B8252EC42A11330900D1B692 /* Info.plist */,
@@ -662,6 +663,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A94AF2CD2A11CA3400FDFEA6 /* mustsleep_80.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,7 +961,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sunghoyazaza/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Must Sleep";
+				INFOPLIST_KEY_CFBundleDisplayName = "머스트슬립";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -991,7 +994,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sunghoyazaza/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Must Sleep";
+				INFOPLIST_KEY_CFBundleDisplayName = "머스트슬립";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
