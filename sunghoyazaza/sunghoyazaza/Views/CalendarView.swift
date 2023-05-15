@@ -10,7 +10,9 @@ import SwiftUI
 
 struct CalendarView: View {
     let dateFormatter = DateFormatter()
-    let dateModel = DateModel.shared
+    
+    @StateObject
+    var dateModel = DateModel.shared
     
     @Binding var currentDate : Date //현재 날짜
     @State var currentMonth : Int = 0 // 화살표 클릭으로 인한 월 세는 변수
@@ -105,16 +107,24 @@ struct CalendarView: View {
         VStack{
             // 수면 계획 성공한 날짜 코드
             if value.day != -1{
-                if let record = dateModel.records[value.key], record.type == .success{
-                    Text("\(value.day)")
-                        .foregroundColor(.systemBlack)
-                        .frame(maxWidth: .infinity)
-                    
-                    Spacer()
-                    
-                    Circle()
-                        .fill(Color(hex: 0x0F0094))
-                        .frame(width: 8, height: 8)
+                if let record = dateModel.records[value.key]{
+                    if record.type == .success{
+                        Text("\(value.day)")
+                            .foregroundColor(.systemBlack)
+                            .frame(maxWidth: .infinity)
+                        
+                        Spacer()
+                        
+                        Circle()
+                            .fill(Color(hex: 0x0F0094))
+                            .frame(width: 8, height: 8)
+                    }else{
+                        Text("\(value.day)")
+                            .foregroundColor(.systemBlack)
+                            .frame(maxWidth: .infinity)
+                        
+                        Spacer()
+                    }
                     
                 }
                 // 수면 계획 실패 + 미래 날짜 코드
