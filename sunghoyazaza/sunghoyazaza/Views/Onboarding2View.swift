@@ -152,6 +152,7 @@ extension Onboarding2View {
                 deviceActivityName: .dailySleep
             )
             DateModel.shared.startDate = Date().toString()
+            DateModel.shared.reloadData()
         })
         .padding()
         .frame(maxWidth: .infinity)

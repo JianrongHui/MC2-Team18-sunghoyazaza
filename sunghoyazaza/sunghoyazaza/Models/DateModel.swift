@@ -9,7 +9,6 @@
 import SwiftUI
 
 
-let startDate = "20230508"
 
 struct Record{
     var type:RecordType
@@ -52,12 +51,13 @@ class DateModel:ObservableObject{
     var failList: String = "{\"strings\":[]}"
     
     @AppStorage("startDate", store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var startDate: String = "20230508"
+    var startDate: String = "00000000"
     
     @Published
     var records:[String:Record] = [:]
     
     func reloadData(){
+        guard startDate != "00000000" else {return}
         guard let failList = self.failList.decode else { return }
         var failDic:[String:Bool] = [:]
         failList.forEach{
@@ -71,15 +71,18 @@ class DateModel:ObservableObject{
         var tempRecords:[String:Record] = [:]
         
 
-        for _ in 0..<days{
+        for day in 0...days{
             let dateString = current.toString()
             if failDic[dateString] == nil {
-                tempRecords[dateString] = Record(type: .success)
+                if day < days{
+                    tempRecords[dateString] = Record(type: .success)
+                }
             }else{
                 tempRecords[dateString] = Record(type: .fail)
             }
             current = calendar.date(byAdding: .day, value: 1, to: current)!
         }
+
         self.records = tempRecords
     }
     
