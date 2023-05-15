@@ -51,6 +51,9 @@ class DateModel:ObservableObject{
     @AppStorage("failList", store: UserDefaults(suiteName: APP_GROUP_NAME))
     var failList: String = "{\"strings\":[]}"
     
+    @AppStorage("startDate", store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var startDate: String = "20230508"
+    
     @Published
     var records:[String:Record] = [:]
     
