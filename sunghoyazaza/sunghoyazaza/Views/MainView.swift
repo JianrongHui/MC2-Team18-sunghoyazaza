@@ -14,8 +14,10 @@ struct MainView: View {
     @State var textIndex = MainVM().changeMainText() //
     @State var currentDate : Date = Date()
     let mainModel = MainModel()
-    @State var lottieHeight = CGFloat(800.0)
-    @State var lottieWeight = CGFloat(380.0)
+    let myString = MainModel().subLabel
+    @State var lottieHeight = CGFloat(600.0)
+    @State var lottieWeight = CGFloat(320.0)
+    @State var isLottieShow = true
     
     //MARK: 수면 계획 시간 변경 시 바로 뷰에 반영되도록 ScreenTimeVM을 ObservableObject로 사용
     @StateObject var screenTimeVM = ScreenTimeVM.shared
@@ -50,7 +52,7 @@ struct MainView: View {
                             .padding(.bottom, .spacing4)
                         
                         // 서브 Text (문구 랜덤 생성)
-                        Text("\(mainModel.subLabel)")
+                        Text("\(myString)")
                             .tracking(-1)
                             .foregroundColor(.gray)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -71,7 +73,7 @@ struct MainView: View {
                         //캘린더
                         CalendarView(currentDate: $currentDate)
                             .padding(.vertical)
-                            .frame(maxHeight: .infinity)
+//                            .frame(maxHeight: .infinity)
                             .background(Color.systemWhite)
                             .cornerRadius(16)
                         
@@ -114,12 +116,13 @@ struct MainView: View {
                         LottieView(lottieFile: "LottieFile")
                             .frame(width: lottieWeight, height: lottieHeight)
                             .onAppear{
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.8){
-                                    lottieWeight = 0
-                                    lottieHeight = 0
-                                }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.8){
+//                                        lottieWeight = 0
+//                                        lottieHeight = 0
+                                        ScreenTimeVM.shared.isUserInitStatus = false
+                                    }
                             }
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .frame(maxWidth: lottieWeight, maxHeight: lottieHeight)
                     }
                 }
             }
@@ -127,7 +130,7 @@ struct MainView: View {
             .onAppear {
                 if ScreenTimeVM.shared.isUserInitStatus {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.8){
-                        ScreenTimeVM.shared.isUserInitStatus = false
+//                        ScreenTimeVM.shared.isUserInitStatus = false
                     }
                 }
             }

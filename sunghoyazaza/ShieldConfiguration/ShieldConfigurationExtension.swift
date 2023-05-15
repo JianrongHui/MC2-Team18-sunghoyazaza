@@ -15,7 +15,7 @@ import UIKit
 class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     
     // TODO: 커스텀 이미지 추가하기
-    let imageName = "stopwatch"
+    let imageName = "mustsleep_80.png"
     
     // TODO: 로직에 따른 문구 분기처리 필요
     let screenTimeVM = ScreenTimeVM.shared
@@ -54,15 +54,13 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
         }
     }
 
-
-    
     override func configuration(shielding application: Application) -> ShieldConfiguration {
         // Customize the shiel d as needed for applications.
         if shieldContent.self == .case8 { //MARK: 2회 이상 휴대폰을 본 뒤에는 더보기 버튼이 없는 쉴드 페이지
             return ShieldConfiguration(
                 backgroundBlurStyle: UIBlurEffect.Style.extraLight,
                 backgroundColor: UIColor.white.withAlphaComponent(0.1),
-                icon: UIImage(systemName: imageName),
+                icon: UIImage(named: imageName),
                 title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
                 subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
@@ -72,7 +70,7 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
             return ShieldConfiguration(
                 backgroundBlurStyle: UIBlurEffect.Style.extraLight,
                 backgroundColor: UIColor.white.withAlphaComponent(0.1),
-                icon: UIImage(systemName: imageName),
+                icon: UIImage(named: imageName),
                 title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
                 subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
@@ -88,7 +86,7 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
             return ShieldConfiguration(
                 backgroundBlurStyle: UIBlurEffect.Style.extraLight,
                 backgroundColor: UIColor.white.withAlphaComponent(0.1),
-                icon: UIImage(systemName: imageName),
+                icon: UIImage(named: imageName),
                 title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
                 subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
@@ -98,7 +96,7 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
             return ShieldConfiguration(
                 backgroundBlurStyle: UIBlurEffect.Style.extraLight,
                 backgroundColor: UIColor.white.withAlphaComponent(0.1),
-                icon: UIImage(systemName: imageName),
+                icon: UIImage(named: imageName),
                 title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
                 subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
