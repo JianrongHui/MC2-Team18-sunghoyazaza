@@ -53,8 +53,6 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
             return .case8
         }
     }
-
-
     
     override func configuration(shielding application: Application) -> ShieldConfiguration {
         // Customize the shiel d as needed for applications.
@@ -64,7 +62,10 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                 backgroundColor: UIColor.white.withAlphaComponent(0.1),
                 icon: UIImage(systemName: imageName),
                 title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
-                subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
+                subtitle: ShieldConfiguration.Label(
+                    text: "\(String(shieldContent.subTitle.split(separator: "$")[0]))\(String(describing: application.localizedDisplayName!.description))\(String(shieldContent.subTitle.split(separator: "$")[1]))",
+                    color: .black
+                ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
                 primaryButtonBackgroundColor: uiColorValue
             )
@@ -74,7 +75,10 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                 backgroundColor: UIColor.white.withAlphaComponent(0.1),
                 icon: UIImage(systemName: imageName),
                 title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
-                subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
+                subtitle: ShieldConfiguration.Label(
+                    text: "\(String(shieldContent.subTitle.split(separator: "$")[0]))\(String(describing: application.localizedDisplayName!.description))\(String(shieldContent.subTitle.split(separator: "$")[1]))",
+                    color: .black
+                ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
                 primaryButtonBackgroundColor: uiColorValue,
                 secondaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.secondaryButtonText, color: uiColorValue)
@@ -90,7 +94,10 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                 backgroundColor: UIColor.white.withAlphaComponent(0.1),
                 icon: UIImage(systemName: imageName),
                 title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
-                subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
+                subtitle: ShieldConfiguration.Label(
+                    text: "\(String(shieldContent.subTitle.split(separator: "$")[0]))\(String(describing: application.localizedDisplayName!.description))\(String(shieldContent.subTitle.split(separator: "$")[1]))",
+                    color: .black
+                ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
                 primaryButtonBackgroundColor: uiColorValue
             )
@@ -100,7 +107,10 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                 backgroundColor: UIColor.white.withAlphaComponent(0.1),
                 icon: UIImage(systemName: imageName),
                 title: ShieldConfiguration.Label(text: shieldContent.title, color: .black),
-                subtitle: ShieldConfiguration.Label(text: shieldContent.subTitle, color: .black),
+                subtitle: ShieldConfiguration.Label(
+                    text: "\(String(shieldContent.subTitle.split(separator: "$")[0]))\(String(describing: application.localizedDisplayName!.description))\(String(shieldContent.subTitle.split(separator: "$")[1]))",
+                    color: .black
+                ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
                 primaryButtonBackgroundColor: uiColorValue,
                 secondaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.secondaryButtonText, color: uiColorValue)
