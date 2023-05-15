@@ -8,11 +8,20 @@
 import DeviceActivity
 import Foundation
 import ManagedSettings
+import SwiftUI
 
 // Override the functions below to customize the shield actions used in various situations.
 // The system provides a default response for any functions that your subclass doesn't override.
 // Make sure that your class name matches the NSExtensionPrincipalClass in your Info.plist.
 class ShieldActionExtension: ShieldActionDelegate {
+    // MARK: 오늘 수면 계획 동안 15분 연장 횟수
+    @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var additionalCount: Int = 0
+    
+    // MARK: 스케줄 종료 지점 판별을 위한 변수
+    @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var isEndPoint: Bool = true
+    
     let managedSettingsStore = ManagedSettingsStore(named: .default)
     
     //MARK: application으로 선택된 앱에서의 동작
@@ -24,8 +33,8 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .secondaryButtonPressed:
             //TODO: 오늘의 약속 지키기 실패 시 실패 날짜 리스트에 해당 스케줄 날짜 추가
             //dummyDate.append(DateValue.key)
-            ScreenTimeVM.shared.isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
-            ScreenTimeVM.shared.additionalCount += 1 // 연장 횟수 1 카운트
+            isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
+            additionalCount += 1 // 연장 횟수 1 카운트
             //MARK: 15분 연장 스케줄 모니터링 시작
             ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
                 startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
@@ -49,7 +58,7 @@ class ShieldActionExtension: ShieldActionDelegate {
                 
             }
             
-            completionHandler(.defer)
+            completionHandler(.none)
         @unknown default:
             fatalError()
         }
@@ -70,8 +79,8 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .secondaryButtonPressed:
             //TODO: 오늘의 약속 지키기 실패 시 실패 날짜 리스트에 해당 스케줄 날짜 추가
             //dummyDate.append(DateValue.key)
-            ScreenTimeVM.shared.isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
-            ScreenTimeVM.shared.additionalCount += 1 // 연장 횟수 1 카운트
+            isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
+            additionalCount += 1 // 연장 횟수 1 카운트
             //MARK: 15분 연장 스케줄 모니터링 시작
             ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
                 startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
@@ -95,7 +104,7 @@ class ShieldActionExtension: ShieldActionDelegate {
                 
             }
             
-            completionHandler(.defer)
+            completionHandler(.none)
         @unknown default:
             fatalError()
         }

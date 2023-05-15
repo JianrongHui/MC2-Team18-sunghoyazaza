@@ -15,6 +15,14 @@ import Foundation
 // Optionally override any of the functions below.
 // Make sure that your class name matches the NSExtensionPrincipalClass in your Info.plist.
 class DeviceActivityMonitorExtension: DeviceActivityMonitor {
+    // MARK: 오늘 수면 계획 동안 15분 연장 횟수
+    @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var additionalCount: Int = 0
+    
+    // MARK: 스케줄 종료 지점 판별을 위한 변수
+    @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var isEndPoint: Bool = true
+    
     var selectionToDiscourage = ScreenTimeVM.shared.selectionToDiscourage
     
     // MARK: 스케줄 시작 시점에 호출
@@ -22,9 +30,9 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         super.intervalDidStart(for: activity)
         // Handle the start of the interval.
         if activity == .dailySleep { //MARK: 수면 계획 스케줄 시작
-            ScreenTimeVM.shared.additionalCount = 0 // 오늘 스케줄의 additionalCount값 0으로 초기화
+            additionalCount = 0 // 오늘 스케줄의 additionalCount값 0으로 초기화
         }
-        ScreenTimeVM.shared.isEndPoint = true // 현재 스케줄을 종료 지점이라고 봄
+        isEndPoint = true // 현재 스케줄을 종료 지점이라고 봄
         // 앱 제한 적용 시작
         let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
         managedSettingsStore.shield.applications = selectionToDiscourage.applicationTokens.isEmpty ? nil : selectionToDiscourage.applicationTokens
@@ -71,7 +79,7 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
                     subtitle: "5분 뒤에 설정한 수면 계획 시작"
                 )
             } else if activity == .additionalTime {
-                if ScreenTimeVM.shared.additionalCount < 2 { //MARK: 1회째 연장 이후 수면 스케줄 시작 알림
+                if additionalCount < 2 { //MARK: 1회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
                         title: "약속한 시간이 다가옵니다.",
                         subtitle: "5분 뒤에 설정한 수면 계획 시작"

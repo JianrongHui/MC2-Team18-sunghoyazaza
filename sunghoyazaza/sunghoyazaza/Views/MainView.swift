@@ -57,18 +57,6 @@ struct MainView: View {
                             .foregroundColor(.gray)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom, .spacing8)
-                        //테스트용 버튼
-                        //                    Button {
-                        //                        print("Start: \(ScreenTimeVM.shared.sleepStartDateComponent)")
-                        //                        print("End: \(ScreenTimeVM.shared.sleepEndDateComponent)")
-                        //                        let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
-                        //                        managedSettingsStore.shield.applications = ScreenTimeVM.shared.selectionToDiscourage.applicationTokens.isEmpty ? nil : ScreenTimeVM.shared.selectionToDiscourage.applicationTokens
-                        //                        managedSettingsStore.shield.applicationCategories = ScreenTimeVM.shared.selectionToDiscourage.categoryTokens.isEmpty
-                        //                        ? nil
-                        //                        : ShieldSettings.ActivityCategoryPolicy.specific(ScreenTimeVM.shared.selectionToDiscourage.categoryTokens)
-                        //                    } label: {
-                        //                        Text("쉴드 적용")
-                        //                    }
                         
                         //캘린더
                         CalendarView(currentDate: $currentDate)
