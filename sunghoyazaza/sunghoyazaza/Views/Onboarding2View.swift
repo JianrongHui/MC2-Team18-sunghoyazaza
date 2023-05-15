@@ -151,6 +151,7 @@ extension Onboarding2View {
                 endTime: ScreenTimeVM.shared.sleepEndDateComponent,
                 deviceActivityName: .dailySleep
             )
+            DateModel.shared.startDate = Date().toString()
         })
         .padding()
         .frame(maxWidth: .infinity)
