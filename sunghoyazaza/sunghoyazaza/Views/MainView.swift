@@ -40,7 +40,7 @@ struct MainView: View {
 //                            }
 //                            print("additionalCount: \(ScreenTimeVM.shared.additionalCount)")
 //                            print("isEndPoint: \(ScreenTimeVM.shared.isEndPoint.description)")
-//                            
+//
 //                        } label: {
 //                            Text("액티비티 조회")
 //                        }//여기까지 디버깅용 코드

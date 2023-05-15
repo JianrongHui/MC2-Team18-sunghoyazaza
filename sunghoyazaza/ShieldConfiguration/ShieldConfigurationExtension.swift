@@ -7,12 +7,20 @@
 
 import ManagedSettings
 import ManagedSettingsUI
+import SwiftUI
 import UIKit
 
 // Override the functions below to customize the shields used in various situations.
 // The system provides a default appearance for any methods that your subclass doesn't override.
 // Make sure that your class name matches the NSExtensionPrincipalClass in your Info.plist.
 class ShieldConfigurationExtension: ShieldConfigurationDataSource {
+    // MARK: 오늘 수면 계획 동안 15분 연장 횟수
+    @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var additionalCount: Int = 0
+    
+    // MARK: 스케줄 종료 지점 판별을 위한 변수
+    @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var isEndPoint: Bool = true
     
     // TODO: 커스텀 이미지 추가하기
     let imageName = "mustsleep_80.png"
