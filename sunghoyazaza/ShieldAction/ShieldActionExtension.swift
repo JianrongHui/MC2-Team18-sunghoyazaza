@@ -45,11 +45,16 @@ class ShieldActionExtension: ShieldActionDelegate {
             var current = Date()
             let calendar = Calendar.current
             let hour = calendar.component(.hour, from: current)
+            let minute = calendar.component(.minute, from: current)
             
-            if hour < 12{
+            let sleepEndDateComponent = ScreenTimeVM.shared.sleepEndDateComponent
+            
+            if hour < sleepEndDateComponent.hour!{
                 current = calendar.date(byAdding: .day, value: -1, to: current)!
             }
-            
+            if hour == sleepEndDateComponent.hour! , minute <= sleepEndDateComponent.minute!{
+                current = calendar.date(byAdding: .day, value: -1, to: current)!
+            }
             let dateString = current.toString()
             if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
                 failList.append(dateString)
@@ -91,11 +96,16 @@ class ShieldActionExtension: ShieldActionDelegate {
             var current = Date()
             let calendar = Calendar.current
             let hour = calendar.component(.hour, from: current)
+            let minute = calendar.component(.minute, from: current)
             
-            if hour < 12{
+            let sleepEndDateComponent = ScreenTimeVM.shared.sleepEndDateComponent
+            
+            if hour < sleepEndDateComponent.hour!{
                 current = calendar.date(byAdding: .day, value: -1, to: current)!
             }
-            
+            if hour == sleepEndDateComponent.hour! , minute <= sleepEndDateComponent.minute!{
+                current = calendar.date(byAdding: .day, value: -1, to: current)!
+            }
             let dateString = current.toString()
             if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
                 failList.append(dateString)
