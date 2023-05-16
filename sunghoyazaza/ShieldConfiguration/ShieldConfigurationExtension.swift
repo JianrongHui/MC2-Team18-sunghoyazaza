@@ -59,6 +59,7 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
             return .case8
         }
     }
+    
     override func configuration(shielding application: Application) -> ShieldConfiguration {
         // Customize the shiel d as needed for applications.
         if shieldContent.self == .case8 { //MARK: 2회 이상 휴대폰을 본 뒤에는 더보기 버튼이 없는 쉴드 페이지
@@ -72,7 +73,8 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                     color: .black
                 ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
-                primaryButtonBackgroundColor: uiColorValue
+                primaryButtonBackgroundColor: uiColorValue,
+                secondaryButtonLabel: nil
             )
         } else {
             return ShieldConfiguration(
@@ -104,7 +106,8 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                     color: .black
                 ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
-                primaryButtonBackgroundColor: uiColorValue
+                primaryButtonBackgroundColor: uiColorValue,
+                secondaryButtonLabel: nil
             )
         } else {
             return ShieldConfiguration(

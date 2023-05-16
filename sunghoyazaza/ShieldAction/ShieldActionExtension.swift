@@ -28,36 +28,36 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
-            //TODO: 오늘의 약속 지키기 실패 시 실패 날짜 리스트에 해당 스케줄 날짜 추가
-            //dummyDate.append(DateValue.key)
-            isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
-            additionalCount += 1 // 연장 횟수 1 카운트
-            //MARK: 15분 연장 스케줄 모니터링 시작
-            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-                startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
-                endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
-                deviceActivityName: .additionalTime
-            )
-            
-            //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
-            var current = Date()
-            let calendar = Calendar.current
-            let hour = calendar.component(.hour, from: current)
-            let minute = calendar.component(.minute, from: current)
-            
-            let sleepEndDateComponent = ScreenTimeVM.shared.sleepEndDateComponent
-            
-            if hour < sleepEndDateComponent.hour!{
-                current = calendar.date(byAdding: .day, value: -1, to: current)!
-            }
-            if hour == sleepEndDateComponent.hour! , minute <= sleepEndDateComponent.minute!{
-                current = calendar.date(byAdding: .day, value: -1, to: current)!
-            }
-            let dateString = current.toString()
-            if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
-                failList.append(dateString)
-                DateModel.shared.failList = (failList.encode)!
+            if additionalCount < 2 {
+                isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
+                additionalCount += 1 // 연장 횟수 1 카운트
+                //MARK: 15분 연장 스케줄 모니터링 시작
+                ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                    startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
+                    endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
+                    deviceActivityName: .additionalTime
+                )
                 
+                //MARK: 실패 데이터(yyyymmdd)를 DateModel의 failList에 append
+                var current = Date()
+                let calendar = Calendar.current
+                let hour = calendar.component(.hour, from: current)
+                let minute = calendar.component(.minute, from: current)
+                
+                let sleepEndDateComponent = ScreenTimeVM.shared.sleepEndDateComponent
+                
+                if hour < sleepEndDateComponent.hour!{
+                    current = calendar.date(byAdding: .day, value: -1, to: current)!
+                }
+                if hour == sleepEndDateComponent.hour! , minute <= sleepEndDateComponent.minute!{
+                    current = calendar.date(byAdding: .day, value: -1, to: current)!
+                }
+                let dateString = current.toString()
+                if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
+                    failList.append(dateString)
+                    DateModel.shared.failList = (failList.encode)!
+                    
+                }
             }
             
             completionHandler(.none)
@@ -79,36 +79,36 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
-            //TODO: 오늘의 약속 지키기 실패 시 실패 날짜 리스트에 해당 스케줄 날짜 추가
-            //dummyDate.append(DateValue.key)
-            isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
-            additionalCount += 1 // 연장 횟수 1 카운트
-            //MARK: 15분 연장 스케줄 모니터링 시작
-            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-                startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
-                endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
-                deviceActivityName: .additionalTime
-            )
-            
-            //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
-            var current = Date()
-            let calendar = Calendar.current
-            let hour = calendar.component(.hour, from: current)
-            let minute = calendar.component(.minute, from: current)
-            
-            let sleepEndDateComponent = ScreenTimeVM.shared.sleepEndDateComponent
-            
-            if hour < sleepEndDateComponent.hour!{
-                current = calendar.date(byAdding: .day, value: -1, to: current)!
-            }
-            if hour == sleepEndDateComponent.hour! , minute <= sleepEndDateComponent.minute!{
-                current = calendar.date(byAdding: .day, value: -1, to: current)!
-            }
-            let dateString = current.toString()
-            if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
-                failList.append(dateString)
-                DateModel.shared.failList = (failList.encode)!
+            if additionalCount < 2 {
+                isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
+                additionalCount += 1 // 연장 횟수 1 카운트
+                //MARK: 15분 연장 스케줄 모니터링 시작
+                ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                    startTime: ScreenTimeVM.shared.sleepStartDateComponent, // 어떤 값을 넣어줘도 상관 X
+                    endTime: ScreenTimeVM.shared.sleepEndDateComponent, // 사용자 설정 종료 시간
+                    deviceActivityName: .additionalTime
+                )
                 
+                //MARK: 실패 데이터(yyyymmdd)를 DateModel의 failList에 append
+                var current = Date()
+                let calendar = Calendar.current
+                let hour = calendar.component(.hour, from: current)
+                let minute = calendar.component(.minute, from: current)
+                
+                let sleepEndDateComponent = ScreenTimeVM.shared.sleepEndDateComponent
+                
+                if hour < sleepEndDateComponent.hour!{
+                    current = calendar.date(byAdding: .day, value: -1, to: current)!
+                }
+                if hour == sleepEndDateComponent.hour! , minute <= sleepEndDateComponent.minute!{
+                    current = calendar.date(byAdding: .day, value: -1, to: current)!
+                }
+                let dateString = current.toString()
+                if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
+                    failList.append(dateString)
+                    DateModel.shared.failList = (failList.encode)!
+                    
+                }
             }
             
             completionHandler(.none)
