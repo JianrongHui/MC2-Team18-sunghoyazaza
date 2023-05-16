@@ -30,7 +30,7 @@
 | iOS | iOS | iOS  | iOS | iOS | iOS |
 | :-----: | :-----: | :-----:  | :-----: | :-----: | :-----: |
 | <img src="https://user-images.githubusercontent.com/108044639/236133570-82917d4a-17ca-4375-b659-b18c0788778d.png" width=400px alt="Peter Jung"/>  | <img src="https://user-images.githubusercontent.com/108044639/236135311-e81d1d0a-042f-4431-b54d-891138503cad.png" width=400px alt="Chad"/>  | <img src="https://user-images.githubusercontent.com/108044639/236134419-025c15d1-7f70-48cf-9016-d22e6d28bcd4.png" width=400px alt="Coffee"/>   | <img src="https://user-images.githubusercontent.com/108044639/236133624-5b418819-d4aa-4a9e-9791-b91cb2cc78e8.png" width=400px alt="Jay"/>  | <img src="https://user-images.githubusercontent.com/108044639/236133234-7bb38735-9409-409e-94f2-4e4123891e60.png" width=400px alt="Peter Pyeon"/>  | <img src="https://user-images.githubusercontent.com/108044639/236133634-7a8154d4-50b4-488d-bbe3-5c4ed1080179.png" width=400px alt="Rei"/> | 
-[Peter Jung-CTO](https://github.com/shine-jung) | [Chad](https://github.com/chad0909)  | [Coffee](https://github.com/yuncoffee) | [Jay](https://github.com/jay-appledeveloperacademy) | [Peter Pyeon](https://github.com/pyeonjaesik) | [Rei](https://github.com/chad0909) |
+[Peter Jung-CTO](https://github.com/shine-jung) | [Chad](https://github.com/chad0909)  | [Coffee](https://github.com/yuncoffee) | [Jay](https://github.com/jay-appledeveloperacademy) | [Peter Pyeon](https://github.com/pyeonjaesik) | [Rei](https://github.com/kybeen) |
 
 <br><br>
 # 화면구성 (ScreenShots)
