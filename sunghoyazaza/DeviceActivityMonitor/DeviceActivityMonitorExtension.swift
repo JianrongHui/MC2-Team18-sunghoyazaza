@@ -48,14 +48,6 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         if activity == .additionalTime && ScreenTimeVM.shared.isEndPoint == true {
             ScreenTimeVM.shared.additionalCount = 0 // 스케줄 중단이 아니라 종료일 경우 additionalCount를 초기화 해줌
         }
-        // TODO: 스케줄 종료 시에 dailySleep 모니터링 다시 시작하도록 코드 작성
-//        if 스케줄 종료일 경우 {
-//            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-//                startTime: ScreenTimeVM.shared.sleepStartDateComponent,
-//                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
-//                deviceActivityName: .dailySleep
-//            )
-//        }
 
         let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
         managedSettingsStore.clearAllSettings()

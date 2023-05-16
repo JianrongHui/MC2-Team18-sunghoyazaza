@@ -16,28 +16,9 @@ class ScreenTimeVM: ObservableObject {
 
     private init() {}
 
-    @Published
-    var testInt = 0
-
     // MARK: 제한할 앱 정보를 담고 있는 변수
     @AppStorage(AppStorageKey.selectionToDiscourage.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var selectionToDiscourage = FamilyActivitySelection() {
-        didSet {
-            print("ggg!")
-            updateSelectionToDiscourage()
-        }
-    }
-
-    @Published
-    var sharedSelectionToDiscourage = FamilyActivitySelection()
-    
-    func updateSelectionToDiscourage() {
-        DispatchQueue.global().async {
-            DispatchQueue.main.async {
-                self.sharedSelectionToDiscourage = self.selectionToDiscourage
-            }
-        }
-    }
+    var selectionToDiscourage = FamilyActivitySelection()
     
     // MARK: 온보딩을 완료한 유저인지 체크하기 위한 변수
     @AppStorage(AppStorageKey.isUserInit.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
@@ -85,7 +66,6 @@ class ScreenTimeVM: ObservableObject {
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isEndPoint: Bool = true
     
-    let managedSettingStore = ManagedSettingsStore()
     let deviceActivityCenter = DeviceActivityCenter()
     let authorizationCenter = AuthorizationCenter.shared
 
@@ -111,7 +91,6 @@ class ScreenTimeVM: ObservableObject {
     
     // MARK: 스크린타임 권한 요청
     func requestAuthorization() {
-
         if authorizationCenter.authorizationStatus == .approved {
             print("ScreenTime Permission approved")
         } else {
@@ -145,16 +124,6 @@ class ScreenTimeVM: ObservableObject {
         }
     }
 
-    // MARK: 스크린타임 권한 조회
-    func requestAuthorizationStatus() -> AuthorizationStatus {
-        AuthorizationCenter.shared.authorizationStatus
-    }
-
-    // MARK: 선택했던 토큰 정보 초기화
-    func handleResetSelection() {
-        selectionToDiscourage = FamilyActivitySelection()
-    }
-
     // MARK: 모니터링 스케쥴 등록
     func handleStartDeviceActivityMonitoring(
         startTime: DateComponents,
@@ -164,7 +133,8 @@ class ScreenTimeVM: ObservableObject {
     ) {
         let schedule: DeviceActivitySchedule
 
-        if deviceActivityName == .dailySleep { //MARK: 기본 수면계획 스케줄일 경우
+        //MARK: 기본 수면계획 스케줄일 경우
+        if deviceActivityName == .dailySleep {
             schedule = DeviceActivitySchedule(
                 intervalStart: startTime,
                 intervalEnd: endTime,
@@ -173,13 +143,14 @@ class ScreenTimeVM: ObservableObject {
             )
             print("Daily Sleep Schedule: \(startTime.hour!):\(startTime.minute!) ~ \(endTime.hour!):\(endTime.minute!)")
 
-        } else { //MARK: 추가시간 15분 스케줄일 경우
+        } else {
+            //MARK: 추가시간 15분 스케줄일 경우
             let currentDateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: Date()) // 현재시간
             let startHour = currentDateComponents.hour ?? 0
             let startMinute  = currentDateComponents.minute ?? 0
-            var endHour = startHour + 0
+            var endHour = startHour
             // MARK: 추가시간 끝나는 시간 변경하는 분
-            var endMinute = startMinute + 3 // 15분
+            var endMinute = startMinute + 1 // 15분
             if endMinute >= 60 {
                 endMinute -= 60
                 endHour += 1
@@ -195,38 +166,19 @@ class ScreenTimeVM: ObservableObject {
                 intervalStart: DateComponents(hour: endHour, minute: endMinute),
                 intervalEnd: endTime,
                 repeats: false,
-                warningTime: warningTime // 종료 5분 전에 알림
+                warningTime: warningTime // 스케쥴 시작 및 종료 5분 전에 알림
             )
 
         }
-
         do {
-            print("Stop monitoring... --> \(deviceActivityCenter.activities.description)")
             deviceActivityCenter.stopMonitoring()
             try deviceActivityCenter.startMonitoring(
                 deviceActivityName,
                 during: schedule
             )
-            print("Start monitoring... --> \(deviceActivityCenter.activities.description)")
         } catch {
             print("Unexpected error: \(error).")
         }
-        
-        if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
-            print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep)!)\n")
-        }
-        if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime) != nil {
-            print("Schedule .additionalTime: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime)!)\n")
-        }
-
-        //TODO: 이벤트 미사용 - 코드 삭제 논의하기
-//        let event = DeviceActivityEvent(
-//            applications: selectionToDiscourage.applicationTokens,
-//            categories: selectionToDiscourage.categoryTokens,
-//            webDomains: selectionToDiscourage.webDomainTokens,
-//            threshold: DateComponents(minute: 1) // 테스트 필요 시 수정해서 사용할 것 ex) minute: 15
-//        )
-        
     }
 }
 
@@ -276,12 +228,6 @@ extension DeviceActivityName {
     static let dailySleep = Self("dailySleep")
     static let additionalTime = Self("additionalTime")
 }
-
-//MARK: Schedule Event Name List
-//TODO: 이벤트 미사용 - 논의 후 코드 삭제
-//extension DeviceActivityEvent.Name {
-//    static let `default` = Self("threshold.default")
-//}
 
 //MARK: ManagedSettingStore Name List
 extension ManagedSettingsStore.Name {
