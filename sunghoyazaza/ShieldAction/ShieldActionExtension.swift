@@ -21,8 +21,6 @@ class ShieldActionExtension: ShieldActionDelegate {
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isEndPoint: Bool!
     
-    let managedSettingsStore = ManagedSettingsStore(named: .default)
-    
     //MARK: application으로 선택된 앱에서의 동작
     override func handle(action: ShieldAction, for application: ApplicationToken, completionHandler: @escaping (ShieldActionResponse) -> Void) {
         // Handle the action as needed.
