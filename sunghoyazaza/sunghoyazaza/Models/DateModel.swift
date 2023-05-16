@@ -67,21 +67,42 @@ class DateModel:ObservableObject{
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: startDate.toDate()!, to: Date.now.toDate()!)
         let days = (components.day ?? 0)
-        
         var tempRecords:[String:Record] = [:]
         
-
-        for day in 0...days{
-            let dateString = current.toString()
-            if failDic[dateString] == nil {
-                if day < days{
-                    tempRecords[dateString] = Record(type: .success)
+        
+        var now = Date()
+        let hour = calendar.component(.hour, from: now)
+        let minute = calendar.component(.minute, from: now)
+        
+        let sleepEndDateComponent = ScreenTimeVM.shared.sleepEndDateComponent
+        
+        if (hour < sleepEndDateComponent.hour!) || (hour == sleepEndDateComponent.hour! && minute <= sleepEndDateComponent.minute!){
+            for day in 0..<days{
+                let dateString = current.toString()
+                if failDic[dateString] == nil {
+                    if day < days - 1{
+                        tempRecords[dateString] = Record(type: .success)
+                    }
+                }else{
+                    tempRecords[dateString] = Record(type: .fail)
                 }
-            }else{
-                tempRecords[dateString] = Record(type: .fail)
+                current = calendar.date(byAdding: .day, value: 1, to: current)!
             }
-            current = calendar.date(byAdding: .day, value: 1, to: current)!
+        }else{
+            for day in 0...days{
+                let dateString = current.toString()
+                if failDic[dateString] == nil {
+                    if day < days{
+                        tempRecords[dateString] = Record(type: .success)
+                    }
+                }else{
+                    tempRecords[dateString] = Record(type: .fail)
+                }
+                current = calendar.date(byAdding: .day, value: 1, to: current)!
+            }
         }
+
+
 
         self.records = tempRecords
     }

@@ -125,9 +125,9 @@ struct MainView: View {
 //                        ScreenTimeVM.shared.isUserInitStatus = false
                     }
                 }
+                
             } .onChange(of: scenePhase) { phase in
                 mainLabel = MainModel().mainLabel
-              //  subLabel = MainModel().subLabel
             }
     }
 }
