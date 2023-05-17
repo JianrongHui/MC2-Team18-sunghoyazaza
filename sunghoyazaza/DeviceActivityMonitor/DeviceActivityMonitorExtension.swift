@@ -25,10 +25,6 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     @AppStorage(AppStorageKey.isUserNotificationOn.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isUserNotificationOn: Bool!
     
-    // MARK: 오늘 수면 계획 동안 연장할 시간
-    @AppStorage(AppStorageKey.additionalTime.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var additionalTime: Int!
-    
     var selectionToDiscourage = ScreenTimeVM.shared.selectionToDiscourage
     
     // MARK: 스케줄 시작 시점에 호출

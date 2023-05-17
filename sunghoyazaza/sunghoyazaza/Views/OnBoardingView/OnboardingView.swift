@@ -54,7 +54,6 @@ extension OnboardingView {
                 .padding(.bottom, .spacing24)
             DatePicker(selection: $endAt, displayedComponents: .hourAndMinute, label: { Text("🔔 기상 시간") })
         }
-        .border(.red)
     }
     
     // MARK: 앱 설정하러가기 버튼
