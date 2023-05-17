@@ -97,6 +97,7 @@
 		B8252F022A1133D900D1B692 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 		B8252F032A1133DA00D1B692 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 		B8252F042A1133DA00D1B692 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
+		B8252F0C2A1358AE00D1B692 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
 		B8C078FB2A100A8F00E7156F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA9E5C2A09E0610050AA4B /* DetailView.swift */; };
 		E59D0FEE2A0DECF3005C0B05 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E59D0FED2A0DECF3005C0B05 /* Lottie */; };
 		E59D0FF02A0DED37005C0B05 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D0FEF2A0DED37005C0B05 /* LottieView.swift */; };

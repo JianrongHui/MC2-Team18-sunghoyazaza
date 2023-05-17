@@ -16,8 +16,7 @@ import SwiftUI
 class ShieldActionExtension: ShieldActionDelegate {
     // MARK: 오늘 수면 계획 동안 15분 연장 횟수
     @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var additionalCount: Int = 0
-        
+    var additionalCount: Int!
     // MARK: 스케줄 종료 지점 판별을 위한 변수
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isEndPoint: Bool = true

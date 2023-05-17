@@ -17,11 +17,13 @@ import Foundation
 class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     // MARK: 오늘 수면 계획 동안 15분 연장 횟수
     @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var additionalCount: Int = 0
-    
-    // MARK: 스케줄 종료 지점 판별을 위한 변수
+    var additionalCount: Int!
+    // MARK: 스케줄 종료 지점 판별을 위한 변수ㅡ
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var isEndPoint: Bool = true
+    var isEndPoint: Bool!
+    // MARK: 사용자 알림 설정 여부
+    @AppStorage(AppStorageKey.isUserNotificationOn.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var isUserNotificationOn: Bool!
     
     var selectionToDiscourage = ScreenTimeVM.shared.selectionToDiscourage
     
@@ -44,10 +46,18 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     // MARK: 스케줄 종료 시점 or 모니터링 중단 시 호출
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
-        //TODO: MyModel.shared.isEndPoint == true 조건이 계속 적용될거임 --> 수정 필요
+        // MARK: 스케줄 중단이 아니라 종료일 경우 additionalCount를 초기화하고 .dailySleep 모니터링 다시 시작
         if activity == .additionalTime && isEndPoint == true {
-            ScreenTimeVM.shared.additionalCount = 0 // 스케줄 중단이 아니라 종료일 경우 additionalCount를 초기화 해줌
+            additionalCount = 0
         }
+//        // TODO: 스케줄 종료 시에 dailySleep 모니터링 다시 시작하도록 코드 작성
+//        if 스케줄 종료일 경우 {
+//            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+//                startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+//                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
+//                deviceActivityName: .dailySleep
+//            )
+//        }
 
         let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
         managedSettingsStore.clearAllSettings()
@@ -64,7 +74,7 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         super.intervalWillStartWarning(for: activity)
         // Handle the warning before the interval starts.
         //MARK: 사용자가 알림을 켜놨으면 동작
-        if ScreenTimeVM.shared.isUserNotificationOn {
+        if isUserNotificationOn {
             if activity == .dailySleep { //MARK: 수면 스케줄 시작 알림
                 NotificationManager.shared.requestNotificationCreate(
                     title: "수면 계획이 곧 시작됩니다.",

@@ -16,15 +16,15 @@ import UIKit
 class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     // MARK: 오늘 수면 계획 동안 15분 연장 횟수
     @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var additionalCount: Int = 0
-    
+    var additionalCount: Int!
     // MARK: 스케줄 종료 지점 판별을 위한 변수
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var isEndPoint: Bool = true
+    var isEndPoint: Bool!
     
-    // TODO: 커스텀 이미지 추가하기
     let imageName = "mustsleep_80.png"
     
+    // MARK: 로직에 따른 문구 분기처리
+    let screenTimeVM = ScreenTimeVM.shared
     let dateModel = DateModel.shared
     let uiColorValue = UIColor(Color.primary)
     
@@ -71,7 +71,8 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                     color: .black
                 ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
-                primaryButtonBackgroundColor: uiColorValue
+                primaryButtonBackgroundColor: uiColorValue,
+                secondaryButtonLabel: nil
             )
         } else {
             return ShieldConfiguration(
@@ -103,7 +104,8 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                     color: .black
                 ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
-                primaryButtonBackgroundColor: uiColorValue
+                primaryButtonBackgroundColor: uiColorValue,
+                secondaryButtonLabel: nil
             )
         } else {
             return ShieldConfiguration(
