@@ -18,12 +18,18 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     // MARK: 오늘 수면 계획 동안 15분 연장 횟수
     @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var additionalCount: Int!
-    // MARK: 스케줄 종료 지점 판별을 위한 변수ㅡ
+    // MARK: 스케줄 종료 지점 판별을 위한 변수
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isEndPoint: Bool!
     // MARK: 사용자 알림 설정 여부
     @AppStorage(AppStorageKey.isUserNotificationOn.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var isUserNotificationOn: Bool!
+    var isUserNotificationOn: Bool = true
+    // MARK: 추가시간 몇 분 줄지
+    @AppStorage(AppStorageKey.additionalMinute.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var additionalMinute: Int = 1
+    // MARK: 미리 알림 시간 (분)
+    @AppStorage(AppStorageKey.warningTime.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var warningTime: Int = 5
     
     var selectionToDiscourage = ScreenTimeVM.shared.selectionToDiscourage
     
@@ -31,36 +37,39 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
         // Handle the start of the interval.
-        if activity == .dailySleep { //MARK: 수면 계획 스케줄 시작
-            additionalCount = 0 // 오늘 스케줄의 additionalCount값 0으로 초기화
-        }
         isEndPoint = true // 현재 스케줄을 종료 지점이라고 봄
-        // 앱 제한 적용 시작
-        let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
-        managedSettingsStore.shield.applications = selectionToDiscourage.applicationTokens.isEmpty ? nil : selectionToDiscourage.applicationTokens
-        managedSettingsStore.shield.applicationCategories = selectionToDiscourage.categoryTokens.isEmpty
-        ? nil
-        : ShieldSettings.ActivityCategoryPolicy.specific(selectionToDiscourage.categoryTokens)
+        
+        if activity == .dailySleep { //MARK: 수면 계획 스케줄 시작
+            additionalCount = 0 // 오늘의 스케줄의 additionalCount값 0으로 초기화
+            // .dailySleep 쉴드 ON
+            let dailySleepStore = ManagedSettingsStore(named: .dailySleep)
+            dailySleepStore.shield.applications = selectionToDiscourage.applicationTokens.isEmpty ? nil : selectionToDiscourage.applicationTokens
+            dailySleepStore.shield.applicationCategories = selectionToDiscourage.categoryTokens.isEmpty
+            ? nil
+            : ShieldSettings.ActivityCategoryPolicy.specific(selectionToDiscourage.categoryTokens)
+            
+        } else if activity == .additionalTime { //MARK: 15분 추가시간 이후 스케줄 시작
+            // .additional 쉴드 ON
+            let additionalStore = ManagedSettingsStore(named: .additional)
+            additionalStore.shield.applications = selectionToDiscourage.applicationTokens.isEmpty ? nil : selectionToDiscourage.applicationTokens
+            additionalStore.shield.applicationCategories = selectionToDiscourage.categoryTokens.isEmpty
+            ? nil
+            : ShieldSettings.ActivityCategoryPolicy.specific(selectionToDiscourage.categoryTokens)
+            
+        }
     }
     
     // MARK: 스케줄 종료 시점 or 모니터링 중단 시 호출
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
-        // MARK: 스케줄 중단이 아니라 종료일 경우 additionalCount를 초기화하고 .dailySleep 모니터링 다시 시작
-        if activity == .additionalTime && isEndPoint == true {
-            additionalCount = 0
+        // 해당 스케줄의 ManagedSettingsStore 초기화 (쉴드 해제)
+        if activity == .dailySleep {
+            let dailySleepStore = ManagedSettingsStore(named: .dailySleep)
+            dailySleepStore.clearAllSettings()
+        } else if activity == .additionalTime {
+            let additionalStore = ManagedSettingsStore(named: .additional)
+            additionalStore.clearAllSettings()
         }
-//        // TODO: 스케줄 종료 시에 dailySleep 모니터링 다시 시작하도록 코드 작성
-//        if 스케줄 종료일 경우 {
-//            ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-//                startTime: ScreenTimeVM.shared.sleepStartDateComponent,
-//                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
-//                deviceActivityName: .dailySleep
-//            )
-//        }
-
-        let managedSettingsStore = ManagedSettingsStore(named: .dailySleep)
-        managedSettingsStore.clearAllSettings()
     }
     
     override func eventDidReachThreshold(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
@@ -78,18 +87,18 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
             if activity == .dailySleep { //MARK: 수면 스케줄 시작 알림
                 NotificationManager.shared.requestNotificationCreate(
                     title: "수면 계획이 곧 시작됩니다.",
-                    subTitle: "5분 뒤에 설정한 수면 계획 시작"
+                    subtitle: "\(warningTime)분 뒤에 설정한 수면 계획 시작"
                 )
             } else if activity == .additionalTime {
                 if additionalCount < 2 { //MARK: 1회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
                         title: "약속한 시간이 다가옵니다.",
-                        subTitle: "1분 뒤에 설정한 수면 계획 시작"
+                        subtitle: "\(additionalMinute)분 뒤에 설정한 수면 계획 시작"
                     )
                 } else { //MARK: 2회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
                         title: "최후의 약속이 끝나갑니다.",
-                        subTitle: "1분 뒤에 설정한 수면 계획 시작"
+                        subtitle: "\(additionalMinute)분 뒤에 설정한 수면 계획 다시 시작"
                     )
                 }
             }

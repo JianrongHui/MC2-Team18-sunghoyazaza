@@ -28,8 +28,35 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
+            //MARK: 2회까지 핸드폰 추가 사용 가능
             if additionalCount < 2 {
-                handleAdditionalTimeAction()
+                isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
+                additionalCount += 1
+                //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
+                var current = Date()
+                let calendar = Calendar.current
+                let hour = calendar.component(.hour, from: current)
+                
+                if hour < 12{
+                    current = calendar.date(byAdding: .day, value: -1, to: current)!
+                }
+                
+                let dateString = current.toString()
+                if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
+                    failList.append(dateString)
+                    DateModel.shared.failList = (failList.encode)!
+                }
+                
+                // .dailySleep 쉴드 제거 (1차 연장 시 필요)
+                let dailySleepStore = ManagedSettingsStore(named: .dailySleep)
+                dailySleepStore.clearAllSettings()
+                // additional 모니터링 시작
+                ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                    startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+                    endTime: ScreenTimeVM.shared.sleepEndDateComponent,
+                    deviceActivityName: .additionalTime
+                )
+                
                 completionHandler(.close)
             } else {
                 completionHandler(.none)
@@ -46,8 +73,35 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
+            //MARK: 2회까지 핸드폰 추가 사용 가능
             if additionalCount < 2 {
-                handleAdditionalTimeAction()
+                isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
+                additionalCount += 1
+                //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
+                var current = Date()
+                let calendar = Calendar.current
+                let hour = calendar.component(.hour, from: current)
+                
+                if hour < 12{
+                    current = calendar.date(byAdding: .day, value: -1, to: current)!
+                }
+                
+                let dateString = current.toString()
+                if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
+                    failList.append(dateString)
+                    DateModel.shared.failList = (failList.encode)!
+                }
+                
+                // .dailySleep 쉴드 제거 (1차 연장 시 필요)
+                let dailySleepStore = ManagedSettingsStore(named: .dailySleep)
+                dailySleepStore.clearAllSettings()
+                // additional 모니터링 시작
+                ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+                    startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+                    endTime: ScreenTimeVM.shared.sleepEndDateComponent,
+                    deviceActivityName: .additionalTime
+                )
+                
                 completionHandler(.close)
             } else {
                 completionHandler(.none)
@@ -57,38 +111,38 @@ class ShieldActionExtension: ShieldActionDelegate {
         }
     }
     
-    // MARK: 두번째 버튼 클릭 시 추가 시간 주는 로직
-    private func handleAdditionalTimeAction() {
-        registAdditionalSchedule()
-        updateDateModel()
-    }
+//    // MARK: 두번째 버튼 클릭 시 추가 시간 주는 로직
+//    private func handleAdditionalTimeAction() {
+//        registAdditionalSchedule()
+//        updateDateModel()
+//    }
     
-    //MARK: 15분 연장 스케줄 모니터링 시작
-    private func registAdditionalSchedule() {
-        isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
-        additionalCount += 1
-        ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-            startTime: ScreenTimeVM.shared.sleepStartDateComponent,
-            endTime: ScreenTimeVM.shared.sleepEndDateComponent,
-            deviceActivityName: .additionalTime
-        )
-    }
+//    //MARK: 15분 연장 스케줄 모니터링 시작
+//    private func registAdditionalSchedule() {
+//        isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
+//        additionalCount += 1
+//        ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+//            startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+//            endTime: ScreenTimeVM.shared.sleepEndDateComponent,
+//            deviceActivityName: .additionalTime
+//        )
+//    }
     
-    //MARK: 실패일 데이터 갱신
-    private func updateDateModel() {
-        //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
-        var current = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: current)
-        
-        if hour < 12{
-            current = calendar.date(byAdding: .day, value: -1, to: current)!
-        }
-        
-        let dateString = current.toString()
-        if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
-            failList.append(dateString)
-            DateModel.shared.failList = (failList.encode)!
-        }
-    }
+//    //MARK: 실패일 데이터 갱신
+//    private func updateDateModel() {
+//        //실패 데이터(yyyymmdd)를 DateModel의 failList에 append
+//        var current = Date()
+//        let calendar = Calendar.current
+//        let hour = calendar.component(.hour, from: current)
+//
+//        if hour < 12{
+//            current = calendar.date(byAdding: .day, value: -1, to: current)!
+//        }
+//
+//        let dateString = current.toString()
+//        if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
+//            failList.append(dateString)
+//            DateModel.shared.failList = (failList.encode)!
+//        }
+//    }
 }

@@ -19,7 +19,8 @@ public enum AppStorageKey: String {
     case hasNotificationPermission
     case hasScreenTimePermission
     case testCount
-    case additionalTime
+    case additionalMinute // 핸드폰 추가 사용 시간
+    case warningTime // 미리 알림 시간
 
 }
 
