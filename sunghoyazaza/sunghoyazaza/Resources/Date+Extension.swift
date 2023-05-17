@@ -23,4 +23,23 @@ extension Date {
         let date = dateFormatter.string(from: currentDate) // 날짜를 문자열로 변환
         return date
     }
+    
+    //MARK: 현재 월, 일을 알기위한 위한 Extension
+    func getAllDates()->[Date] {
+        
+        let calendar = Calendar.current
+        
+        // getting start Date
+        let startDate = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
+        
+        
+        let range = calendar.range(of: .day, in: .month, for: startDate)!
+        
+        // getting date
+        return range.compactMap{ day -> Date in
+            
+            return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
+        }
+    }
 }
+

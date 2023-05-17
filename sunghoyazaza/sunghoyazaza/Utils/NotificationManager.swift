@@ -76,11 +76,12 @@ class NotificationManager {
         title: String = "Sample Notification Title",
         subtitle: String = "Sample Notification SubTitle",
         timeInterval: Double = 5.0
-    ) {
+    ) {        
         let content = UNMutableNotificationContent()
         content.title = title
         content.subtitle = subtitle
         content.sound = .default
+        // TODO: 뱃지 정상 동작하도록 수정하기
         content.badge = 1
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)

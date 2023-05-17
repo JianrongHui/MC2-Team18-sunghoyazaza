@@ -7,14 +7,6 @@
 import Foundation
 import SwiftUI
 
-struct PermissionButtonInfo: Identifiable {
-    let id = UUID()
-    let headerText: String
-    let src: String
-    let permissionName: String
-    let footerText: String
-}
-
 typealias PermissionButtonStatus = (label: String, img: String, color: Color)
 
 class PermissionViewModel: ObservableObject {
@@ -53,10 +45,19 @@ class PermissionViewModel: ObservableObject {
     var hasScreenTimePermission = false
 }
 
+// MARK: Method
 extension PermissionViewModel {
     func updatePermissionStatus() {
         updateNotificationPermissionStatus()
         updateScreenTimePermissionStatus()
+    }
+    
+    func handlePermissionButton(permissionName: String) {
+        if permissionName == "알림" {
+            requestNotificationPermission()
+        } else {
+            requestScreenTimePermission()
+        }
     }
     
     private func updateNotificationPermissionStatus() {
@@ -92,15 +93,7 @@ extension PermissionViewModel {
             hasScreenTimePermission = false
         }
     }
-    
-    func handlePermissionButton(permissionName: String) {
-        if permissionName == "알림" {
-            requestNotificationPermission()
-        } else {
-            requestScreenTimePermission()
-        }
-    }
-    
+
     // MARK: Notification 권한 요청
     private func requestNotificationPermission() {
         NotificationManager.shared.requestAuthorization()

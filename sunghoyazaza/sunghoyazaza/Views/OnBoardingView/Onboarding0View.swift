@@ -10,29 +10,13 @@ import SwiftUI
 struct Onboarding0View: View {
     
     @StateObject
-    var vm = Onboarding0VM()
+    private var vm = Onboarding0VM()
     
     @State
     private var isNavigationActive = false
     
     var body: some View {
         VStack {
-//            //MARK: 디버깅용 코드 (삭제 예정)
-//            Button {
-//                print("Activitiies: \(ScreenTimeVM.shared.deviceActivityCenter.activities)")
-//                if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
-//                    print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
-//                }
-//                if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime) != nil {
-//                    print("Schedule .additionalFifteen: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime))\n")
-//                }
-//                print("additionalCount: \(ScreenTimeVM.shared.additionalCount)")
-//                print("isEndPoint: \(ScreenTimeVM.shared.isEndPoint.description)")
-//
-//            } label: {
-//                Text("액티비티 조회")
-//            }//여기까지 디버깅용 코드
-
             CarouselContainerView()
             GoToPermissionButtonView()
         }
@@ -43,7 +27,7 @@ struct Onboarding0View: View {
 // MARK: Views
 extension Onboarding0View {
     // MARK: 캐로셀 컨테이너 뷰
-    func CarouselContainerView() -> some View {
+    private func CarouselContainerView() -> some View {
         TabView {
             ForEach(vm.carouselItems) {
                 carouselItem in
@@ -54,7 +38,7 @@ extension Onboarding0View {
         .indexViewStyle(.page(backgroundDisplayMode: .always))
     }
     
-    func CarouselItemView(info: CarouselItemInfo) -> some View {
+    private func CarouselItemView(info: CarouselItemInfo) -> some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading, spacing: 8){
                 Text(info.labelTitle)
@@ -69,17 +53,14 @@ extension Onboarding0View {
             .padding(.top, .spacing56)
             .padding(.horizontal, .spacing24)
             .frame(minHeight: 240, maxHeight: 240, alignment: .topLeading)
-//            .border(.red)
             Image(info.src)
                 .resizable()
                 .scaledToFit()
-//                .border(.red)
         }
-//        .border(.red)
     }
     
     // MARK: 시작하기 버튼
-    func GoToPermissionButtonView() -> some View {
+    private func GoToPermissionButtonView() -> some View {
         VStack {
             Button {
                 isNavigationActive = true
@@ -98,10 +79,3 @@ extension Onboarding0View {
         }
     }
 }
-
-struct Onboarding0View_Previews: PreviewProvider {
-    static var previews: some View {
-        Onboarding0View()
-    }
-}
-

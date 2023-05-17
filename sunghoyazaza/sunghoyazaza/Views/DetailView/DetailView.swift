@@ -13,12 +13,11 @@ struct DetailView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var settingIndex = 0
-    @State var selection = FamilyActivitySelection()
-    @State var isPresented = false
+    @State private var selection = FamilyActivitySelection()
+    @State private var isPresented = false
     @State private var toggleIndex = true
     
-    
-    let columns = [
+    private let columns = [
         GridItem(.fixed(56)),
         GridItem(.fixed(56)),
         GridItem(.fixed(56)),

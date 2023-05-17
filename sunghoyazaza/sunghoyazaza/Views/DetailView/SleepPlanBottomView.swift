@@ -11,25 +11,15 @@ import FamilyControls
 import ManagedSettings
 
 struct SleepPlanBottomView: View {
-    @State var dataCount = MainVM().blockApplicationCount()
+    @State private var dataCount = MainVM().blockApplicationCount()
     
-    @State var selection = FamilyActivitySelection() {
+    @State private var selection = FamilyActivitySelection() {
         didSet {
             ScreenTimeVM.shared.selectionToDiscourage = selection
         }
     }
-    var tokens: [ApplicationToken] {
-        didSet {
-            print("GGG!")
-        }
-    }
-    
-    init() {
-        self.tokens = Array(ScreenTimeVM.shared.selectionToDiscourage.applicationTokens)
-        print(ScreenTimeVM.shared.selectionToDiscourage)
-    }
-    
-    let columns = [
+
+    private let columns = [
         GridItem(.fixed(36)),
         GridItem(.fixed(36)),
         GridItem(.fixed(36)),
@@ -65,7 +55,6 @@ struct SleepPlanBottomView: View {
                         }
                     }
                 }
-//                .padding(CGFloat.spacing16)
                 .frame(maxWidth: .infinity)
             }
             else {
@@ -77,7 +66,7 @@ struct SleepPlanBottomView: View {
         .frame(maxWidth: .infinity, minHeight: 40)
         .padding(.vertical, .spacing20)
         .background(Color.primary3)
-        .cornerRadius(24) // , corners: [.bottomLeft, .bottomRight]
+        .cornerRadius(24)
         .onAppear() {
             //MARK: 사용자가 기존에 설정한 제한 앱 불러오기
             selection = ScreenTimeVM.shared.selectionToDiscourage
