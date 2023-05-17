@@ -44,6 +44,9 @@
 		A9D5C5772A0E6ECC002723F0 /* PermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5C5762A0E6ECC002723F0 /* PermissionViewModel.swift */; };
 		A9F0ED5B2A08C209006E02B6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */; };
 		A9F0ED982A08CABD006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
+		A9F946C82A13905100BB4D1B /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
+		A9F946C92A13905200BB4D1B /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
+		A9F946CA2A13920F00BB4D1B /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
 		B813F33F2A0D36D7003E7590 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 		B8252E182A111A4C00D1B692 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
 		B8252E192A111A4C00D1B692 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
@@ -59,8 +62,6 @@
 		B8252ED92A11332100D1B692 /* ShieldAction.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8252ED02A11332100D1B692 /* ShieldAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8252EDD2A11336300D1B692 /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8252EB02A11329700D1B692 /* DeviceActivityMonitorExtension.swift */; };
 		B8252EDE2A11337000D1B692 /* ShieldActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8252ED32A11332100D1B692 /* ShieldActionExtension.swift */; };
-		B8252EE02A11337800D1B692 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
-		B8252EE12A11337900D1B692 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
 		B8252EE22A11338000D1B692 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43D2A07C5B90069656E /* DateVM.swift */; };
 		B8252EE32A11338000D1B692 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43D2A07C5B90069656E /* DateVM.swift */; };
 		B8252EE42A11338000D1B692 /* DateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFF43D2A07C5B90069656E /* DateVM.swift */; };
@@ -96,7 +97,6 @@
 		B8252F022A1133D900D1B692 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 		B8252F032A1133DA00D1B692 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
 		B8252F042A1133DA00D1B692 /* ShieldContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F33E2A0D36D7003E7590 /* ShieldContent.swift */; };
-		B8252F0B2A12120500D1B692 /* ScreenTimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97D92A0F76B40012E8A9 /* ScreenTimeVM.swift */; };
 		B8C078FB2A100A8F00E7156F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEA9E5C2A09E0610050AA4B /* DetailView.swift */; };
 		E59D0FEE2A0DECF3005C0B05 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E59D0FED2A0DECF3005C0B05 /* Lottie */; };
 		E59D0FF02A0DED37005C0B05 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D0FEF2A0DED37005C0B05 /* LottieView.swift */; };
@@ -750,7 +750,7 @@
 				B8252EE52A11338D00D1B692 /* Font+Extension.swift in Sources */,
 				B8252EF42A1133AC00D1B692 /* StringArray.swift in Sources */,
 				B8252EFA2A1133C200D1B692 /* DateModel.swift in Sources */,
-				B8252F0B2A12120500D1B692 /* ScreenTimeVM.swift in Sources */,
+				A9F946CA2A13920F00BB4D1B /* ScreenTimeVM.swift in Sources */,
 				B8252EFD2A1133CB00D1B692 /* NotificationManager.swift in Sources */,
 				B8252EDE2A11337000D1B692 /* ShieldActionExtension.swift in Sources */,
 				B8252EF72A1133B200D1B692 /* Array.swift in Sources */,
@@ -775,8 +775,8 @@
 				B8252EC32A11330900D1B692 /* ShieldConfigurationExtension.swift in Sources */,
 				B8252EFB2A1133C200D1B692 /* DateModel.swift in Sources */,
 				B8252EF02A1133A200D1B692 /* String.swift in Sources */,
+				A9F946C82A13905100BB4D1B /* ScreenTimeVM.swift in Sources */,
 				B8252EE62A11338E00D1B692 /* Font+Extension.swift in Sources */,
-				B8252EE02A11337800D1B692 /* ScreenTimeVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,13 +792,13 @@
 				B8252EE72A11338E00D1B692 /* Font+Extension.swift in Sources */,
 				B8252EF52A1133AC00D1B692 /* StringArray.swift in Sources */,
 				B8252EFC2A1133C300D1B692 /* DateModel.swift in Sources */,
+				A9F946C92A13905200BB4D1B /* ScreenTimeVM.swift in Sources */,
 				B8252EFE2A1133CC00D1B692 /* NotificationManager.swift in Sources */,
 				B8252ED42A11332100D1B692 /* ShieldActionExtension.swift in Sources */,
 				B8252EF92A1133B300D1B692 /* Array.swift in Sources */,
 				B8252EF22A1133A700D1B692 /* CGFloat+Extension.swift in Sources */,
 				B8252EDD2A11336300D1B692 /* DeviceActivityMonitorExtension.swift in Sources */,
 				B8252EEF2A1133A200D1B692 /* String.swift in Sources */,
-				B8252EE12A11337900D1B692 /* ScreenTimeVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

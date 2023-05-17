@@ -45,7 +45,7 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
         //TODO: MyModel.shared.isEndPoint == true 조건이 계속 적용될거임 --> 수정 필요
-        if activity == .additionalTime && ScreenTimeVM.shared.isEndPoint == true {
+        if activity == .additionalTime && isEndPoint == true {
             ScreenTimeVM.shared.additionalCount = 0 // 스케줄 중단이 아니라 종료일 경우 additionalCount를 초기화 해줌
         }
 

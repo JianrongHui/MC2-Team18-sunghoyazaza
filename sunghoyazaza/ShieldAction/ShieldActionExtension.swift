@@ -17,7 +17,7 @@ class ShieldActionExtension: ShieldActionDelegate {
     // MARK: 오늘 수면 계획 동안 15분 연장 횟수
     @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var additionalCount: Int = 0
-    
+        
     // MARK: 스케줄 종료 지점 판별을 위한 변수
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isEndPoint: Bool = true
@@ -30,7 +30,7 @@ class ShieldActionExtension: ShieldActionDelegate {
             completionHandler(.close)
         case .secondaryButtonPressed:
             handleAdditionalTimeAction()
-            completionHandler(.none)
+            completionHandler(.close)
         @unknown default:
             fatalError()
         }
@@ -44,7 +44,7 @@ class ShieldActionExtension: ShieldActionDelegate {
             completionHandler(.close)
         case .secondaryButtonPressed:
             handleAdditionalTimeAction()
-            completionHandler(.none)
+            completionHandler(.close)
         @unknown default:
             fatalError()
         }
@@ -59,7 +59,7 @@ class ShieldActionExtension: ShieldActionDelegate {
     //MARK: 15분 연장 스케줄 모니터링 시작
     private func registAdditionalSchedule() {
         isEndPoint = false // 종료 지점을 다음 스케줄로 넘김
-        additionalCount += 1 // 연장 횟수 1 카운트
+        additionalCount += 1
         ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
             startTime: ScreenTimeVM.shared.sleepStartDateComponent,
             endTime: ScreenTimeVM.shared.sleepEndDateComponent,
@@ -82,7 +82,6 @@ class ShieldActionExtension: ShieldActionDelegate {
         if var failList = DateModel.shared.failList.decode, !failList.contains(dateString){
             failList.append(dateString)
             DateModel.shared.failList = (failList.encode)!
-            
         }
     }
 }
