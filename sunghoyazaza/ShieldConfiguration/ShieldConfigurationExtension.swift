@@ -16,16 +16,14 @@ import UIKit
 class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     // MARK: 오늘 수면 계획 동안 15분 연장 횟수
     @AppStorage(AppStorageKey.additionalCount.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var additionalCount: Int = 0
-    
+    var additionalCount: Int!
     // MARK: 스케줄 종료 지점 판별을 위한 변수
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var isEndPoint: Bool = true
+    var isEndPoint: Bool!
     
-    // TODO: 커스텀 이미지 추가하기
     let imageName = "mustsleep_80.png"
     
-    // TODO: 로직에 따른 문구 분기처리 필요
+    // MARK: 로직에 따른 문구 분기처리
     let screenTimeVM = ScreenTimeVM.shared
     let dateModel = DateModel.shared
     let uiColorValue = UIColor(red: 15/255, green: 0/255, blue: 148/255, alpha: 1.0) // Hex 0x0F0094의 UIColor값
@@ -37,7 +35,7 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
         let recentSuccessCount = dateModel.recentSuccessCount
         let recentFailCount = dateModel.recentFailCount
 
-        if screenTimeVM.additionalCount == 0{
+        if additionalCount == 0{
             if recentSuccessCount == 0{
                 if recentFailCount == 0 {
                     return .case1
@@ -55,12 +53,13 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
             }else{
                 return .case6
             }
-        }else if screenTimeVM.additionalCount == 1{
+        }else if additionalCount == 1{
             return .case7
         }else{
             return .case8
         }
     }
+    
     override func configuration(shielding application: Application) -> ShieldConfiguration {
         // Customize the shiel d as needed for applications.
         if shieldContent.self == .case8 { //MARK: 2회 이상 휴대폰을 본 뒤에는 더보기 버튼이 없는 쉴드 페이지
@@ -74,7 +73,8 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                     color: .black
                 ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
-                primaryButtonBackgroundColor: uiColorValue
+                primaryButtonBackgroundColor: uiColorValue,
+                secondaryButtonLabel: nil
             )
         } else {
             return ShieldConfiguration(
@@ -106,7 +106,8 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
                     color: .black
                 ),
                 primaryButtonLabel: ShieldConfiguration.Label(text: shieldContent.primaryButtonText, color: .white),
-                primaryButtonBackgroundColor: uiColorValue
+                primaryButtonBackgroundColor: uiColorValue,
+                secondaryButtonLabel: nil
             )
         } else {
             return ShieldConfiguration(
