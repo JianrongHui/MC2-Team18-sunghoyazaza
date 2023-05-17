@@ -15,13 +15,6 @@ struct DetailView: View {
     @State private var settingIndex = 0
     @State var selection = FamilyActivitySelection()
     @State var isPresented = false
-    
-    // TODO: 알림권한 꺼져있을 경우, 권한 조회하고 알림 켜도록 바꾸기.
-    @State private var isAlertActive = false {
-        didSet {
-            toggleIndex = true
-        }
-    }
     @State private var toggleIndex = true
     
     
@@ -105,9 +98,6 @@ extension DetailView {
                 VStack{
                     Toggle("시작전 알림", isOn: $toggleIndex)
                         .background(.white)
-                        .onChange(of: toggleIndex) { _ in
-                            isAlertActive = true
-                        }
                     //                            .frame(height:56)
                 }
                 .padding(.horizontal, .spacing16)
@@ -121,13 +111,6 @@ extension DetailView {
             }
             .padding(.top, .spacing16)
             .padding(.horizontal, .spacing24)
-        }
-        .alert("🙏 준비중인 기능이에요", isPresented: $isAlertActive) {
-            Button("확인", role: .cancel) {
-                isAlertActive = false
-            }
-        } message: {
-            Text("다음 버전을 기대해주세요")
         }
     }
     
