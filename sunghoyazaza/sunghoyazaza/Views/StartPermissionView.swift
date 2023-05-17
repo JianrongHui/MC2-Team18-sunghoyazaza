@@ -50,7 +50,6 @@ struct StartPermissionView: View {
                         Text("alarm Notification")
                     }
                 }
-
                 HStack{
                     if screenTimeAPIOnOff == false {
                         Text("screenTimeAPIOff")
@@ -66,20 +65,6 @@ struct StartPermissionView: View {
                         Text("screenNotificationAPI Notification")
                     }
                 }
-
-                
-                
-                //                // 중간 Bold 텍스트 (UI 변경시 삭제될 것)
-                //                Text("Screen Time \n권한을 허용해주세요.")
-                //                    .multilineTextAlignment(.center)
-                //                    .bold()
-                //                    .font(.system(size: 34))
-                //                    .padding(.bottom, 1)
-                //
-                //                // 중간 Regular 텍스트 (UI 변경시 삭제될 것)
-                //                Text("앱을 사용하려면 \nScreen Time 권한이 필요합니다.")
-                //                    .multilineTextAlignment(.center)
-                //                    .font(.system(size: 17))
             }
         }    
     }

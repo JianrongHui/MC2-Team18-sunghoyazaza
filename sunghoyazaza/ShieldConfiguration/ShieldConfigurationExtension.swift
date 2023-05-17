@@ -26,11 +26,9 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     // MARK: 로직에 따른 문구 분기처리
     let screenTimeVM = ScreenTimeVM.shared
     let dateModel = DateModel.shared
-    let uiColorValue = UIColor(red: 15/255, green: 0/255, blue: 148/255, alpha: 1.0) // Hex 0x0F0094의 UIColor값
+    let uiColorValue = UIColor(Color.primary)
     
-
-    var shieldContent:ShieldContent{
-        
+    var shieldContent: ShieldContent{
         let totalSuccessCount = dateModel.totalSuccessCount
         let recentSuccessCount = dateModel.recentSuccessCount
         let recentFailCount = dateModel.recentFailCount
@@ -125,15 +123,4 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
             )
         }
     }
-    
-    // TODO: 미사용 시 제거할지 말지 논의하기
-//    override func configuration(shielding webDomain: WebDomain) -> ShieldConfiguration {
-//        // Customize the shield as needed for web domains.
-//        ShieldConfiguration()
-//    }
-//
-//    override func configuration(shielding webDomain: WebDomain, in category: ActivityCategory) -> ShieldConfiguration {
-//        // Customize the shield as needed for web domains shielded because of their category.
-//        ShieldConfiguration()
-//    }
 }

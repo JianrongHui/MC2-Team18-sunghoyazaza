@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-struct CarouselItemInfo: Identifiable {
-    let id = UUID()
-    var idx: Int
-    var labelTitle: String
-    var labelBody: String
-    var src: String
-}
-
 class Onboarding0VM: ObservableObject {
     
     init() {

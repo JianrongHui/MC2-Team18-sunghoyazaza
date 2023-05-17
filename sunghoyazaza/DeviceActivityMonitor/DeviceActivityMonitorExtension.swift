@@ -84,12 +84,12 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
                 if additionalCount < 2 { //MARK: 1회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
                         title: "약속한 시간이 다가옵니다.",
-                        subtitle: "5분 뒤에 설정한 수면 계획 시작"
+                        subtitle: "1분 뒤에 설정한 수면 계획 시작"
                     )
                 } else { //MARK: 2회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
                         title: "최후의 약속이 끝나갑니다.",
-                        subtitle: "5분 뒤에 설정한 수면 계획 다시 시작"
+                        subtitle: "1분 뒤에 설정한 수면 계획 다시 시작"
                     )
                 }
             }

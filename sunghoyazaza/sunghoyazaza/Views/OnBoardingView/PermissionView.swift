@@ -61,7 +61,6 @@ struct PermissionView: View {
         .onChange(of: ScreenTimeVM.shared.authorizationCenter.authorizationStatus) {
             authStatus in
             vm.updatePermissionStatus()
-            
         }
         .onReceive(NotificationManager.shared.$sharedHasNotificationPermission) { status in
             vm.updatePermissionStatus()

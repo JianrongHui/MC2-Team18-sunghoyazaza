@@ -148,8 +148,7 @@ extension Onboarding2View {
 //            //MARK: 수면 계획 모니터링 시작
             ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
                 startTime: ScreenTimeVM.shared.sleepStartDateComponent,
-                endTime: ScreenTimeVM.shared.sleepEndDateComponent,
-                deviceActivityName: .dailySleep
+                endTime: ScreenTimeVM.shared.sleepEndDateComponent
             )
             DateModel.shared.startDate = Date().toString()
             DateModel.shared.reloadData()

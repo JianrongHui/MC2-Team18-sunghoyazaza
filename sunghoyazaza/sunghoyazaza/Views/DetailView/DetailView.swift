@@ -10,9 +10,13 @@ import FamilyControls
 import ManagedSettings
 
 struct DetailView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     @State private var settingIndex = 0
     @State var selection = FamilyActivitySelection()
     @State var isPresented = false
+    @State private var toggleIndex = true
+    
     
     let columns = [
         GridItem(.fixed(56)),
@@ -22,16 +26,12 @@ struct DetailView: View {
         GridItem(.fixed(56))
     ]
     
-    // TODO: @AppStorage로 사용하기 때문에 논의 후 코드 삭제
-//    @State var startAt = UserDefaults.standard.object(forKey: "startAt") as? Date ?? Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
-//    @State var endAt = UserDefaults.standard.object(forKey: "endAt") as? Date ?? Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
     @State var startAt = Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: Date())!
     @State var endAt = Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
     
     @State var selectedDays:[Bool] = UserDefaults.standard.array(forKey: "selectedDays") as? [Bool] ?? [Bool](repeating: false, count: 7)
     
-    @State private var toggleIndex = true
-    
+
     var body: some View {
         VStack(spacing: 0) {
             TabButtonView()
@@ -61,21 +61,7 @@ struct DetailView: View {
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("저장") {
-//                        UserDefaults.standard.set(startAt, forKey: "startAt")
-//                        UserDefaults.standard.set(endAt, forKey: "endAt")
-//                        UserDefaults.standard.set(selectedDays, forKey: "selectedDays")
-                    //MARK: 사용자 설정 값들을 @AppStorage 변수에 저장
-                    ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
-                    ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
-                    ScreenTimeVM.shared.selectionToDiscourage = selection
-                    ScreenTimeVM.shared.isUserNotificationOn = toggleIndex // 알림 설정 값 저장
-                    
-                    //MARK: 수면 계획 모니터링 시작
-                    ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
-                        startTime: ScreenTimeVM.shared.sleepStartDateComponent,
-                        endTime: ScreenTimeVM.shared.sleepEndDateComponent,
-                        deviceActivityName: .dailySleep
-                    )
+                    handleSavePlan()
                 }
             }
         }
@@ -86,7 +72,7 @@ struct DetailView: View {
 extension DetailView {
     
     // MARK: 탭 버튼 UI
-    func TabButtonView() -> some View {
+    private func TabButtonView() -> some View {
         VStack {
             Picker("설정 선택", selection: $settingIndex, content: {
                 Text("시간 설정").tag(0)
@@ -98,7 +84,7 @@ extension DetailView {
     }
     
     // MARK: 시간 설정 탭
-    func SettingTimeView() -> some View {
+    private func SettingTimeView() -> some View {
         VStack {
             VStack(spacing: .spacing24){
                 // TODO: 앱 제한 기능 동작 시 추가하기
@@ -129,14 +115,14 @@ extension DetailView {
     }
     
     // MARK: 앱 설정 탭
-    func SettingAppView() -> some View {
+    private func SettingAppView() -> some View {
         VStack {
             SelectAppContainerView()
         }
     }
     
     // MARK: 앱 선택 컨테이너 뷰
-    func SelectAppContainerView() -> some View {
+    private func SelectAppContainerView() -> some View {
         // TODO::Pick interface
         // VERSION 1
         VStack(spacing: 0) {
@@ -163,7 +149,7 @@ extension DetailView {
     }
     
     // MARK: 선택된 앱 리스트 뷰
-    func SelectedAppListView() -> some View {
+    private func SelectedAppListView() -> some View {
         VStack {
             if (selection.applicationTokens.count > 0 || selection.categoryTokens.count > 0) {
                 LazyVGrid(columns: columns, alignment: .leading){
@@ -205,5 +191,22 @@ extension DetailView {
         }
         .padding(.top, .spacing8)
         .padding(.horizontal, .spacing24)
+    }
+}
+
+extension DetailView {
+    private func handleSavePlan() {
+        //MARK: 사용자 설정 값들을 @AppStorage 변수에 저장
+        ScreenTimeVM.shared.sleepStartDateComponent = Calendar.current.dateComponents([.hour, .minute], from: startAt)
+        ScreenTimeVM.shared.sleepEndDateComponent = Calendar.current.dateComponents([.hour, .minute], from: endAt)
+        ScreenTimeVM.shared.selectionToDiscourage = selection
+        ScreenTimeVM.shared.isUserNotificationOn = toggleIndex // 알림 설정 값 저장
+        
+        //MARK: 수면 계획 모니터링 시작
+        ScreenTimeVM.shared.handleStartDeviceActivityMonitoring(
+            startTime: ScreenTimeVM.shared.sleepStartDateComponent,
+            endTime: ScreenTimeVM.shared.sleepEndDateComponent
+        )
+        dismiss()
     }
 }
