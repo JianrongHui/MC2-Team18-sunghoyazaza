@@ -100,7 +100,6 @@ struct CalendarView: View {
     }
     
     // 달력 각각 날짜 뷰
-    
     @ViewBuilder
     func CardView(value: DateValue)->some View{
         // 날짜 하루 + 수면 계획 성공 여부 Stack
@@ -141,62 +140,9 @@ struct CalendarView: View {
         .padding(.vertical, 8)
         .frame(height: 36, alignment: .top)
     }
-    //    @ViewBuilder
-    //    func CardView(value: DateValue)->some View{
-    //        // 날짜 하루 + 수면 계획 성공 여부 Stack
-    //        VStack{
-    //            // 수면 계획 성공한 날짜 코드
-    //            if value.day != -1{
-    //                if let task = DateVM().datesHavingDots().first(where: {task in
-    //                    print(value.key)
-    //                    print("@")
-    //                    return isSameDay(date1: task.date, date2: value.date)
-    //                }){
-    //                    Text("\(value.day)")
-    //                        .foregroundColor(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
-    //                        .frame(maxWidth: .infinity)
-    //
-    //                    Spacer()
-    //
-    //                    Circle()
-    //                        .fill(isSameDay(date1: task.date, date2: currentDate) ? Color(hex: 0x0F0094) : Color(hex: 0x0F0094))
-    //                        .frame(width: 8, height: 8)
-    //
-    //                }
-    //                // 수면 계획 실패 + 미래 날짜 코드
-    //                else{
-    //                    Text("\(value.day)")
-    //                        .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? Color(hex: 0x0F0094) : .primary)
-    //                        .frame(maxWidth: .infinity)
-    //
-    //                    Spacer()
-    //
-    //                }
-    //            }
-    //        }
-    //        .padding(.vertical, 9)
-    //        .frame(height: 35,alignment: .top)
-    //    }
-    
-    
-    
-    //MARK: PREVIEW
-    struct CalendarView_Previews: PreviewProvider {
-        static var previews: some View {
-            MainView()
-        }
-    }
-    
-    
-    
-    
-    //MARK: VM, M 정리 필요
-    //MARK: VM, M 정리 필요
-    //MARK: VM, M 정리 필요
-    
-    
+
     //MARK: 날짜 확인 코드
-    func isSameDay(date1: Date, date2: Date) -> Bool{
+    private func isSameDay(date1: Date, date2: Date) -> Bool{
         let calendar = Calendar.current
         
         return calendar.isDate(date1, inSameDayAs: date2)
@@ -204,7 +150,7 @@ struct CalendarView: View {
     
     
     //MARK: YYYY MMMM 형태로 날짜 형식 바꾸는 함수
-    func extraDate()->[String]{
+    private func extraDate()->[String]{
         
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY MMMM"
@@ -216,7 +162,7 @@ struct CalendarView: View {
     
     
     //MARK: 현재 월 반환해주는 함수
-    func getCurrentMonth()->Date{
+    private func getCurrentMonth()->Date{
         
         let calendar = Calendar.current
         
@@ -229,7 +175,7 @@ struct CalendarView: View {
     }
     
     //MARK: 날짜 추출해주는 함수
-    func extractDate()->[DateValue]{
+    private func extractDate()->[DateValue]{
         
         let calendar = Calendar.current
         
@@ -254,26 +200,3 @@ struct CalendarView: View {
         return days
     }
 }
-
-//MARK: 현재 월, 일을 알기위한 위한 Extension
-extension Date{
-    func getAllDates()->[Date]{
-        
-        let calendar = Calendar.current
-        
-        
-        // getting start Date
-        let startDate = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
-        
-        
-        let range = calendar.range(of: .day, in: .month, for: startDate)!
-        
-        // getting date
-        return range.compactMap{ day -> Date in
-            
-            return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
-        }
-    }
-    
-}
-

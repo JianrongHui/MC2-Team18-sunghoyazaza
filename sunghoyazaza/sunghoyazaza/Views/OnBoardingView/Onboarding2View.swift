@@ -47,7 +47,7 @@ struct Onboarding2View: View {
 extension Onboarding2View {
     
     // MARK: 페이지 타이틀
-    func PageTitleView() -> some View {
+    private func PageTitleView() -> some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 8) {
                 Text("제한할 앱을 설정해주세요")
@@ -61,7 +61,7 @@ extension Onboarding2View {
     }
     
     // MARK: 앱 선택 UI
-    func SelectAppContainerView() -> some View {
+    private func SelectAppContainerView() -> some View {
         // TODO::Pick interface
         // VERSION 1
         VStack(spacing: 0) {
@@ -87,7 +87,7 @@ extension Onboarding2View {
         }
     }
     
-    func SelectedAppListView() -> some View {
+    private func SelectedAppListView() -> some View {
         VStack {
             if (selection.applicationTokens.count > 0 || selection.categoryTokens.count > 0) {
                 LazyVGrid(columns: columns, alignment: .leading){
@@ -133,7 +133,7 @@ extension Onboarding2View {
     }
     
     // MARK: 시작하기 버튼
-    func StartButtonView() -> some View {
+    private func StartButtonView() -> some View {
         NavigationLink(destination: {
             MainView()
         }) {

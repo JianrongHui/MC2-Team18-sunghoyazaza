@@ -12,7 +12,7 @@ struct PermissionView: View {
     @Environment(\.scenePhase) private var scenePhase
     
     @StateObject
-    var vm = PermissionViewModel()
+    private var vm = PermissionViewModel()
     
     @State
     private var isNavigationActive = false
@@ -74,7 +74,7 @@ struct PermissionView: View {
 extension PermissionView {
     
     // MARK: 타이틀
-    func PageTitleView() -> some View {
+    private func PageTitleView() -> some View {
         Text(pageContents)
             .font(Font.systemTitle3)
             .multilineTextAlignment(.center)
@@ -84,7 +84,7 @@ extension PermissionView {
     }
     
     // MARK: 권한요청 버튼 리스트
-    func RequestPermissionButtonView() -> some View {
+    private func RequestPermissionButtonView() -> some View {
         VStack(alignment: .leading, spacing: .spacing24) {
             RequestButtonView(
                 staticInfo: vm.notificationButtonInfo,
@@ -100,7 +100,7 @@ extension PermissionView {
     }
 
     // MARK: 권한요청 버튼
-    func RequestButtonView(
+    private func RequestButtonView(
         staticInfo: PermissionButtonInfo,
         buttonStatus: PermissionButtonStatus,
         hasPermission: Bool) -> some View {
@@ -152,7 +152,7 @@ extension PermissionView {
     }
     
     // MARK: 시작하기 버튼
-    func GoToOnboardingButtonView() -> some View{
+    private func GoToOnboardingButtonView() -> some View{
         VStack {
             Button {
                 ScreenTimeVM.shared.requestAuthorization()

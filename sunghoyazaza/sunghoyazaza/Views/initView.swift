@@ -20,9 +20,3 @@ struct initView: View {
         .environmentObject(ScreenTimeVM.shared)
     }
 }
-
-struct initView_Previews: PreviewProvider {
-    static var previews: some View {
-        initView()
-    }
-}

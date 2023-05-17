@@ -10,11 +10,7 @@ import SwiftUI
 @main
 struct sunghoyazazaApp: App {
     @Environment(\.scenePhase) private var scenePhase
-    @State var isLoading: Bool = true {
-        didSet {
-            print(isLoading)
-        }
-    }
+    @State private var isLoading: Bool = true
     
     var body: some Scene {
         WindowGroup {
@@ -49,7 +45,6 @@ struct sunghoyazazaApp: App {
             NotificationManager.shared.updateAuthStatus()
             if phase == .active{
                 DateModel.shared.reloadData()
-                print("돌아감")
                 UIApplication.shared.applicationIconBadgeNumber = 0
             }
         }

@@ -38,7 +38,7 @@ struct OnboardingView: View {
 extension OnboardingView {
     
     // MARK: 타이틀
-    func PageTitleView() -> some View {
+    private func PageTitleView() -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("수면 루틴을 설정해주세요").font(.largeTitle.bold())
             Text("7시간 이상의 숙면은 내일 집중할 수 있게 도와줘요").foregroundColor(.gray)
@@ -48,7 +48,7 @@ extension OnboardingView {
     }
     
     // MARK: 시간 설정 섹션
-    func SelectMonitoringTimesView() -> some View {
+    private func SelectMonitoringTimesView() -> some View {
         VStack(spacing: 0) {
             DatePicker(selection: $startAt, displayedComponents: .hourAndMinute, label: { Text("🌙 취침 시간") })
                 .padding(.bottom, .spacing24)
@@ -57,7 +57,7 @@ extension OnboardingView {
     }
     
     // MARK: 앱 설정하러가기 버튼
-    func GoToOnBoarding2ViewButtonView() -> some View {
+    private func GoToOnBoarding2ViewButtonView() -> some View {
         NavigationLink(destination: Onboarding2View()) {
             Text("수면 루틴 설정 완료").foregroundColor(.white)
         }.simultaneousGesture(TapGesture().onEnded{
