@@ -27,20 +27,20 @@ struct MainView: View {
                 ZStack{
                     VStack {
                         //MARK: 디버깅용 코드 (삭제 예정)
-                        Button {
-                            print("Activitiies: \(ScreenTimeVM.shared.deviceActivityCenter.activities)\n")
-                            if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
-                                print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
-                            }
-                            if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime) != nil {
-                                print("Schedule .additionalFifteen: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime))\n")
-                            }
-                            print("additionalCount: \(ScreenTimeVM.shared.additionalCount)")
-                            print("isEndPoint: \(ScreenTimeVM.shared.isEndPoint.description)")
-
-                        } label: {
-                            Text("액티비티 조회")
-                        }//여기까지 디버깅용 코드
+//                        Button {
+//                            print("Activitiies: \(ScreenTimeVM.shared.deviceActivityCenter.activities)\n")
+//                            if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
+//                                print("Schedule .dailySleep: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
+//                            }
+//                            if ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime) != nil {
+//                                print("Schedule .additionalFifteen: \(ScreenTimeVM.shared.deviceActivityCenter.schedule(for: .additionalTime))\n")
+//                            }
+//                            print("additionalCount: \(ScreenTimeVM.shared.additionalCount)")
+//                            print("isEndPoint: \(ScreenTimeVM.shared.isEndPoint.description)")
+//
+//                        } label: {
+//                            Text("액티비티 조회")
+//                        }//여기까지 디버깅용 코드
                         // 메인 Text
                         Text("\(mainLabel)")
                             .font(.largeTitle.bold())
