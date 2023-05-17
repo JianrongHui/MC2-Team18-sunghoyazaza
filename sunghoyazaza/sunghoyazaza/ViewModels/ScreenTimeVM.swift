@@ -66,10 +66,6 @@ class ScreenTimeVM: ObservableObject {
     @AppStorage(AppStorageKey.isEndPoint.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isEndPoint: Bool = true
     
-    // MARK: 오늘 수면 계획 동안 연장할 시간
-    @AppStorage(AppStorageKey.additionalTime.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
-    var additionalTime: Int = 5
-    
     let deviceActivityCenter = DeviceActivityCenter()
     let authorizationCenter = AuthorizationCenter.shared
 
@@ -154,7 +150,7 @@ class ScreenTimeVM: ObservableObject {
             let startMinute  = currentDateComponents.minute ?? 0
             var endHour = startHour
             // MARK: 추가시간 끝나는 시간 변경하는 분
-            var endMinute = startMinute + additionalTime // 15분
+            var endMinute = startMinute + 1 // 15분
             if endMinute >= 60 {
                 endMinute -= 60
                 endHour += 1

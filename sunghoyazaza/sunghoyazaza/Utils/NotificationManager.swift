@@ -74,15 +74,15 @@ class NotificationManager {
     // MARK: 노티피케이션 생성 및 요청
     func requestNotificationCreate(
         title: String = "Sample Notification Title",
+        subTitle: String = "Sample Notification SubTitle",
         timeInterval: Double = 5.0
     ) {        
-        let subtitle: String = "\(ScreenTimeVM.shared.additionalTime)분 뒤에 설정한 수면 계획 시작"
         let content = UNMutableNotificationContent()
         content.title = title
-        content.subtitle = subtitle
+        content.subtitle = subTitle
         content.sound = .default
         // TODO: 뱃지 정상 동작하도록 수정하기
-//        content.badge = 1
+        content.badge = 1
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         

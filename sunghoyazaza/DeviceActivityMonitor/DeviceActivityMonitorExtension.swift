@@ -81,16 +81,19 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         if isUserNotificationOn {
             if activity == .dailySleep { //MARK: 수면 스케줄 시작 알림
                 NotificationManager.shared.requestNotificationCreate(
-                    title: "수면 계획이 곧 시작됩니다."
+                    title: "수면 계획이 곧 시작됩니다.",
+                    subTitle: "5분 뒤에 설정한 수면 계획 시작"
                 )
             } else if activity == .additionalTime {
                 if additionalCount < 2 { //MARK: 1회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
-                        title: "약속한 시간이 다가옵니다."
+                        title: "약속한 시간이 다가옵니다.",
+                        subTitle: "1분 뒤에 설정한 수면 계획 시작"
                     )
                 } else { //MARK: 2회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
-                        title: "최후의 약속이 끝나갑니다."
+                        title: "최후의 약속이 끝나갑니다.",
+                        subTitle: "1분 뒤에 설정한 수면 계획 시작"
                     )
                 }
             }
