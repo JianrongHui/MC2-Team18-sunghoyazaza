@@ -14,3 +14,11 @@ struct CarouselItemInfo: Identifiable {
     var labelBody: String
     var src: String
 }
+
+struct PermissionButtonInfo: Identifiable {
+    let id = UUID()
+    let headerText: String
+    let src: String
+    let permissionName: String
+    let footerText: String
+}

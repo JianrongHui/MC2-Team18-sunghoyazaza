@@ -14,23 +14,23 @@ struct PermissionView: View {
     @StateObject
     var vm = PermissionViewModel()
     
-    private var pageContents =
-    """
-    머스트 슬립은
-    아래와 같은 권한 설정이 필요해요
-    권한 설정을 완료하면
-    첫 수면 계획을 만들러 갈 수 있어요
-    """
-       
     @State
     private var isNavigationActive = false
     
     @State
     private var showAlert = false
     
+    private let pageContents =
+    """
+    머스트 슬립은
+    아래와 같은 권한 설정이 필요해요
+    권한 설정을 완료하면
+    첫 수면 계획을 만들러 갈 수 있어요
+    """
+    
     var body: some View {
         VStack{
-            pageTitleView()
+            PageTitleView()
             RequestPermissionButtonView()
                 .alert(
                     "알림이 이전에 거부되었어요",
@@ -42,7 +42,6 @@ struct PermissionView: View {
                         Text("설정으로 가기")
                     }
                     Button(role: .cancel) {
-                        // Handle the deletion.
                     } label: {
                         Text("닫기")
                     }
@@ -75,7 +74,7 @@ struct PermissionView: View {
 extension PermissionView {
     
     // MARK: 타이틀
-    func pageTitleView() -> some View {
+    func PageTitleView() -> some View {
         Text(pageContents)
             .font(Font.systemTitle3)
             .multilineTextAlignment(.center)
@@ -173,11 +172,5 @@ extension PermissionView {
                 EmptyView()
             }
         }
-    }
-}
-
-struct PermissionView_Previews: PreviewProvider {
-    static var previews: some View {
-        PermissionView()
     }
 }
