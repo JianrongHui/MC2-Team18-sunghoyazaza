@@ -25,6 +25,10 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     @AppStorage(AppStorageKey.isUserNotificationOn.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
     var isUserNotificationOn: Bool!
     
+    // MARK: 오늘 수면 계획 동안 연장할 시간
+    @AppStorage(AppStorageKey.additionalTime.rawValue, store: UserDefaults(suiteName: APP_GROUP_NAME))
+    var additionalTime: Int!
+    
     var selectionToDiscourage = ScreenTimeVM.shared.selectionToDiscourage
     
     // MARK: 스케줄 시작 시점에 호출
@@ -77,19 +81,16 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         if isUserNotificationOn {
             if activity == .dailySleep { //MARK: 수면 스케줄 시작 알림
                 NotificationManager.shared.requestNotificationCreate(
-                    title: "수면 계획이 곧 시작됩니다.",
-                    subtitle: "5분 뒤에 설정한 수면 계획 시작"
+                    title: "수면 계획이 곧 시작됩니다."
                 )
             } else if activity == .additionalTime {
                 if additionalCount < 2 { //MARK: 1회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
-                        title: "약속한 시간이 다가옵니다.",
-                        subtitle: "1분 뒤에 설정한 수면 계획 시작"
+                        title: "약속한 시간이 다가옵니다."
                     )
                 } else { //MARK: 2회째 연장 이후 수면 스케줄 시작 알림
                     NotificationManager.shared.requestNotificationCreate(
-                        title: "최후의 약속이 끝나갑니다.",
-                        subtitle: "1분 뒤에 설정한 수면 계획 다시 시작"
+                        title: "최후의 약속이 끝나갑니다."
                     )
                 }
             }

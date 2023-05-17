@@ -19,6 +19,7 @@ public enum AppStorageKey: String {
     case hasNotificationPermission
     case hasScreenTimePermission
     case testCount
+    case additionalTime
 
 }
 
