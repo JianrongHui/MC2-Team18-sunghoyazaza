@@ -36,6 +36,7 @@
 		A94A97DF2A0F7EC40012E8A9 /* Onboarding0VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94A97DE2A0F7EC40012E8A9 /* Onboarding0VM.swift */; };
 		A94AF2CA2A11A0C800FDFEA6 /* initView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AF2C92A11A0C800FDFEA6 /* initView.swift */; };
 		A94AF2CD2A11CA3400FDFEA6 /* mustsleep_80.png in Resources */ = {isa = PBXBuildFile; fileRef = A94AF2CC2A11CA3400FDFEA6 /* mustsleep_80.png */; };
+		A9D2C09E2A146458000D9F48 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D2C09D2A146458000D9F48 /* OnboardingModel.swift */; };
 		A9D5C5772A0E6ECC002723F0 /* PermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5C5762A0E6ECC002723F0 /* PermissionVM.swift */; };
 		A9F0ED5B2A08C209006E02B6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */; };
 		A9F0ED982A08CABD006E02B6 /* AppStorageKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0ED972A08CABD006E02B6 /* AppStorageKeyManager.swift */; };
@@ -186,6 +187,7 @@
 		A94A97DE2A0F7EC40012E8A9 /* Onboarding0VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding0VM.swift; sourceTree = "<group>"; };
 		A94AF2C92A11A0C800FDFEA6 /* initView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initView.swift; sourceTree = "<group>"; };
 		A94AF2CC2A11CA3400FDFEA6 /* mustsleep_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mustsleep_80.png; sourceTree = "<group>"; };
+		A9D2C09D2A146458000D9F48 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		A9D5C5762A0E6ECC002723F0 /* PermissionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionVM.swift; sourceTree = "<group>"; };
 		A9F0ED5A2A08C209006E02B6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		A9F0ED622A08C2CD006E02B6 /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = SDKROOT; };
@@ -336,6 +338,7 @@
 			children = (
 				7FBFF4392A07C5B90069656E /* DateModel.swift */,
 				7FBFF43A2A07C5B90069656E /* MainModel.swift */,
+				A9D2C09D2A146458000D9F48 /* OnboardingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				7FBFF44E2A07C5B90069656E /* DateVM.swift in Sources */,
 				76CA10BA2A0C1C9F00689C42 /* Date+Extension.swift in Sources */,
 				A94A97DA2A0F76B40012E8A9 /* ScreenTimeVM.swift in Sources */,
+				A9D2C09E2A146458000D9F48 /* OnboardingModel.swift in Sources */,
 				B8C078FB2A100A8F00E7156F /* DetailView.swift in Sources */,
 				A9F0ED5B2A08C209006E02B6 /* NotificationManager.swift in Sources */,
 				7FBFF44C2A07C5B90069656E /* MainModel.swift in Sources */,

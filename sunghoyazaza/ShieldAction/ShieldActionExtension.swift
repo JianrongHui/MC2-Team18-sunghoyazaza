@@ -28,8 +28,12 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
-            handleAdditionalTimeAction()
-            completionHandler(.close)
+            if additionalCount < 2 {
+                handleAdditionalTimeAction()
+                completionHandler(.close)
+            } else {
+                completionHandler(.none)
+            }
         @unknown default:
             fatalError()
         }
@@ -42,8 +46,12 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
-            handleAdditionalTimeAction()
-            completionHandler(.close)
+            if additionalCount < 2 {
+                handleAdditionalTimeAction()
+                completionHandler(.close)
+            } else {
+                completionHandler(.none)
+            }
         @unknown default:
             fatalError()
         }
